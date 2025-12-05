@@ -36,7 +36,7 @@ const Navbar = () => {
                 <div className="navbar-left">
                     <Link to="/" className="navbar-logo" style={{ color: 'red', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 'bold' }}>
                         {/* <img src={netflixLogo} alt="Netflix" /> */}
-                        NETFLIX
+                        PORTFOLIO
                     </Link>
                     <ul className="navbar-links">
                         <li><Link to="/browse">Home</Link></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
             <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-logo">
                     {/* <img src={netflixLogo} alt="Netflix Logo" /> */}
-                    <h2 style={{ color: 'red' }}>NETFLIX</h2>
+                    <h2 style={{ color: 'red' }}>PORTFOLIO</h2>
                 </div>
                 <ul>
                     <li><Link to="/browse" onClick={closeSidebar}><FaHome /> Home</Link></li>
