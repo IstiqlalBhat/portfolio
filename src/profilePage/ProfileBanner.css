@@ -42,6 +42,7 @@
     font-size: 1rem;
     margin-bottom: 20px;
     font-size: 14px;
+    white-space: pre-line;
 }
 
 .banner-buttons {
