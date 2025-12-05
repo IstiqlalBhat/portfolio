@@ -24,7 +24,7 @@ const ProfileBanner = () => {
     if (!bannerData) return <div>Loading...</div>;
 
     const handlePlayClick = () => {
-        window.open(bannerData.resumeLink.url, '_blank');
+        window.open('/assets/resume.pdf', '_blank');
     };
 
     const handleLinkedinClick = () => {

@@ -41,7 +41,7 @@ const Hero = ({ profile }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.5 }}
                 >
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary" onClick={() => window.open('/assets/resume.pdf', '_blank')}>
                         <Play className="btn-icon" fill="currentColor" />
                         Resume
                     </button>
