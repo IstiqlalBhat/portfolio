@@ -1,10 +1,13 @@
 .netflix-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     background-color: #141414;
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
 .netflix-logo {
@@ -37,5 +40,46 @@
     100% {
         transform: scale(3);
         opacity: 0;
+    }
+}
+
+.click-hint-intro {
+    position: absolute;
+    bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #808080;
+    font-size: 1rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.tap-icon-intro {
+    font-size: 2rem;
+    animation: bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
     }
 }

@@ -31,6 +31,12 @@ const NetflixTitle = () => {
         className={`netflix-logo ${isClicked ? 'animate' : ''}`} 
       /> */}
             <h1 className={`netflix-logo ${isClicked ? 'animate' : ''}`} style={{ color: 'red', fontSize: '4rem' }}>PORTFOLIO</h1>
+            {!isClicked && (
+                <div className="click-hint-intro">
+                    <span className="tap-icon-intro">👆</span>
+                    <span>Click to enter</span>
+                </div>
+            )}
         </div>
     );
 };
