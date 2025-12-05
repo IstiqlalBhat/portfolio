@@ -1,0 +1,202 @@
+{
+  "profile": {
+    "name": "Istiqlal Aurangzeb",
+    "contact": {
+      "email": "istiqlal1234@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/istiqlalaurangzeb",
+      "github": "https://github.com/istiqlalbhat",
+      "scholar": "https://scholar.google.com/citations?user=v4-8HccAAAAJ",
+      "phone": "(864)-765-7973"
+    }
+  },
+  "skills": {
+    "Programming": [
+      "Python",
+      "Solidity",
+      "JavaScript",
+      "Node.js",
+      "React.js",
+      "HTML/CSS",
+      "XML",
+      "JSON",
+      "RESTful APIs",
+      "SQL",
+      "C",
+      "Arduino"
+    ],
+    "AI_ML_Tools": [
+      "Claude",
+      "ChatGPT",
+      "Gemini",
+      "RAG",
+      "LLMs",
+      "PyTorch",
+      "Hugging Face",
+      "Vector Databases",
+      "Prompt Engineering"
+    ],
+    "Development_Tools": [
+      "Cursor IDE",
+      "Lovable",
+      "bolt.new",
+      "Hardhat",
+      "Ganache",
+      "Web3.js",
+      "ethers.js",
+      "AWS",
+      "Git/GitHub",
+      "IntelliJ",
+      "VS Code",
+      "Figma",
+      "Framer"
+    ],
+    "Industry_Tools": [
+      "Revit",
+      "Navisworks",
+      "Jupyter",
+      "Wireshark",
+      "CARLA Simulator",
+      "Real-time Collaboration Tools"
+    ],
+    "Specialized_Skills": [
+      "AI Prototyping",
+      "Full-Stack Development",
+      "Blockchain Development",
+      "Smart Contract Auditing",
+      "CI/CD",
+      "Agile/Scrum",
+      "Linux",
+      "Rapid MVP Development"
+    ]
+  },
+  "experience": [
+    {
+      "role": "Graduate Research Assistant – Software Engineer",
+      "company": "Clemson University",
+      "location": "Clemson, South Carolina",
+      "duration": "Feb 2024 -- Present",
+      "details": [
+        "Led full-stack development of two production prototypes published in Automation in Construction.",
+        "Architected & audited Solidity smart-contracts (≥2.4 K LoC) governing bids, trust-scores, receipt parsing, and on-chain CO2e computation; achieved 0 critical vulnerabilities in MythX scans.",
+        "Built Web3/Python micro-services for off-chain data normalization, unit conversion, event listening, and gas-optimized batch writes; reduced transaction gas by 37%.",
+        "Integrated Large Multimodal Model pipelines that parse unstructured fuel/electricity receipts to JSON with 98 % field-level accuracy, feeding smart-contract calls end-to-end.",
+        "Delivered React + Tailwind dashboards (hooks, ethers.js, recharts) providing live emissions and bid analytics; less than 200 ms blockchain read latency via indexed subgraph.",
+        "Drove CI/CD (GitHub Actions, Hardhat, AWS EC2) and authored comprehensive developer docs and journal manuscripts, bridging engineering and academic stakeholders."
+      ]
+    },
+    {
+      "role": "Chief Operating Officer",
+      "company": "IGNITE Club, Sri Venkateswara University",
+      "location": "Tirupati, India",
+      "duration": "Aug 2021 -- July 2023",
+      "details": [
+        "Directed strategy and operations of the university’s entrepreneurship club, launching hackathons, bootcamps, and startup drives that engaged 300+ participants.",
+        "Mentored 7 student teams on MVP design, prototyping, and grant applications while troubleshooting technical and operational blockers.",
+        "Built cross-functional partnerships with faculty, students, and external stakeholders to foster an innovation pipeline and entrepreneurial culture on campus."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "XR Magic",
+      "type": "Individual",
+      "date": "2024",
+      "subtitle": "Three.js, MediaPipe, WebGL",
+      "image": "/assets/xr_magic.png",
+      "link": "https://xrmagic.vercel.app",
+      "github": "https://github.com/IstiqlalBhat/XR",
+      "details": [
+        "Developed a gesture-controlled particle system using Three.js and MediaPipe, allowing users to manipulate 18,000+ particles in real-time with hand movements.",
+        "Implemented complex shader effects including bloom post-processing and dynamic gradients based on particle depth and velocity.",
+        "Optimized performance to maintain 60fps rendering for large particle counts using efficient buffer geometry updates."
+      ]
+    },
+    {
+      "title": "Toby Watch (Aria)",
+      "type": "Individual",
+      "date": "2024",
+      "subtitle": "Arduino, OpenAI, Firebase",
+      "image": "/assets/aria_watch.png",
+      "link": "https://tobywatch.vercel.app/",
+      "github": "https://github.com/IstiqlalBhat/Arduino",
+      "details": [
+        "Built an AI-powered smartwatch using Arduino Uno R4 WiFi, integrating OpenAI's GPT-4o-mini for real-time intelligent responses.",
+        "Designed a cloud messaging architecture using Firebase Realtime Database to enable remote communication between the web interface and the wearable.",
+        "Created a custom hardware interface with an OLED display for text and an LED matrix for emotional feedback animations."
+      ]
+    },
+    {
+      "title": "Interactive Browser-Based Game",
+      "type": "Individual",
+      "date": "2024",
+      "subtitle": "Vanilla JS, HTML5, CSS3, Node.js",
+      "image": "/assets/quiz_game.png",
+      "link": "https://mayor-quiz-game.onrender.com/",
+      "github": "https://github.com/IstiqlalBhat/mayor-quiz-game",
+      "details": [
+        "Created 2,800+ line browser-based application with vanilla JavaScript implementing MVC architecture; developed responsive grid system (3 breakpoints) using CSS Grid and Flexbox.",
+        "Built Node.js/Express backend with 8 RESTful endpoints; implemented PostgreSQL database integration with connection pooling; deployed to production on Render with automated backup workflows."
+      ]
+    },
+    {
+      "title": "LLM on Autonomous Vehicles",
+      "type": "Individual",
+      "date": "November 2024",
+      "subtitle": "Large Multimodal Models (GPT-4o, LLaVA)",
+      "image": "/assets/autonomous_vehicle.png",
+      "github": "https://github.com/IstiqlalBhat/LLM-on-Autonomous-Vehicles",
+      "details": [
+        "Developed a security pipeline to detect diffusion-based adversarial attacks on traffic signs, achieving 85% accuracy—a 45% improvement over legacy models.",
+        "Quantized and deployed on ZED Box and Raspberry Pi with minimal latency (≈5 s/image), ensuring real-time viability.",
+        "Integrated stereo-camera inputs with the CARLA simulator for lane marking detection under Automated Lane Centering, preventing mis-steering under adversarial patches."
+      ]
+    },
+    {
+      "title": "Pizza Management System",
+      "type": "Individual",
+      "date": "June 2024",
+      "subtitle": "Java-based Pizza Ordering System",
+      "image": "/assets/pizza_system.png",
+      "github": "https://github.com/IstiqlalBhat/Pizza-Management-System",
+      "details": [
+        "Designed a Java-based pizza ordering system with full CRUD operations, integrating a secure MySQL backend. Implemented prepared statements and input validation to prevent SQL injection attacks.",
+        "Constructed and maintained relational database schema with MySQL, executing advanced SQL scripts for data manipulation. Created views to track topping popularity, pizza profitability, and order types.",
+        "Deployed the application on Amazon AWS RDS, increasing operational efficiency by 30%, improving customer satisfaction by 25%, and reducing inventory waste by 20%."
+      ]
+    },
+    {
+      "title": "Detecting Rude Tweets",
+      "type": "Individual",
+      "date": "April 2023",
+      "subtitle": "Twitter Web Application",
+      "image": "/assets/twitter_analysis.png",
+      "details": [
+        "Engineered a web application that flagged over 1,200 tweets containing hate speech or abusive language, enhancing platform safety and user experience.",
+        "Introduced a blacklist system to issue warnings when tweets exceeded a 90 % hatefulness threshold, showcasing strong problem-solving and ethical data usage."
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "citation": "Aurangzeb, I., & Yoon, J. H. (2025). Artificial intelligence- and blockchain-enabled carbon emissions ledger system (AB-CELS) for sustainable construction processes. Automation in Construction, 171, Article 105987.",
+      "link": "https://doi.org/10.1016/j.autcon.2025.105987"
+    },
+    {
+      "citation": "Yoon, J. H., Aurangzeb, I., & McNamara, S. (2024). BIM- and blockchain-enabled automatic procurement system (BBAPS) removing relationship bias. Automation in Construction, 168(A), Article 105779.",
+      "link": "https://doi.org/10.1016/j.autcon.2024.105779"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Clemson University",
+      "degree": "Master of Science in Computer Science",
+      "gpa": "3.59/4.0",
+      "year": "December 2025"
+    },
+    {
+      "institution": "Sri Venkateswara University",
+      "degree": "Bachelor of Technology in Computer Science and Engineering",
+      "year": "May 2023"
+    }
+  ]
+}
