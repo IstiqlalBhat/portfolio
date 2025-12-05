@@ -44,6 +44,21 @@ const ProfileGate = ({ onSelect }) => {
                     </motion.div>
                 ))}
             </div>
+            <motion.div
+                className="click-hint"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+            >
+                <motion.span
+                    className="tap-icon"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+                >
+                    👆
+                </motion.span>
+                <span>Click to enter</span>
+            </motion.div>
             <motion.button
                 className="manage-btn"
                 initial={{ opacity: 0 }}
