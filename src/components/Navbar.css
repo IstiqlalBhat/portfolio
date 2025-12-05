@@ -63,7 +63,7 @@
 .profile-icon {
     width: 30px;
     height: 30px;
-    border-radius: 15%;
+    border-radius: 50%;
     transition: transform 0.3s;
     margin-right: 3rem;
     cursor: pointer;
