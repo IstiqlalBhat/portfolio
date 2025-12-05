@@ -1,0 +1,15 @@
+{
+    "redirects": [
+        {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "www.istiqlalaurangzeb.com"
+                }
+            ],
+            "destination": "https://istiqlalaurangzeb.com/:path*",
+            "permanent": true
+        }
+    ]
+}
