@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './NetflixTitle.css';
 import netflixSound from '../sound/error.mp3';
 import { useNavigate } from 'react-router-dom';
-// import logoImage from '../src/images/logo-2.png'; // TODO: Add logo image
 
 const NetflixTitle = () => {
     const [isClicked, setIsClicked] = useState(false);
@@ -11,7 +10,7 @@ const NetflixTitle = () => {
     const handlePlaySound = () => {
         const audio = new Audio(netflixSound);
         audio.play().catch(error => console.error("Audio play error:", error));
-        setIsClicked(true); // Starts animation after clicking
+        setIsClicked(true);
     };
 
     useEffect(() => {
@@ -25,12 +24,11 @@ const NetflixTitle = () => {
 
     return (
         <div className="netflix-container" onClick={handlePlaySound}>
-            {/* <img 
-        src={logoImage} 
-        alt="Custom Logo" 
-        className={`netflix-logo ${isClicked ? 'animate' : ''}`} 
-      /> */}
-            <h1 className={`netflix-logo ${isClicked ? 'animate' : ''}`} style={{ color: 'red', fontSize: '4rem' }}>PORTFOLIO</h1>
+            {/* Netflix-style Logo */}
+            <h1 className={`netflix-logo ${isClicked ? 'animate' : ''}`}>
+                PORTFOLIO
+            </h1>
+            
             {!isClicked && (
                 <div className="click-hint-intro">
                     <span className="tap-icon-intro">👆</span>
