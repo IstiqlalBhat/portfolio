@@ -15,12 +15,15 @@ import Reading from './pages/Reading';
 import ResearchPapers from './pages/ResearchPapers';
 import PlacesVisited from './pages/PlacesVisited';
 
+import LatestProject from './pages/LatestProject';
+
 const App = () => {
     return (
         <Routes>
             <Route path="/" element={<NetflixTitle />} />
             <Route path="/browse" element={<Browse />} />
             <Route path="/profile/:profileName" element={<Layout><ProfilePage /></Layout>} />
+            <Route path="/latest-project" element={<Layout><LatestProject /></Layout>} />
             <Route path="/work-permit" element={<Layout><WorkPermit /></Layout>} />
             <Route path="/work-experience" element={<Layout><WorkExperience /></Layout>} />
             <Route path="/recommendations" element={<Layout><Recommendations /></Layout>} />
