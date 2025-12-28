@@ -1,34 +1,40 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, name, type }) => {
+const SEO = ({ title, description, name, type, path = '' }) => {
+    const baseUrl = 'https://www.istiqlalaurangzeb.com';
+    const canonicalUrl = `${baseUrl}${path}`;
+    const imageUrl = `${baseUrl}/og-image.png`;
+
     return (
         <Helmet>
             { /* Standard metadata tags */}
             <title>{title}</title>
             <meta name='description' content={description} />
-
-            { /* End standard metadata tags */}
+            <meta name="author" content={name} />
+            <link rel="canonical" href={canonicalUrl} />
 
             { /* Facebook tags */}
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            { /* End Facebook tags */}
+            <meta property="og:url" content={canonicalUrl} />
+            <meta property="og:image" content={imageUrl} />
+            <meta property="og:site_name" content="Istiqlal Aurangzeb" />
 
             { /* Twitter tags */}
             <meta name="twitter:creator" content={name} />
-            <meta name="twitter:card" content={type} />
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
-            { /* End Twitter tags */}
+            <meta name="twitter:image" content={imageUrl} />
         </Helmet>
     )
 }
 
 SEO.defaultProps = {
-    title: 'Istiqlal Aurangzeb | Portfolio',
-    description: 'Research Software Developer at Clemson University bridging AI and blockchain with construction technology.',
+    title: 'Istiqlal | Istiqlal Aurangzeb - Software Engineer & AI Researcher',
+    description: 'Istiqlal Aurangzeb - Research Software Developer at Clemson University. Istiqlal specializes in AI, blockchain, and full-stack development.',
     name: 'Istiqlal Aurangzeb',
     type: 'website'
 }

@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://istiqlalaurangzeb.com/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.istiqlalaurangzeb.com/sitemap.xml
