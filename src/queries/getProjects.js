@@ -22,6 +22,22 @@ export async function getProjects() {
     } catch (error) {
         return [
             {
+                title: "My Graduation Story - Van Gogh Style",
+                description: "An immersive 3D web experience recounting my graduation journey through the lens of Van Gogh's art style.",
+                techUsed: "Three.js, React, WebGL, Vite",
+                image: { url: "https://picsum.photos/seed/vangogh/300/200" },
+                link: "https://van-gogh-three.vercel.app/",
+                github: "https://github.com/IstiqlalBhat/van-gogh"
+            },
+            {
+                title: "My Arsenal vs The Show ⚾",
+                description: "A full-stack baseball pitch tracking platform that compares your pitches against real MLB Statcast data, powered by AI coaching.",
+                techUsed: "Next.js, TypeScript, Supabase, Firebase, Gemini AI",
+                image: { url: "https://picsum.photos/seed/baseball/300/200" },
+                link: "https://maven-project-eta.vercel.app/",
+                github: "https://github.com/IstiqlalBhat/maven-project"
+            },
+            {
                 title: "XR Magic",
                 description: "Gesture-controlled particle system using Three.js and MediaPipe.",
                 techUsed: "Three.js, MediaPipe, WebGL",
