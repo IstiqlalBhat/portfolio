@@ -5,7 +5,7 @@ import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProje
 
 const topPicksConfig = {
     recruiter: [
-        { title: "Van Gogh Grad", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", github: "https://github.com/IstiqlalBhat/van-gogh", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
         { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/250/200", icon: <FaPassport />, route: "/work-permit" },
         { title: "Skills", imgSrc: "https://picsum.photos/seed/skills/250/200", icon: <FaCode />, route: "/skills" },
         { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/250/200", icon: <FaBriefcase />, route: "/work-experience" },
@@ -15,7 +15,7 @@ const topPicksConfig = {
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/contact/250/200", icon: <FaEnvelope />, route: "/contact-me" }
     ],
     developer: [
-        { title: "Van Gogh Grad", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", github: "https://github.com/IstiqlalBhat/van-gogh", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
         { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/development/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/research-papers", icon: <FaCertificate /> },
@@ -24,7 +24,7 @@ const topPicksConfig = {
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/250/200", route: "/contact-me", icon: <FaEnvelope /> }
     ],
     stalker: [
-        { title: "Van Gogh Grad", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", github: "https://github.com/IstiqlalBhat/van-gogh", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
         { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/250/200", route: "/projects", icon: <FaProjectDiagram /> },
@@ -32,7 +32,7 @@ const topPicksConfig = {
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/achievements/250/200", route: "/research-papers", icon: <FaCertificate /> },
     ],
     adventure: [
-        { title: "Van Gogh Grad", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", github: "https://github.com/IstiqlalBhat/van-gogh", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
         { title: "Music", imgSrc: "https://picsum.photos/seed/music/250/200", route: "/music" },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/innovation/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Reading", imgSrc: "https://picsum.photos/seed/books/250/200", route: "/reading", icon: <FaBook /> },
