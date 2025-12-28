@@ -5,10 +5,10 @@
             "has": [
                 {
                     "type": "host",
-                    "value": "www.istiqlalaurangzeb.com"
+                    "value": "istiqlalaurangzeb.com"
                 }
             ],
-            "destination": "https://istiqlalaurangzeb.com/:path*",
+            "destination": "https://www.istiqlalaurangzeb.com/:path*",
             "permanent": true
         }
     ],
