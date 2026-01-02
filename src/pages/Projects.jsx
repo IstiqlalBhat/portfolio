@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Projects.css';
-import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, FaGitlab, FaGoogle, FaJava, FaJenkins, FaMicrosoft, FaPython, FaVuejs } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, FaGitlab, FaGoogle, FaJava, FaJenkins, FaMicrosoft, FaPython, FaVuejs, FaImages } from 'react-icons/fa';
 import { SiRubyonrails, SiPostgresql, SiMongodb, SiMaterialdesign, SiHtml5, SiCss3, SiJquery, SiAwsamplify, SiFirebase, SiTerraform, SiArgo, SiTypescript, SiSupabase, SiVite } from 'react-icons/si';
 import { getProjects } from '../queries/getProjects';
 import { GrDeploy, GrKubernetes } from "react-icons/gr";
+import ShowcaseModal from '../components/ShowcaseModal';
 
 const techIcons = {
     "ReactJS": <FaReact />,
@@ -64,9 +65,16 @@ const techIcons = {
     'WebGL': <SiHtml5 />,
 };
 
+const pptImages = [
+    '/ppt/1.png', '/ppt/2.png', '/ppt/3.png', '/ppt/4.png',
+    '/ppt/5.png', '/ppt/6.png', '/ppt/7.png', '/ppt/8.png',
+    '/ppt/9.png', '/ppt/10.png', '/ppt/11.png', '/ppt/12.png'
+];
 
 const Projects = () => {
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState([]);
+    const [isShowcaseOpen, setIsShowcaseOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
         async function fetchProjects() {
@@ -80,6 +88,11 @@ const Projects = () => {
 
         fetchProjects()
     }, [])
+
+    const openShowcase = (project) => {
+        setSelectedProject(project);
+        setIsShowcaseOpen(true);
+    };
 
     if (projects.length === 0) return <div>Loading...</div>;
 
@@ -114,11 +127,36 @@ const Projects = () => {
                                         <FaGithub /> GitHub
                                     </a>
                                 )}
+
+                                {project.link && project.link.includes('maven-project') && (
+                                    <button
+                                        className="project-link-btn showcase-btn"
+                                        onClick={() => openShowcase(project)}
+                                        style={{
+                                            background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',
+                                            border: 'none',
+                                            fontSize: '0.8rem',
+                                            padding: '6px 12px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '5px'
+                                        }}
+                                    >
+                                        <FaImages /> Showcase
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
+
+            <ShowcaseModal
+                isOpen={isShowcaseOpen}
+                onClose={() => setIsShowcaseOpen(false)}
+                images={pptImages}
+                title={selectedProject?.title || "Project"}
+            />
         </div>
     );
 };
