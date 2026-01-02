@@ -154,21 +154,71 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .showcase-title {
+    .showcase-modal-content {
+        width: 100%;
+        height: 100%;
+        /* Full screen on mobile */
+        border-radius: 0;
+        justify-content: flex-start;
+        /* Align top so title isn't in middle if image is small */
+        padding-top: 60px;
+        /* Space for close button */
+    }
+
+    .close-button {
+        top: 20px;
+        right: 20px;
+        background-color: rgba(20, 20, 20, 0.8);
+        /* Visible background */
+        width: 44px;
+        /* Larger touch target */
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1.5rem;
+    }
+
+    .showcase-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .carousel-container {
+        height: auto;
+        aspect-ratio: 16/9;
+        /* Force a landscape aspect ratio container for slides */
+        max-height: 60vh;
+        /* Don't take too much vertical space */
+        width: 100%;
+    }
+
+    .carousel-slide {
+        background-color: #000;
     }
 
     .nav-button {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+        background: rgba(0, 0, 0, 0.3);
     }
 
     .nav-button.prev {
-        left: 10px;
+        left: 5px;
     }
 
     .nav-button.next {
-        right: 10px;
+        right: 5px;
+    }
+
+    /* Ensure image takes full width */
+    .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 }
