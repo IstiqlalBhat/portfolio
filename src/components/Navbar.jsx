@@ -11,7 +11,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     // const profileImage = location.state?.profileImage || blueImage;
-    const profileImage = location.state?.profileImage || "/assets/profile_developer.png";
+    const profileImage = location.state?.profileImage || "/assets/profiles/profile_developer.png";
 
     const handleScroll = () => {
         setIsScrolled(window.scrollY > 80);

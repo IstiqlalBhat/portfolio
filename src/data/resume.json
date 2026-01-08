@@ -102,7 +102,7 @@
       "type": "Individual",
       "date": "2024",
       "subtitle": "Three.js, MediaPipe, WebGL",
-      "image": "/assets/xr_magic.png",
+      "image": "/assets/projects/xr_magic.png",
       "link": "https://xrmagic.vercel.app",
       "github": "https://github.com/IstiqlalBhat/XR",
       "details": [
@@ -116,7 +116,7 @@
       "type": "Individual",
       "date": "2024",
       "subtitle": "Arduino, OpenAI, Firebase",
-      "image": "/assets/aria_watch.png",
+      "image": "/assets/projects/aria_watch.png",
       "link": "https://tobywatch.vercel.app/",
       "github": "https://github.com/IstiqlalBhat/Arduino",
       "details": [
@@ -130,7 +130,7 @@
       "type": "Individual",
       "date": "2024",
       "subtitle": "Vanilla JS, HTML5, CSS3, Node.js",
-      "image": "/assets/quiz_game.png",
+      "image": "/assets/projects/quiz_game.png",
       "link": "https://mayormane.vercel.app/",
       "github": "https://github.com/IstiqlalBhat/mayor-quiz-game",
       "details": [
@@ -143,7 +143,7 @@
       "type": "Individual",
       "date": "November 2024",
       "subtitle": "Large Multimodal Models (GPT-4o, LLaVA)",
-      "image": "/assets/autonomous_vehicle.png",
+      "image": "/assets/projects/autonomous_vehicle.png",
       "github": "https://github.com/IstiqlalBhat/LLM-on-Autonomous-Vehicles",
       "details": [
         "Developed a security pipeline to detect diffusion-based adversarial attacks on traffic signs, achieving 85% accuracy—a 45% improvement over legacy models.",
@@ -156,7 +156,7 @@
       "type": "Individual",
       "date": "June 2024",
       "subtitle": "Java-based Pizza Ordering System",
-      "image": "/assets/pizza_system.png",
+      "image": "/assets/projects/pizza_system.png",
       "github": "https://github.com/IstiqlalBhat/Pizza-Management-System",
       "details": [
         "Designed a Java-based pizza ordering system with full CRUD operations, integrating a secure MySQL backend. Implemented prepared statements and input validation to prevent SQL injection attacks.",
@@ -169,7 +169,7 @@
       "type": "Individual",
       "date": "April 2023",
       "subtitle": "Twitter Web Application",
-      "image": "/assets/twitter_analysis.png",
+      "image": "/assets/projects/twitter_analysis.png",
       "details": [
         "Engineered a web application that flagged over 1,200 tweets containing hate speech or abusive language, enhancing platform safety and user experience.",
         "Introduced a blacklist system to issue warnings when tweets exceeded a 90 % hatefulness threshold, showcasing strong problem-solving and ethical data usage."

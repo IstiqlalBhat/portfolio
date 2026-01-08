@@ -10,10 +10,10 @@ import './ProfileGate.css';
 // if the user allows, OR I will use the `src/assets` folder and move them there via command).
 
 const profiles = [
-    { id: 'developer', name: 'Developer', img: '/assets/profile_developer.png' },
-    { id: 'stalker', name: 'Stalker', img: '/assets/profile_stalker_v2.png' },
-    { id: 'recruiter', name: 'Recruiter', img: '/assets/profile_recruiter.png' },
-    { id: 'adventurer', name: 'Adventurer', img: '/assets/profile_adventurer.png' },
+    { id: 'developer', name: 'Developer', img: '/assets/profiles/profile_developer.png' },
+    { id: 'stalker', name: 'Stalker', img: '/assets/profiles/profile_stalker_v2.png' },
+    { id: 'recruiter', name: 'Recruiter', img: '/assets/profiles/profile_recruiter.png' },
+    { id: 'adventurer', name: 'Adventurer', img: '/assets/profiles/profile_adventurer.png' },
 ];
 
 const ProfileGate = ({ onSelect }) => {

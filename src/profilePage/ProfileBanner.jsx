@@ -24,7 +24,7 @@ const ProfileBanner = () => {
     if (!bannerData) return <div>Loading...</div>;
 
     const handlePlayClick = () => {
-        window.open('/assets/Istiqlal_Aurangzeb_Resume.pdf', '_blank');
+        window.open('/assets/docs/Istiqlal_Aurangzeb_Resume.pdf', '_blank');
     };
 
     const handleLinkedinClick = () => {

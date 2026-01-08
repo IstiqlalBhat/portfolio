@@ -13,25 +13,25 @@ export const PROFILES = [
     {
         id: 'recruiter',
         label: 'Recruiter',
-        image: '/assets/profile_recruiter.png',
+        image: '/assets/profiles/profile_recruiter.png',
         backgroundGif: PROFILE_BACKGROUNDS.recruiter,
     },
     {
         id: 'developer',
         label: 'Developer',
-        image: '/assets/profile_developer.png',
+        image: '/assets/profiles/profile_developer.png',
         backgroundGif: PROFILE_BACKGROUNDS.developer,
     },
     {
         id: 'stalker',
         label: 'Stalker',
-        image: '/assets/profile_stalker_v2.png',
+        image: '/assets/profiles/profile_stalker_v2.png',
         backgroundGif: PROFILE_BACKGROUNDS.stalker,
     },
     {
         id: 'adventurer',
         label: 'Adventurer',
-        image: '/assets/profile_adventurer.png',
+        image: '/assets/profiles/profile_adventurer.png',
         backgroundGif: PROFILE_BACKGROUNDS.adventurer,
     },
 ];
