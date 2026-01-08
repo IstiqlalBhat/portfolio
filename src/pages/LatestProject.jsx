@@ -98,7 +98,13 @@ const LatestProject = () => {
                     className="project-card"
                     style={{ '--delay': `0s`, maxWidth: '600px', width: '100%' }} // Expanded view for single project
                 >
-                    <img src={project.image.url} alt={project.title} className="project-image" />
+                    <img
+                        src={project.image.url}
+                        alt={project.title}
+                        className="project-image"
+                        loading="eager"
+                        decoding="async"
+                    />
                     <div className="project-details">
                         <h3>{project.title}</h3>
                         <p>{project.description}</p>

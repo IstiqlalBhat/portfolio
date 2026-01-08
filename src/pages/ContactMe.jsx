@@ -26,7 +26,12 @@ const ContactMe = () => {
     return (
         <div className="contact-container">
             <div className="linkedin-badge-custom">
-                <img src={userData.profilePicture?.url || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"} alt={userData.name} className="badge-avatar" />
+                <img
+                    src={userData.profilePicture?.url || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}
+                    alt={userData.name}
+                    className="badge-avatar"
+                    decoding="async"
+                />
                 <div className="badge-content">
                     <h3 className="badge-name">{userData?.name}</h3>
                     <p className="badge-title">{userData.title}</p>

@@ -26,7 +26,13 @@ const Reading = () => {
             <div className="books-grid">
                 {books.map((book, index) => (
                     <div key={index} className="book-card" style={{ '--delay': `${index * 0.1}s` }}>
-                        <img src={book.imgSrc} alt={book.title} className="book-cover" />
+                        <img
+                            src={book.imgSrc}
+                            alt={book.title}
+                            className="book-cover"
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <div className="book-info">
                             <h3 className="book-title">{book.title}</h3>
                             <h4 className="book-author">{book.author}</h4>

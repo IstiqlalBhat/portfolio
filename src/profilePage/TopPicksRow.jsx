@@ -66,7 +66,13 @@ const TopPicksRow = ({ profile }) => {
                         style={{ animationDelay: `${index * 0.2}s` }}
                     >
                         {pick.isNew && <div className="new-badge">New</div>}
-                        <img src={pick.imgSrc || pick.image} alt={pick.title} className="pick-image" />
+                        <img
+                            src={pick.imgSrc || pick.image}
+                            alt={pick.title}
+                            className="pick-image"
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <div className="overlay">
                             <div className="pick-label">{pick.title}</div>
                             {pick.isNew && (pick.github || pick.link) && (

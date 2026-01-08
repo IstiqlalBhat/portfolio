@@ -53,7 +53,13 @@ const Navbar = () => {
                         <div></div>
                         <div></div>
                     </div>
-                    <img src={profileImage} alt="Profile" className="profile-icon" onClick={() => { navigate('/browse') }} />
+                    <img
+                        src={profileImage}
+                        alt="Profile"
+                        className="profile-icon"
+                        decoding="async"
+                        onClick={() => { navigate('/browse') }}
+                    />
                 </div>
             </nav>
 

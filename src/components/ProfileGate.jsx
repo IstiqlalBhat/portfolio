@@ -38,7 +38,13 @@ const ProfileGate = ({ onSelect }) => {
                         onClick={() => onSelect(profile.id)}
                     >
                         <div className="profile-avatar">
-                            <img src={profile.img} alt={profile.name} onError={(e) => e.target.src = 'https://via.placeholder.com/150'} />
+                            <img
+                                src={profile.img}
+                                alt={profile.name}
+                                loading="lazy"
+                                decoding="async"
+                                onError={(e) => e.target.src = 'https://via.placeholder.com/150'}
+                            />
                         </div>
                         <span className="profile-name">{profile.name}</span>
                     </motion.div>

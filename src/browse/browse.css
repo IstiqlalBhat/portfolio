@@ -5,6 +5,9 @@
     align-items: center;
     height: 100vh;
     background-color: #141414;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .who-is-watching {
@@ -13,6 +16,8 @@
     font-weight: unset;
     width: 100%;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .profiles {
@@ -21,6 +26,8 @@
     flex-wrap: wrap;
     margin-bottom: 10rem;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 

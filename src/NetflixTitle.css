@@ -5,6 +5,8 @@
     height: 100vh;
     background-color: #141414;
     overflow: hidden;
+    position: relative;
+    isolation: isolate;
 }
 
 .netflix-logo {
@@ -15,6 +17,8 @@
     transform: scale(0.8);
     animation: fadeIn 0.8s forwards ease-in;
     /* Slightly slower fade in for drama */
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes fadeIn {

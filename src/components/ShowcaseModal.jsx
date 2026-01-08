@@ -61,7 +61,12 @@ const ShowcaseModal = ({ isOpen, onClose, images, title }) => {
                     >
                         {images.map((img, index) => (
                             <div className="carousel-slide" key={index}>
-                                <img src={img} alt={`Slide ${index + 1}`} />
+                                <img
+                                    src={img}
+                                    alt={`Slide ${index + 1}`}
+                                    loading={index === currentIndex ? 'eager' : 'lazy'}
+                                    decoding="async"
+                                />
                             </div>
                         ))}
                     </div>
