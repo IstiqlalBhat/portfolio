@@ -1,6 +1,12 @@
 .top-picks-row {
-    margin: 20px 0;
-    padding: 10px 20px;
+    margin: 0;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .top-picks-row {
+        padding: 16px;
+    }
 }
 
 .top-picks-row .row-title {
