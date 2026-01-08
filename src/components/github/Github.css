@@ -557,17 +557,23 @@
 @media (max-width: 900px) {
     .gh-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .gh-header-actions {
         width: 100%;
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .gh-month-chip {
         width: auto;
         white-space: nowrap;
+    }
+
+    .gh-toggles {
+        width: auto;
     }
 }
 
