@@ -32,7 +32,21 @@
 
 @media (max-width: 768px) {
     .profile-page {
-        height: 100vh;
-        padding-bottom: 5rem;
+        height: 60vh;
+        min-height: 400px;
+        padding-bottom: 0;
+    }
+
+    .profile-page-bg {
+        object-fit: contain;
+        object-position: center top;
+        transform: scale(1.1);
+        background-color: #141414;
+    }
+
+    .profile-page-overlay {
+        background:
+            linear-gradient(to top, rgba(20, 20, 20, 1) 15%, rgba(20, 20, 20, 0) 50%),
+            linear-gradient(to right, rgba(20, 20, 20, 0.8) 0%, rgba(20, 20, 20, 0.1) 50%, rgba(20, 20, 20, 0) 80%);
     }
 }
