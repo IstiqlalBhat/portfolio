@@ -32,8 +32,8 @@
 
 @media (max-width: 768px) {
     .profile-page {
-        height: 50vh;
-        min-height: 300px;
+        height: 85vh;
+        min-height: 500px;
         padding-bottom: 0;
     }
 }
