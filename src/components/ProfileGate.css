@@ -85,33 +85,33 @@
 
     .profile-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        max-width: 300px;
-        padding: 0 20px;
+        grid-template-columns: repeat(2, 120px);
+        gap: 25px 20px;
+        justify-content: center;
         margin-bottom: 40px;
+        padding: 0;
     }
 
     .profile-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        width: 100%;
+        gap: 8px;
+        width: 120px;
     }
 
     .profile-avatar {
         width: 100px;
         height: 100px;
+        flex-shrink: 0;
     }
 
     .profile-name {
-        font-size: 0.95rem;
-        width: 100%;
+        font-size: 0.9rem;
+        width: 120px;
         text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        display: block;
+        color: #808080;
     }
 
     .manage-btn {
