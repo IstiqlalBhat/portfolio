@@ -78,6 +78,10 @@
 
 /* Mobile-specific styling */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 14px 16px;
+    }
+
     .navbar-logo img {
         height: 20px;
         margin-right: auto;
@@ -86,6 +90,7 @@
     .profile-icon {
         width: 24px;
         height: 24px;
+        margin-right: 0;
     }
 
 

@@ -3,15 +3,15 @@
     padding: 0 4%;
 }
 
-.row-title {
-    font-size: 1.4vw;
+.content-row .row-title {
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
     color: #e5e5e5;
     margin-bottom: 10px;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.row-title:hover {
+.content-row .row-title:hover {
     color: #fff;
 }
 

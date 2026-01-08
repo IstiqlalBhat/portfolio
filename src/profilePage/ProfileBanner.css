@@ -51,30 +51,6 @@
     flex-wrap: wrap;
 }
 
-.banner-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.play-button {
-    background-color: #e50914;
-}
-
-.info-button {
-    background-color: rgba(109, 109, 110, 0.7);
-}
-
-.banner-button:hover {
-    background-color: #b81d24;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .banner-content {
@@ -101,13 +77,8 @@
     .banner-buttons {
         display: flex;
         flex-direction: column;
-        gap: 5px;
-    }
-
-    .banner-button {
-        width: auto;
-        padding: 10px 15px;
-        font-size: 0.9rem;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
 

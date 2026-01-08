@@ -123,7 +123,7 @@ const ContributionGraph = () => {
             <div className="gh-graph-scroll gh-scroll">
                 <div
                     className="gh-graph"
-                    style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}
+                    style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(10px, 1fr))` }}
                     onMouseLeave={() => setHoveredMonthKey(defaultMonthKey)}
                 >
                     {columns.map((week, wIndex) => (

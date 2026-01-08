@@ -1,51 +1,63 @@
 .top-picks-row {
     margin: 20px 0;
-    padding: 10px 20px
+    padding: 10px 20px;
 }
 
-.row-title {
-    font-size: 2rem;
+.top-picks-row .row-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
     color: #fff;
     margin-bottom: 20px;
     animation: fadeIn 1s ease-in-out;
 }
 
-.card-row {
+.top-picks-row .card-row {
     display: flex;
     gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
 }
 
-.pick-card {
+.top-picks-row .card-row::-webkit-scrollbar {
+    display: none;
+}
+
+.top-picks-row .pick-card {
     position: relative;
-    width: 250px;
-    height: 200px;
+    flex: 0 0 auto;
+    width: clamp(170px, 60vw, 250px);
+    height: clamp(120px, 40vw, 200px);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: slideIn 0.5s ease forwards;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    scroll-snap-align: start;
 }
 
-.pick-card:hover {
+.top-picks-row .pick-card:hover {
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
     /* Netflix red glow on hover */
 }
 
-.pick-image {
+.top-picks-row .pick-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.pick-card:hover .pick-image {
+.top-picks-row .pick-card:hover .pick-image {
     transform: scale(1.1);
 }
 
-.overlay {
+.top-picks-row .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,24 +65,25 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.pick-card:hover .overlay {
+.top-picks-row .pick-card:hover .overlay {
     opacity: 1;
 }
 
-.pick-label {
+.top-picks-row .pick-label {
     color: #fff;
-    font-size: 1.2rem;
+    font-size: clamp(0.95rem, 3vw, 1.2rem);
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.pick-label:hover {
+.top-picks-row .pick-label:hover {
     color: rgb(153, 80, 80);
 }
 
@@ -99,7 +112,7 @@
     }
 }
 
-.new-badge {
+.top-picks-row .new-badge {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -113,13 +126,13 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.pick-links {
+.top-picks-row .pick-links {
     display: flex;
     gap: 10px;
     margin-top: 10px;
 }
 
-.pick-action-btn {
+.top-picks-row .pick-action-btn {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -133,23 +146,28 @@
     transition: all 0.2s ease;
 }
 
-.pick-action-btn:hover {
+.top-picks-row .pick-action-btn:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
 }
 
-.pick-action-btn.filled {
+.top-picks-row .pick-action-btn.filled {
     background-color: white;
     color: black;
     border: none;
 }
 
-.pick-action-btn.filled:hover {
+.top-picks-row .pick-action-btn.filled:hover {
     background-color: #f0f0f0;
 }
 
-.overlay {
-    flex-direction: column;
-    /* Allow label and links to stack */
+@media (hover: none), (pointer: coarse) {
+    .top-picks-row .overlay {
+        opacity: 1;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 12px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 70%);
+    }
 }

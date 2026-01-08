@@ -405,19 +405,21 @@
 }
 
 .gh-graph-scroll {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     background: linear-gradient(135deg, rgba(17, 17, 17, 0.7), rgba(10, 10, 10, 0.7));
     border: 1px solid #1f1f1f;
     border-radius: 12px;
     padding: 0.65rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 .gh-graph {
     display: grid;
     gap: 3px;
     margin: 0;
-    width: 100%;
-    max-width: 100%;
+    width: max-content;
+    min-width: 100%;
     align-items: start;
 }
 

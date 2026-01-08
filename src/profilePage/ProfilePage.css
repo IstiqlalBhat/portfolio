@@ -25,7 +25,7 @@
         linear-gradient(to right, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.15) 55%, rgba(20, 20, 20, 0) 80%);
 }
 
-h1 {
+.profile-page h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }

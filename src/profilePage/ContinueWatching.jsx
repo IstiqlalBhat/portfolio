@@ -38,7 +38,13 @@ const ContinueWatching = ({ profile }) => {
             <div className="card-row">
                 {continueWatching.map((pick, index) => (
                     <Link to={pick.link} key={index} className="pick-card">
-                        <img src={pick.imgSrc} alt={pick.title} className="pick-image" />
+                        <img
+                            src={pick.imgSrc}
+                            alt={pick.title}
+                            className="pick-image"
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <div className="overlay">
                             <div className="pick-label">{pick.title}</div>
                         </div>
