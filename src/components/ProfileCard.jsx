@@ -3,7 +3,7 @@ import './ProfileCard.css';
 
 const ProfileCard = ({ name, image, onClick }) => {
     return (
-        <div className="profile-card" onClick={onClick}>
+        <button className="profile-card" onClick={onClick} type="button" aria-label={`Select ${name} profile`}>
             <div className="image-container">
                 <img
                     src={image}
@@ -14,7 +14,7 @@ const ProfileCard = ({ name, image, onClick }) => {
                 />
             </div>
             <h3 className="profile-name">{name}</h3>
-        </div>
+        </button>
     );
 };
 

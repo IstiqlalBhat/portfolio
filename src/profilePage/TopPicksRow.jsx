@@ -70,8 +70,9 @@ const TopPicksRow = ({ profile }) => {
                             src={pick.imgSrc || pick.image}
                             alt={pick.title}
                             className="pick-image"
-                            loading="lazy"
+                            loading={index < 2 ? 'eager' : 'lazy'}
                             decoding="async"
+                            fetchpriority={index < 2 ? 'high' : 'auto'}
                         />
                         <div className="overlay">
                             <div className="pick-label">{pick.title}</div>

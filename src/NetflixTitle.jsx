@@ -1,37 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './NetflixTitle.css';
 import netflixSound from './netflix-sound.mp3';
 import { useNavigate } from 'react-router-dom';
 import logoImage from './images/logo-2.png'; // Update with the path to your logo
 import NetflixWebGLBackground from './components/NetflixWebGLBackground';
-import { shouldPrefetch } from './utils/performance';
+import { prefersReducedMotion } from './utils/performance';
 
 const NetflixTitle = () => {
     const [animate, setAnimate] = useState(false);
     const navigate = useNavigate();
+    const startedRef = useRef(false);
+    const navigatedRef = useRef(false);
+    const navTimerRef = useRef(null);
+    const audioRef = useRef(null);
+
+    const goBrowse = () => {
+        if (navigatedRef.current) return;
+        navigatedRef.current = true;
+        if (navTimerRef.current) {
+            clearTimeout(navTimerRef.current);
+            navTimerRef.current = null;
+        }
+        navigate('/browse');
+    };
+
+    useEffect(() => {
+        return () => {
+            if (navTimerRef.current) clearTimeout(navTimerRef.current);
+            if (audioRef.current) audioRef.current.pause();
+        };
+    }, []);
 
     const handleStart = () => {
-        if (animate) return; // Prevent double clicks
+        if (startedRef.current) return;
+        startedRef.current = true;
 
-        if (shouldPrefetch()) {
-            import('./browse/browse');
-        }
+        const reducedMotion = prefersReducedMotion();
 
-        const audio = new Audio(netflixSound);
-        audio.play().catch(e => console.error("Audio play error", e));
+        audioRef.current = new Audio(netflixSound);
+        audioRef.current.play().catch(() => { });
 
         setAnimate(true);
 
-        // Wait for sound to play full (approx 4s for standard intro) before navigating
-        const navTimer = setTimeout(() => {
-            navigate('/browse');
-        }, 4000);
-
-        return () => clearTimeout(navTimer);
+        // Prefer anim end; keep a fallback in case animations are blocked.
+        const fallbackDelayMs = reducedMotion ? 500 : 4500;
+        navTimerRef.current = setTimeout(goBrowse, fallbackDelayMs);
     };
 
     return (
-        <div className="netflix-container" onClick={handleStart}>
+        <div
+            className="netflix-container"
+            role="button"
+            tabIndex={0}
+            onPointerDown={handleStart}
+            onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handleStart();
+                }
+            }}
+        >
             <NetflixWebGLBackground />
             <img
                 src={logoImage}
@@ -39,6 +67,10 @@ const NetflixTitle = () => {
                 decoding="async"
                 fetchpriority="high"
                 className={`netflix-logo ${animate ? 'animate' : ''}`}
+                onAnimationEnd={() => {
+                    if (!animate) return;
+                    goBrowse();
+                }}
             />
 
             {!animate && (

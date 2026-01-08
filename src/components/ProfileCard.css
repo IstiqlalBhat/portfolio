@@ -10,11 +10,14 @@
     text-decoration: none;
     width: 10vw;
     border-radius: 5rem;
-}
-
-.profile-card:hover {
-    border-color: #e5e5e5;
-    color: #e5e5e5;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .profile-name {
@@ -31,9 +34,24 @@
     border: 0.2em solid transparent;
 }
 
-.image-container:hover {
+.profile-card:focus-visible .image-container {
     border-color: #e5e5e5;
-    color: #e5e5e5;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .profile-card:hover .image-container {
+        border-color: #e5e5e5;
+    }
+
+    .profile-card:hover .profile-name {
+        color: #e5e5e5;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .profile-card:active .image-container {
+        border-color: #e5e5e5;
+    }
 }
 
 .profile-image {

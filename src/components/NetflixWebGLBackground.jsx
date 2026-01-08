@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './NetflixWebGLBackground.css';
-import { getDeviceTier, prefersReducedMotion, shouldEnableWebGL } from '../utils/performance';
+import { getDeviceTier, isSlowNetwork, prefersReducedMotion, shouldEnableWebGL } from '../utils/performance';
 
 const NetflixWebGLBackground = () => {
     const containerRef = useRef(null);
@@ -30,6 +30,8 @@ const NetflixWebGLBackground = () => {
         let wireGeometry = null;
         let wireMaterial = null;
         let wireMesh = null;
+        let visibilityHandler = null;
+        let scheduledInitCleanup = null;
 
         const pointerState = {
             currentX: 0,
@@ -59,6 +61,8 @@ const NetflixWebGLBackground = () => {
         const cleanup = () => {
             if (shouldAnimate) window.removeEventListener('pointermove', onPointerMove);
             window.removeEventListener('resize', onResize);
+            if (visibilityHandler) document.removeEventListener('visibilitychange', visibilityHandler);
+            if (scheduledInitCleanup) scheduledInitCleanup();
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
             if (pointsGeometry) pointsGeometry.dispose();
@@ -82,9 +86,11 @@ const NetflixWebGLBackground = () => {
             wireGeometry = null;
             wireMaterial = null;
             wireMesh = null;
+            visibilityHandler = null;
+            scheduledInitCleanup = null;
         };
 
-        (async () => {
+        const init = async () => {
             try {
                 const {
                     WebGLRenderer,
@@ -107,7 +113,7 @@ const NetflixWebGLBackground = () => {
                 renderer = new WebGLRenderer({
                     alpha: true,
                     antialias: !isLowTier,
-                    powerPreference: 'high-performance',
+                    powerPreference: isLowTier ? 'low-power' : 'high-performance',
                 });
                 renderer.setClearColor(0x000000, 0);
                 renderer.setPixelRatio(isLowTier ? 1 : Math.min(window.devicePixelRatio || 1, 2));
@@ -209,10 +215,37 @@ const NetflixWebGLBackground = () => {
                 };
 
                 animationFrameId = requestAnimationFrame(tick);
+
+                visibilityHandler = () => {
+                    if (!shouldAnimate) return;
+                    if (document.visibilityState === 'hidden') {
+                        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                        animationFrameId = null;
+                        return;
+                    }
+                    if (!animationFrameId) {
+                        lastFrameTime = 0;
+                        animationFrameId = requestAnimationFrame(tick);
+                    }
+                };
+                document.addEventListener('visibilitychange', visibilityHandler);
             } catch {
                 cleanup();
             }
-        })();
+        };
+
+        const shouldDeferInit = isLowTier || isSlowNetwork();
+        if (shouldDeferInit && typeof window !== 'undefined') {
+            if (typeof window.requestIdleCallback === 'function') {
+                const idleId = window.requestIdleCallback(() => init(), { timeout: 1200 });
+                scheduledInitCleanup = () => window.cancelIdleCallback(idleId);
+            } else {
+                const timeoutId = window.setTimeout(() => init(), 300);
+                scheduledInitCleanup = () => window.clearTimeout(timeoutId);
+            }
+        } else {
+            init();
+        }
 
         return () => {
             disposed = true;

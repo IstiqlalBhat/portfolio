@@ -7,6 +7,14 @@
     overflow: hidden;
     position: relative;
     isolation: isolate;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.netflix-container:focus-visible {
+    outline: 2px solid rgba(229, 9, 20, 0.85);
+    outline-offset: 6px;
 }
 
 .netflix-logo {
@@ -19,6 +27,7 @@
     /* Slightly slower fade in for drama */
     position: relative;
     z-index: 2;
+    will-change: transform, opacity;
 }
 
 @keyframes fadeIn {
