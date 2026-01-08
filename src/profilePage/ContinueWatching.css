@@ -32,7 +32,7 @@
 .continue-watching-row .pick-card {
     position: relative;
     flex: 0 0 auto;
-    width: clamp(140px, 45vw, 220px);
+    width: clamp(180px, 48vw, 260px);
     aspect-ratio: 16 / 9;
     border-radius: 5px;
     overflow: hidden;
@@ -69,4 +69,24 @@
     font-weight: bold;
     text-align: left;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: 540px) {
+    .continue-watching-row {
+        padding: 16px;
+    }
+
+    .continue-watching-row .row-title {
+        font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+        margin-bottom: 12px;
+    }
+
+    .continue-watching-row .pick-card {
+        width: clamp(220px, 78vw, 340px);
+        border-radius: 8px;
+    }
+
+    .continue-watching-row .overlay {
+        padding: 12px;
+    }
 }
