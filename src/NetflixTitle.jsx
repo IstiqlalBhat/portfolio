@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './NetflixTitle.css';
 import netflixSound from './netflix-sound.mp3';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logoImage from './images/logo-2.png'; // Update with the path to your logo
 import NetflixWebGLBackground from './components/NetflixWebGLBackground';
+import SEO from './components/SEO';
 import { prefersReducedMotion } from './utils/performance';
+import { getSeoForPath } from './utils/seo';
 
 const NetflixTitle = () => {
     const [animate, setAnimate] = useState(false);
+    const { pathname } = useLocation();
+    const seo = getSeoForPath(pathname);
     const navigate = useNavigate();
     const startedRef = useRef(false);
     const navigatedRef = useRef(false);
@@ -60,6 +64,7 @@ const NetflixTitle = () => {
                 }
             }}
         >
+            <SEO {...seo} />
             <NetflixWebGLBackground />
             <img
                 src={logoImage}

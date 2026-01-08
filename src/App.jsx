@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import NetflixTitle from './NetflixTitle';
 import Layout from './Layout';
 import Browse from './browse/browse';
@@ -14,7 +14,7 @@ import ContactMe from './pages/ContactMe';
 import Music from './pages/Music';
 import Reading from './pages/Reading';
 import ResearchPapers from './pages/ResearchPapers';
-import PlacesVisited from './pages/PlacesVisited';
+import Gallery from './pages/Gallery';
 
 const App = () => {
     return (
@@ -32,7 +32,8 @@ const App = () => {
             <Route path="/music" element={<Layout><Music /></Layout>} />
             <Route path="/reading" element={<Layout><Reading /></Layout>} />
             <Route path="/research-papers" element={<Layout><ResearchPapers /></Layout>} />
-            <Route path="/places-visited" element={<Layout><PlacesVisited /></Layout>} />
+            <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
+            <Route path="/places-visited" element={<Navigate to="/gallery" replace />} />
         </Routes>
     );
 };

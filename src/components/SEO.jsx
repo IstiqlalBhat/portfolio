@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { DEFAULT_SEO } from '../utils/seo';
 
 const SEO = ({ title, description, name, type, path = '' }) => {
     const baseUrl = 'https://www.istiqlalaurangzeb.com';
@@ -33,8 +34,8 @@ const SEO = ({ title, description, name, type, path = '' }) => {
 }
 
 SEO.defaultProps = {
-    title: 'Istiqlal | Istiqlal Aurangzeb - Software Engineer & AI Researcher',
-    description: 'Istiqlal Aurangzeb - Research Software Developer at Clemson University. Istiqlal specializes in AI, blockchain, and full-stack development.',
+    title: DEFAULT_SEO.title,
+    description: DEFAULT_SEO.description,
     name: 'Istiqlal Aurangzeb',
     type: 'website'
 }

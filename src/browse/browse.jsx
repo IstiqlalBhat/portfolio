@@ -1,11 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ProfileCard from '../components/ProfileCard';
 import NetflixWebGLBackground from '../components/NetflixWebGLBackground';
+import SEO from '../components/SEO';
 import './browse.css';
 import { PROFILES } from '../data/profiles';
+import { getSeoForPath } from '../utils/seo';
 
 const Browse = () => {
+    const { pathname } = useLocation();
+    const seo = getSeoForPath(pathname);
     const navigate = useNavigate();
 
     const handleProfileClick = (profile) => {
@@ -14,6 +18,7 @@ const Browse = () => {
 
     return (
         <div className="browse-container">
+            <SEO {...seo} />
             <NetflixWebGLBackground />
             <p className='who-is-watching'>Who's Watching?</p>
             <div className="profiles">
