@@ -65,20 +65,13 @@
 
 .top-picks-row .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 70%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.top-picks-row .pick-card:hover .overlay {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 12px;
     opacity: 1;
 }
 
@@ -168,12 +161,3 @@
     background-color: #f0f0f0;
 }
 
-@media (hover: none), (pointer: coarse) {
-    .top-picks-row .overlay {
-        opacity: 1;
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding: 12px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 70%);
-    }
-}
