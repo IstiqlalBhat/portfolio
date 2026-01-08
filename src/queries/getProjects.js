@@ -58,7 +58,7 @@ export async function getProjects() {
                 description: "Browser-based application with vanilla JavaScript and Node.js/Express backend.",
                 techUsed: "Vanilla JS, HTML5, CSS3, Node.js",
                 image: { url: "https://picsum.photos/seed/game/300/200" },
-                link: "https://mayor-quiz-game.onrender.com/",
+                link: "https://mayormane.vercel.app/",
                 github: "https://github.com/IstiqlalBhat/mayor-quiz-game"
             },
             {

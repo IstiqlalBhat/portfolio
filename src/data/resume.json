@@ -131,7 +131,7 @@
       "date": "2024",
       "subtitle": "Vanilla JS, HTML5, CSS3, Node.js",
       "image": "/assets/quiz_game.png",
-      "link": "https://mayor-quiz-game.onrender.com/",
+      "link": "https://mayormane.vercel.app/",
       "github": "https://github.com/IstiqlalBhat/mayor-quiz-game",
       "details": [
         "Created 2,800+ line browser-based application with vanilla JavaScript implementing MVC architecture; developed responsive grid system (3 breakpoints) using CSS Grid and Flexbox.",
