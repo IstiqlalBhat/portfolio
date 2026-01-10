@@ -57,6 +57,8 @@ const NetflixTitle = () => {
             role="button"
             tabIndex={0}
             onPointerDown={handleStart}
+            onClick={handleStart}
+            onTouchStart={handleStart}
             onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
