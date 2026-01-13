@@ -11,7 +11,7 @@ export const getGithubUserData = async (username = 'IstiqlalBhat') => {
 
 export const getGithubEvents = async (username = 'IstiqlalBhat') => {
     try {
-        const response = await fetch(`https://api.github.com/users/${username}/events`);
+        const response = await fetch(`https://api.github.com/users/${username}/events?per_page=100`);
         if (!response.ok) throw new Error(`Status: ${response.status}`);
         const data = await response.json();
         console.log("GitHub Events Loaded:", data.length);
