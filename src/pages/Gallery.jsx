@@ -1,49 +1,76 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import Hls from 'hls.js';
 import { getGalleryItems } from '../queries/getGalleryItems';
 import './Gallery.css';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValue } from 'framer-motion';
 
-// HLS Video Player component
+// HLS Video Player component with dynamic import for production compatibility
 const HLSVideoPlayer = ({ src, poster }) => {
     const videoRef = useRef(null);
     const [error, setError] = useState(null);
+    const hlsRef = useRef(null);
 
     useEffect(() => {
         const video = videoRef.current;
         if (!video || !src) return;
 
-        let hls = null;
-
-        if (Hls.isSupported()) {
-            hls = new Hls({
-                enableWorker: true,
-                lowLatencyMode: true,
-            });
-            hls.loadSource(src);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                video.play().catch(e => console.log('Autoplay prevented:', e));
-            });
-            hls.on(Hls.Events.ERROR, (event, data) => {
-                console.error('HLS Error:', data);
-                if (data.fatal) {
-                    setError('Video playback error');
-                }
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Safari native HLS support
+        // Check for native HLS support first (Safari, iOS, some Android)
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = src;
             video.addEventListener('loadedmetadata', () => {
                 video.play().catch(e => console.log('Autoplay prevented:', e));
             });
-        } else {
-            setError('HLS not supported in this browser');
+            return;
         }
 
+        // Dynamic import hls.js for browsers that need it (Chrome, Firefox, Edge)
+        import('hls.js').then(({ default: Hls }) => {
+            if (!Hls.isSupported()) {
+                setError('HLS not supported in this browser');
+                return;
+            }
+
+            const hls = new Hls({
+                enableWorker: false, // Disable worker for better production compatibility
+                lowLatencyMode: false,
+                backBufferLength: 90,
+            });
+
+            hlsRef.current = hls;
+            hls.loadSource(src);
+            hls.attachMedia(video);
+
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+            });
+
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                console.error('HLS Error:', data);
+                if (data.fatal) {
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            console.log('Network error, attempting recovery...');
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            console.log('Media error, attempting recovery...');
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            setError('Video playback error');
+                            hls.destroy();
+                            break;
+                    }
+                }
+            });
+        }).catch(err => {
+            console.error('Failed to load hls.js:', err);
+            setError('Failed to load video player');
+        });
+
         return () => {
-            if (hls) {
-                hls.destroy();
+            if (hlsRef.current) {
+                hlsRef.current.destroy();
+                hlsRef.current = null;
             }
         };
     }, [src]);
