@@ -1,170 +1,616 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   GALLERY PAGE — REFINED BRUTALISM & LIQUID MOTION
+   A fusion of stark editorial typography and organic, fluid interactions.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design Tokens
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+    /* Palette: High Contrast, Stark, Editorial */
+    --void-black: #050505;
+    --off-black: #0a0a0a;
+    --charcoal: #141414;
+    --concrete: #2a2a2a;
+    --plaster: #e6e6e6;
+    --paper: #f2f2f2;
+    --signal-acid: #ccff00;
+    /* Aggressive accent */
+    --signal-crimson: #ff3333;
+    /* Secondary accent */
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
+    --font-body: 'Manrope', sans-serif;
+
+    /* Spacing */
+    --unit: 8px;
+    --gutter: clamp(16px, 4vw, 40px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Global Atmospherics
+   ───────────────────────────────────────────────────────────────────────────── */
 .gallery-page {
-    padding: 120px 24px 80px;
-    color: #f5f5f5;
-    background:
-        radial-gradient(circle at top left, rgba(229, 9, 20, 0.18), transparent 45%),
-        radial-gradient(circle at 20% 40%, rgba(0, 194, 255, 0.18), transparent 50%),
-        #141414;
+    background-color: var(--void-black);
+    color: var(--plaster);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    font-family: var(--font-body);
 }
 
+/* Grain Overlay for Texture */
+.gallery-grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Hero Section — The "Slap"
+   ───────────────────────────────────────────────────────────────────────────── */
 .gallery-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-    align-items: stretch;
-    margin-bottom: 56px;
+    height: 100vh;
+    /* Full viewport height */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--gutter);
+    overflow: hidden;
 }
 
-.gallery-hero-text {
-    max-width: 560px;
+.gallery-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.3;
+    /* Abstract gradient background */
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 80%);
 }
 
-.gallery-kicker {
-    margin: 0;
-    font-size: 0.75rem;
-    letter-spacing: 0.25rem;
+.gallery-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--plaster);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     text-transform: uppercase;
-    color: #b3b3b3;
+    letter-spacing: 0.2em;
+    color: var(--concrete);
 }
 
-.gallery-title {
-    margin: 12px 0 10px;
-    font-size: 3rem;
-    color: #ffffff;
+.hero-title-wrapper {
+    overflow: hidden;
 }
 
-.gallery-subtitle {
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 18vw, 14rem);
+    /* Massive scaling typography */
+    line-height: 0.85;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--plaster);
     margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #d0d0d0;
+    text-transform: lowercase;
+    letter-spacing: -0.04em;
+    mix-blend-mode: exclusion;
 }
 
+.hero-subtitle {
+    font-family: var(--font-mono);
+    max-width: 400px;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #888;
+}
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   The Grid — Asymmetric "Bento"
+   ───────────────────────────────────────────────────────────────────────────── */
 .gallery-section {
-    margin-top: 40px;
+    padding: var(--gutter);
+    max-width: 1800px;
+    margin: 0 auto 100px;
 }
 
 .gallery-section-header {
+    margin-bottom: 60px;
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 18px;
+    align-items: baseline;
+    gap: 20px;
 }
 
 .gallery-section-header h2 {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--signal-acid);
     margin: 0;
-    font-size: 1.8rem;
-    color: #ffffff;
 }
 
-.gallery-section-header p {
-    margin: 0;
-    color: #bdbdbd;
+.gallery-section-header .line {
+    flex: 1;
+    height: 1px;
+    background: var(--concrete);
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 80px;
     gap: 20px;
 }
 
-.gallery-card {
-    background: #1b1b1b;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    opacity: 0;
-    transform: translateY(16px);
-    animation: galleryFadeIn 0.6s ease forwards;
-    animation-delay: var(--delay);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-media {
+/* Grid Item Styles - default size when no span classes */
+.gallery-item {
     position: relative;
-    height: 170px;
-    padding: 16px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.8));
-    border-bottom: 2px solid var(--accent, #e50914);
+    background-color: var(--charcoal);
     overflow: hidden;
+    border-radius: 4px;
+    grid-column: span 4;
+    grid-row: span 4;
 }
 
-.gallery-media::before {
-    content: "";
+/* Alternating sizes for visual interest using nth-child */
+.gallery-item:nth-child(1) {
+    grid-column: span 8;
+    grid-row: span 5;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3) {
+    grid-column: span 4;
+    grid-row: span 5;
+}
+
+.gallery-item:nth-child(4) {
+    grid-column: span 6;
+    grid-row: span 6;
+}
+
+.gallery-item:nth-child(5) {
+    grid-column: span 6;
+    grid-row: span 6;
+}
+
+.gallery-item:nth-child(6),
+.gallery-item:nth-child(7) {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+
+.gallery-item:nth-child(8) {
+    grid-column: span 8;
+    grid-row: span 5;
+}
+
+.gallery-item:nth-child(9) {
+    grid-column: span 4;
+    grid-row: span 5;
+}
+
+.gallery-item:nth-child(10) {
+    grid-column: span 6;
+    grid-row: span 5;
+}
+
+.gallery-item:nth-child(n+11) {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+
+/* Span Utilities for the Bento Layout */
+.span-row-1 {
+    grid-row: span 4;
+}
+
+.span-row-2 {
+    grid-row: span 6;
+}
+
+.span-col-3 {
+    grid-column: span 3;
+}
+
+.span-col-4 {
+    grid-column: span 4;
+}
+
+.span-col-6 {
+    grid-column: span 6;
+}
+
+.span-col-8 {
+    grid-column: span 8;
+}
+
+.span-col-12 {
+    grid-column: span 12;
+}
+
+/* Size variants (alternative system) */
+.item-large {
+    grid-column: span 8;
+    grid-row: span 5;
+}
+
+.item-medium {
+    grid-column: span 6;
+    grid-row: span 4;
+}
+
+.item-small {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+
+/* Aspect ratio variants */
+.aspect-landscape {
+    grid-row: span 4;
+}
+
+.aspect-portrait {
+    grid-row: span 6;
+}
+
+.aspect-square {
+    grid-row: span 4;
+}
+
+/* Image Container */
+.item-image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    filter: grayscale(100%) contrast(110%);
+    /* Brutalist low-fi start */
+}
+
+.gallery-item:hover .item-image {
+    transform: scale(1.05);
+    /* Subtle zoom */
+    filter: grayscale(0%) contrast(100%);
+    /* Restore color on hover */
+}
+
+/* Item Overlay Info */
+.item-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 20% 20%, var(--accent, #e50914), transparent 65%);
-    opacity: 0.25;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+    pointer-events: none;
 }
 
-.gallery-tag {
-    position: relative;
-    z-index: 1;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12rem;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+.gallery-item:hover .item-overlay {
+    opacity: 1;
 }
 
-.gallery-play {
-    position: relative;
-    z-index: 1;
-    font-size: 0.75rem;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #ffffff;
+.item-id {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--signal-acid);
+    border: 1px solid var(--signal-acid);
+    padding: 2px 6px;
+    width: fit-content;
+    border-radius: 20px;
 }
 
-.gallery-meta {
-    padding: 16px;
-}
-
-.gallery-meta h3 {
-    margin: 0 0 6px;
-    font-size: 1.05rem;
-    color: #ffffff;
-}
-
-.gallery-meta p {
+.item-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--plaster);
     margin: 0;
-    color: #bfbfbf;
-    font-size: 0.9rem;
 }
 
-@keyframes galleryFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* ─────────────────────────────────────────────────────────────────────────────
+   Mobile Optimizations — Immersive Horizontal Snap
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(8) {
+        grid-column: span 8;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(6),
+    .gallery-item:nth-child(7),
+    .gallery-item:nth-child(9) {
+        grid-column: span 4;
+    }
+
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(10) {
+        grid-column: span 4;
+    }
+
+    .gallery-item:nth-child(n+11) {
+        grid-column: span 4;
     }
 }
 
-@media (max-width: 900px) {
-    .gallery-title {
-        font-size: 2.5rem;
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 70px;
+    }
+
+    .gallery-item,
+    .gallery-item:nth-child(n) {
+        grid-column: span 6;
+        grid-row: span 5;
     }
 }
 
-@media (max-width: 600px) {
-    .gallery-page {
-        padding: 100px 18px 60px;
-    }
-
+@media (max-width: 768px) {
     .gallery-hero {
-        margin-bottom: 40px;
+        padding: 20px;
+        justify-content: center;
+        height: 85vh;
+    }
+
+    .hero-title {
+        font-size: 18vw;
+        /* Truly massive on mobile */
+    }
+
+    /* Transform Grid to Horizontal Snap-Scroll on Mobile */
+    .gallery-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 20px;
+        margin: 0 -20px;
+        /* Bleed out to edges */
+        padding-left: 20px;
+        padding-right: 20px;
+        scroll-behavior: smooth;
+
+        /* Hide scrollbar */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .gallery-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .gallery-item {
+        flex: 0 0 85%;
+        /* Show 85% of the card to encourage scrolling/peeking */
+        height: 60vh;
+        /* Taller portrait aspect ratio */
+        width: 85%;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        background: var(--charcoal);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Reset all grid sizing for horizontal scroll */
+    .gallery-item,
+    .gallery-item:nth-child(n) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Mobile always shows color */
+    .item-image {
+        filter: grayscale(0%) contrast(105%);
+    }
+
+    .item-overlay {
+        opacity: 1;
+        /* Always show text on mobile */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent 50%);
+        padding: 24px;
+    }
+
+    .item-title {
+        font-size: 2rem;
+    }
+
+    /* Hide magnetic cursor on mobile */
+    .magnetic-cursor {
+        display: none;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Magnetic Cursor
+   ───────────────────────────────────────────────────────────────────────────── */
+.magnetic-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+    margin-top: -40px;
+    border-radius: 50%;
+    background: rgba(204, 255, 0, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--signal-acid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+.cursor-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--plaster);
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+    .magnetic-cursor {
+        display: none;
+    }
+}
+
+/* Hide default cursor on gallery items (desktop only) */
+@media (hover: hover) {
+    .gallery-item {
+        cursor: none;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Lightbox Modal
+   ───────────────────────────────────────────────────────────────────────────── */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(20px);
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.lightbox-info {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.lightbox-category {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--signal-acid);
+    border: 1px solid var(--signal-acid);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.lightbox-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--plaster);
+    margin: 0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--concrete);
+    border-radius: 50%;
+    color: var(--plaster);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    border-color: var(--signal-acid);
+    color: var(--signal-acid);
+}
+
+/* Lightbox mobile adjustments */
+@media (max-width: 768px) {
+    .lightbox {
+        padding: 20px;
+    }
+
+    .lightbox-close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+
+    .lightbox-info {
+        margin-top: 1.5rem;
     }
 }
