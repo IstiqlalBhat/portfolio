@@ -19,7 +19,6 @@ const GithubSection = () => {
                 setUserData(user);
                 setEvents(userEvents);
             } catch (error) {
-                console.error("Error fetching github data", error);
             }
         };
         fetchData();

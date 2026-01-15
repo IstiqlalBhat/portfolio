@@ -68,17 +68,17 @@ const techIcons = {
 
 const LatestProject = () => {
     const [project, setProject] = useState(null)
+
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchProject() {
             try {
                 const data = await getProjects();
-                // Filter for Van Gogh project
-                const vanGogh = data.find(p => p.title.includes("Van Gogh"));
-                setProject(vanGogh);
+                // Filter for Scrollytelling project
+                const latest = data.find(p => p.title.includes("Scrollytelling"));
+                setProject(latest);
             } catch (error) {
-                console.error("Error fetching projects:", error);
             } finally {
                 setLoading(false);
             }

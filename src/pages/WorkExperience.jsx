@@ -18,7 +18,7 @@ const WorkExperience = () => {
                 const data = await getTimeline();
                 setTimeLineData(data);
             } catch (error) {
-                console.error("Error fetching timeline:", error);
+
             }
         }
         fetchTimelineItem();
@@ -26,7 +26,7 @@ const WorkExperience = () => {
 
 
     if (!timeLineData) return <div>Loading...</div>;
-    console.log("🚀 ~ timeLineData:", timeLineData)
+
 
     return (
         <>

@@ -36,7 +36,6 @@ const Skills = () => {
                 const data = await getSkills();
                 setSkillsData(data);
             } catch (error) {
-                console.error("Error fetching skills:", error);
             }
         }
 

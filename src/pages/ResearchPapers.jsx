@@ -12,7 +12,6 @@ const ResearchPapers = () => {
                 const data = await getResearchPapers();
                 setPapers(data);
             } catch (error) {
-                console.error("Error fetching research papers:", error);
             }
         }
         fetchPapers();

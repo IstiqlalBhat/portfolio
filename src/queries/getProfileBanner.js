@@ -1,5 +1,6 @@
 // queries/getProfileBanner.js
 import datoCMSClient from './datoCMSClient';
+import { hardcodedBanner } from '../data/mockData';
 
 const GET_PROFILE_BANNER = `
  {
@@ -17,18 +18,17 @@ const GET_PROFILE_BANNER = `
 }
 `;
 
+
 export async function getProfileBanner() {
   try {
-    // const data = await datoCMSClient.request(GET_PROFILE_BANNER);
-    // return data.profilebanner;
-    throw new Error("Using mock data");
+    const data = await datoCMSClient.request(GET_PROFILE_BANNER);
+    // If we get data, return it. If not (or error), fallback.
+    // Since this is a single object, we prefer CMS if available.
+    if (data.profilebanner) {
+      return data.profilebanner;
+    }
+    return hardcodedBanner;
   } catch (error) {
-    return {
-      headline: "Istiqlal Aurangzeb",
-      profileSummary: ` Software Developer at Clemson University.`,
-      linkedinLink: "https://www.linkedin.com/in/istiqlalbhat/",
-      resumeLink: { url: "#" }, // TODO: Add actual resume link if available
-      backgroundImage: { url: "https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg" }
-    };
+    return hardcodedBanner;
   }
 }

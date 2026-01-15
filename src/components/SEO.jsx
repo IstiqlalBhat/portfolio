@@ -2,7 +2,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { DEFAULT_SEO } from '../utils/seo';
 
-const SEO = ({ title, description, name, type, path = '' }) => {
+const SEO = ({
+    title = DEFAULT_SEO.title,
+    description = DEFAULT_SEO.description,
+    name = 'Istiqlal Aurangzeb',
+    type = 'website',
+    path = ''
+}) => {
     const baseUrl = 'https://www.istiqlalaurangzeb.com';
     const canonicalUrl = `${baseUrl}${path}`;
     const imageUrl = `${baseUrl}/og-image.png`;
@@ -31,13 +37,6 @@ const SEO = ({ title, description, name, type, path = '' }) => {
             <meta name="twitter:image" content={imageUrl} />
         </Helmet>
     )
-}
-
-SEO.defaultProps = {
-    title: DEFAULT_SEO.title,
-    description: DEFAULT_SEO.description,
-    name: 'Istiqlal Aurangzeb',
-    type: 'website'
 }
 
 export default SEO;

@@ -5,7 +5,7 @@ import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProje
 
 const topPicksConfig = {
     recruiter: [
-        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
         { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/250/200", icon: <FaPassport />, route: "/work-permit" },
         { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/250/200", icon: <FaBriefcase />, route: "/work-experience" },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/projects/250/200", icon: <FaProjectDiagram />, route: "/projects" },
@@ -16,7 +16,7 @@ const topPicksConfig = {
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     developer: [
-        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/development/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/research-papers", icon: <FaCertificate /> },
@@ -26,7 +26,7 @@ const topPicksConfig = {
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     stalker: [
-        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" },
         { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
@@ -35,7 +35,7 @@ const topPicksConfig = {
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
     ],
     adventurer: [
-        { title: "Featured", image: "https://picsum.photos/seed/vangogh/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", route: "/gallery", icon: <FaImages /> },
         { title: "Music", imgSrc: "https://picsum.photos/seed/music/250/200", route: "/music" },
         { title: "Reading", imgSrc: "https://picsum.photos/seed/books/250/200", route: "/reading", icon: <FaBook /> },

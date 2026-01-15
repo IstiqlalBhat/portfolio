@@ -4,15 +4,15 @@ export const getGithubUserData = async (username = 'IstiqlalBhat') => {
         if (!response.ok) throw new Error('Failed to fetch user data');
         return await response.json();
     } catch (error) {
-        console.error("Error fetching GitHub user data:", error);
+
         return null;
     }
 };
 
 export const getGithubEvents = async (username = 'IstiqlalBhat') => {
     try {
-        // Fetch 4 pages of 100 events each (400 total max)
-        const pages = [1, 2, 3, 4];
+        // Fetch 2 pages of 100 events (200 total max) which is usually the limit
+        const pages = [1, 2];
         const responses = await Promise.all(
             pages.map(page =>
                 fetch(`https://api.github.com/users/${username}/events?per_page=100&page=${page}`)
@@ -27,10 +27,10 @@ export const getGithubEvents = async (username = 'IstiqlalBhat') => {
             }
         }
 
-        console.log("GitHub Events Loaded:", allEvents.length);
+
         return allEvents;
     } catch (error) {
-        console.error("Error fetching GitHub events:", error);
+
         return [];
     }
 };
@@ -41,7 +41,7 @@ export const getGithubContributions = async (username = 'IstiqlalBhat', year = '
         if (!response.ok) throw new Error('Failed to fetch contributions');
         return await response.json();
     } catch (error) {
-        console.error("Error fetching GitHub contributions:", error);
+
         return null;
     }
 };
