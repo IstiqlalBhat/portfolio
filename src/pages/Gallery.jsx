@@ -1,7 +1,66 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import Hls from 'hls.js';
 import { getGalleryItems } from '../queries/getGalleryItems';
 import './Gallery.css';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValue } from 'framer-motion';
+
+// HLS Video Player component
+const HLSVideoPlayer = ({ src, poster }) => {
+    const videoRef = useRef(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video || !src) return;
+
+        let hls = null;
+
+        if (Hls.isSupported()) {
+            hls = new Hls({
+                enableWorker: true,
+                lowLatencyMode: true,
+            });
+            hls.loadSource(src);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+            });
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                console.error('HLS Error:', data);
+                if (data.fatal) {
+                    setError('Video playback error');
+                }
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari native HLS support
+            video.src = src;
+            video.addEventListener('loadedmetadata', () => {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+            });
+        } else {
+            setError('HLS not supported in this browser');
+        }
+
+        return () => {
+            if (hls) {
+                hls.destroy();
+            }
+        };
+    }, [src]);
+
+    if (error) {
+        return <div className="video-error">{error}</div>;
+    }
+
+    return (
+        <video
+            ref={videoRef}
+            poster={poster}
+            controls
+            playsInline
+        />
+    );
+};
 
 /**
  * REFINED BRUTALISM with Interactive Features
@@ -52,11 +111,12 @@ const Lightbox = ({ item, onClose }) => {
         };
         document.addEventListener('keydown', handleEsc);
         document.body.style.overflow = 'hidden';
+        console.log("LIGHTBOX_ITEM_DEBUG", item);
         return () => {
             document.removeEventListener('keydown', handleEsc);
             document.body.style.overflow = '';
         };
-    }, [onClose]);
+    }, [onClose, item]);
 
     return (
         <motion.div
@@ -82,11 +142,20 @@ const Lightbox = ({ item, onClose }) => {
                 exit={{ scale: 0.9, opacity: 0 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-                <img
-                    src={item.src}
-                    alt={item.title}
-                    className="lightbox-image"
-                />
+                {item.isVideo ? (
+                    <div className="lightbox-video-wrapper">
+                        <HLSVideoPlayer
+                            src={item.videoUrl}
+                            poster={item.videoPoster}
+                        />
+                    </div>
+                ) : (
+                    <img
+                        src={item.src}
+                        alt={item.title}
+                        className="lightbox-image"
+                    />
+                )}
 
                 <div className="lightbox-info">
                     <span className="lightbox-category">{item.category}</span>
@@ -193,20 +262,29 @@ const Hero = () => {
 };
 
 const GalleryItem = ({ item, index, onSelect, onHoverStart, onHoverEnd }) => {
+    const thumbnailSrc = item.isVideo ? item.videoPoster : item.src;
+
     return (
         <motion.article
-            className={`gallery-item ${item.spanCols || ''} ${item.spanRows || ''}`}
+            className={`gallery-item ${item.spanCols || ''} ${item.spanRows || ''} ${item.isVideo ? 'is-video' : ''}`}
             data-index={String(index + 1).padStart(2, '0')}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: index * 0.08, ease: "easeOut" }}
-            onHoverStart={() => onHoverStart('View')}
+            onHoverStart={() => onHoverStart(item.isVideo ? 'Play' : 'View')}
             onHoverEnd={onHoverEnd}
             onClick={() => onSelect(item)}
         >
             <div className="item-image-container">
-                <img src={item.src} alt={item.title} className="item-image" loading="lazy" />
+                <img src={thumbnailSrc} alt={item.title} className="item-image" loading="lazy" />
+                {item.isVideo && (
+                    <div className="video-play-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                )}
             </div>
             <div className="item-overlay">
                 <span className="item-id">{item.category}</span>
@@ -238,6 +316,28 @@ const Gallery = () => {
             setGalleryItems(items);
         };
         fetchItems();
+
+        // Introspection
+        const inspect = async () => {
+            const query = `
+              query {
+                __type(name: "GalleryItemRecord") {
+                  fields {
+                    name
+                    type {
+                      name
+                      kind
+                    }
+                  }
+                }
+              }
+            `;
+            try {
+                const data = await datoCMSClient.request(query);
+                console.log("SCHEMA_DUMP", JSON.stringify(data, null, 2));
+            } catch (e) { console.error(e); }
+        };
+        inspect();
     }, []);
 
     const handleHoverStart = useCallback((text) => {
