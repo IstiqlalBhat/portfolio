@@ -24,7 +24,7 @@ export async function getTimeline() {
             {
                 name: "Clemson University",
                 timelineType: "work",
-                title: "Graduate Research Assistant – Software Engineer",
+                title: "Software Developer",
                 techStack: "Solidity, Python, React, AWS",
                 summaryPoints: "Led full-stack development of prototypes. Architected smart contracts. Built Web3 micro-services.",
                 dateRange: "Feb 2024 -- Present"

@@ -33,7 +33,7 @@ const Hero = ({ profile }) => {
                     transition={{ delay: 0.5, duration: 0.8 }}
                 >
                     Building the future with AI and Blockchain.
-                    Graduate Research Assistant at Clemson University.
+                    Software Developer at Clemson University.
                 </motion.p>
                 <motion.div
                     className="hero-buttons"

@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git -C \"C:\\\\CodeJaai\\\\Portfolio\" add -A)",
+      "Bash(git -C \"C:\\\\CodeJaai\\\\Portfolio\" commit -m \"fix: update job title to Software Developer at Clemson University\")"
     ]
   }
 }

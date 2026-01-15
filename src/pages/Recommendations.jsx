@@ -37,7 +37,7 @@ const Recommendations = () => {
 
                 <div className="recommendation-body">
                     <p>
-                        "Istiqlal has been an exceptional Graduate Research Assistant. His work on the <strong>AB-CELS</strong> and <strong>BBAPS</strong> projects demonstrated a deep understanding of both blockchain technology and construction processes. He successfully architected complex smart contracts and developed full-stack applications that significantly advanced our research goals."
+                        "Istiqlal has been an exceptional Software Developer. His work on the <strong>AB-CELS</strong> and <strong>BBAPS</strong> projects demonstrated a deep understanding of both blockchain technology and construction processes. He successfully architected complex smart contracts and developed full-stack applications that significantly advanced our research goals."
                     </p>
                 </div>
             </div>

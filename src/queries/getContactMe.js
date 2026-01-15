@@ -26,7 +26,7 @@ export async function getContactMe() {
   } catch (error) {
     return {
       name: "Istiqlal Aurangzeb",
-      title: "Graduate Research Assistant – Software Engineer",
+      title: "Software Developer",
       summary: "Full-stack developer and researcher specializing in Blockchain, AI, and Software Engineering.",
       companyUniversity: "Clemson University",
       linkedinLink: "https://www.linkedin.com/in/istiqlalbhat/",
