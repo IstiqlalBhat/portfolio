@@ -260,7 +260,7 @@ const Gallery = () => {
 
             <section className="gallery-section">
                 <div className="gallery-section-header">
-                    <h2>Selected Works</h2>
+                    <h2>Best Clicks</h2>
                     <div className="line"></div>
                 </div>
 
