@@ -110,35 +110,72 @@ const Lightbox = ({ item, onClose }) => {
 };
 
 const Hero = () => {
+    // Mouse position for parallax
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Smooth springs for mouse movement
+    const springConfig = { damping: 25, stiffness: 150 };
+    const springX = useSpring(mouseX, springConfig);
+    const springY = useSpring(mouseY, springConfig);
+
+    // Parallax transforms - conflicting directions for depth
+    const x1 = useTransform(springX, [-0.5, 0.5], ["-25px", "25px"]);
+    const y1 = useTransform(springY, [-0.5, 0.5], ["-15px", "15px"]);
+
+    const x2 = useTransform(springX, [-0.5, 0.5], ["15px", "-15px"]);
+    const y2 = useTransform(springY, [-0.5, 0.5], ["15px", "-15px"]);
+
+    const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        // Normalize coordinates to -0.5 to 0.5
+        mouseX.set(clientX / innerWidth - 0.5);
+        mouseY.set(clientY / innerHeight - 0.5);
+    };
+
     return (
-        <header className="gallery-hero">
+        <header className="gallery-hero" onMouseMove={handleMouseMove}>
             <div className="gallery-hero-bg"></div>
             <div className="gallery-hero-content">
-                <div className="hero-meta">
-                    <span className="hero-label">VOL. 2026 // COLLECTION</span>
-                    <span className="hero-label">SCROLL TO EXPLORE ↓</span>
+                <div className="hero-meta" style={{ justifyContent: 'center', borderBottom: 'none', marginBottom: '1rem' }}>
+                    <span className="hero-label" style={{ color: 'var(--signal-acid)' }}>SCROLL TO EXPLORE ↓</span>
                 </div>
 
-                <div className="hero-title-wrapper">
-                    <motion.h1
-                        className="hero-title"
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        visual
-                    </motion.h1>
-                </div>
-                <div className="hero-title-wrapper">
-                    <motion.h1
-                        className="hero-title"
-                        style={{ marginLeft: '1.5em', color: 'transparent', WebkitTextStroke: '2px var(--plaster)' }}
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        archive
-                    </motion.h1>
+                <div className="hero-title-container" style={{ position: 'relative', zIndex: 10 }}>
+                    <div className="hero-title-wrapper">
+                        <motion.h1
+                            className="hero-title"
+                            style={{ x: x1, y: y1 }}
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            the
+                        </motion.h1>
+                    </div>
+                    <div className="hero-title-wrapper">
+                        <motion.h1
+                            className="hero-title outlined-title"
+                            style={{
+                                x: x2,
+                                y: y2,
+                                color: 'transparent',
+                                WebkitTextStroke: '2px var(--plaster)',
+                                cursor: 'default'
+                            }}
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            whileHover={{
+                                color: 'var(--plaster)',
+                                scale: 1.02,
+                                transition: { duration: 0.3 }
+                            }}
+                            transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            gallery
+                        </motion.h1>
+                    </div>
                 </div>
 
                 <motion.p
@@ -147,8 +184,8 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1 }}
                 >
-                    A non-linear exploration of aesthetic experiments, photography,
-                    and digital brutalism. Curated for impact.
+                    "You miss 100% of the shots you don’t take" <br />
+                    <span style={{ opacity: 0.7, fontSize: '0.9em' }}>- Istiqlal</span>
                 </motion.p>
             </div>
         </header>
@@ -158,11 +195,12 @@ const Hero = () => {
 const GalleryItem = ({ item, index, onSelect, onHoverStart, onHoverEnd }) => {
     return (
         <motion.article
-            className={`gallery-item ${item.spanCols} ${item.spanRows}`}
+            className={`gallery-item ${item.spanCols || ''} ${item.spanRows || ''}`}
+            data-index={String(index + 1).padStart(2, '0')}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: index * 0.08, ease: "easeOut" }}
             onHoverStart={() => onHoverStart('View')}
             onHoverEnd={onHoverEnd}
             onClick={() => onSelect(item)}
