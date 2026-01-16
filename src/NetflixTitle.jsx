@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logoImage from './images/logo-2.png'; // Update with the path to your logo
 import NetflixWebGLBackground from './components/NetflixWebGLBackground';
 import SEO from './components/SEO';
-import { prefersReducedMotion } from './utils/performance';
 import { getSeoForPath } from './utils/seo';
 
 const NetflixTitle = () => {
@@ -48,8 +47,6 @@ const NetflixTitle = () => {
         if (startedRef.current) return;
         startedRef.current = true;
 
-        const reducedMotion = prefersReducedMotion();
-
         // Play preloaded audio - reset to start in case it was already played
         if (audioRef.current) {
             audioRef.current.currentTime = 0;
@@ -58,9 +55,9 @@ const NetflixTitle = () => {
 
         setAnimate(true);
 
-        // Prefer anim end; keep a fallback in case animations are blocked.
-        const fallbackDelayMs = reducedMotion ? 500 : 4500;
-        navTimerRef.current = setTimeout(goBrowse, fallbackDelayMs);
+        // Fallback timeout only if onAnimationEnd doesn't fire (e.g., animations blocked)
+        // Always use full duration to let the animation complete
+        navTimerRef.current = setTimeout(goBrowse, 4000);
     };
 
     return (
