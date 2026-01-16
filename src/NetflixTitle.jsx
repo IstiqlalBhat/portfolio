@@ -28,10 +28,19 @@ const NetflixTitle = () => {
         navigate('/browse');
     };
 
+    // Preload audio on mount for better desktop playback
     useEffect(() => {
+        audioRef.current = new Audio(netflixSound);
+        audioRef.current.preload = 'auto';
+        // Load the audio buffer
+        audioRef.current.load();
+
         return () => {
             if (navTimerRef.current) clearTimeout(navTimerRef.current);
-            if (audioRef.current) audioRef.current.pause();
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current = null;
+            }
         };
     }, []);
 
@@ -41,8 +50,11 @@ const NetflixTitle = () => {
 
         const reducedMotion = prefersReducedMotion();
 
-        audioRef.current = new Audio(netflixSound);
-        audioRef.current.play().catch(() => { });
+        // Play preloaded audio - reset to start in case it was already played
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(() => { });
+        }
 
         setAnimate(true);
 
@@ -74,8 +86,10 @@ const NetflixTitle = () => {
                 decoding="async"
                 fetchpriority="high"
                 className={`netflix-logo ${animate ? 'animate' : ''}`}
-                onAnimationEnd={() => {
+                onAnimationEnd={(e) => {
                     if (!animate) return;
+                    // Only navigate when the zoomOut animation ends, not fadeIn
+                    if (e.animationName !== 'zoomOut') return;
                     goBrowse();
                 }}
             />
