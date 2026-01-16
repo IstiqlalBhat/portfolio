@@ -16,6 +16,7 @@ const NetflixTitle = () => {
     const navigatedRef = useRef(false);
     const navTimerRef = useRef(null);
     const audioRef = useRef(null);
+    const animStartTimeRef = useRef(0);
 
     const goBrowse = () => {
         if (navigatedRef.current) return;
@@ -54,6 +55,7 @@ const NetflixTitle = () => {
         }
 
         setAnimate(true);
+        animStartTimeRef.current = Date.now();
 
         // Fallback timeout only if onAnimationEnd doesn't fire (e.g., animations blocked)
         // Always use full duration to let the animation complete
@@ -87,6 +89,9 @@ const NetflixTitle = () => {
                     if (!animate) return;
                     // Only navigate when the zoomOut animation ends, not fadeIn
                     if (e.animationName !== 'zoomOut') return;
+                    // Ensure animation has actually run (at least 3s of the 3.5s animation)
+                    const elapsed = Date.now() - animStartTimeRef.current;
+                    if (elapsed < 3000) return;
                     goBrowse();
                 }}
             />
