@@ -74,13 +74,7 @@ const Skills = () => {
                         {skillsByCategory[category].map((skill, idx) => (
                             <div key={idx} className="skill-card">
                                 <div className="icon">{iconMap[skill.icon] || <FaReact />}</div>
-                                <h3 className="skill-name">
-                                    {skill.name.split('').map((letter, i) => (
-                                        <span key={i} className="letter" style={{ animationDelay: `${i * 0.05}s` }}>
-                                            {letter}
-                                        </span>
-                                    ))}
-                                </h3>
+                                <h3 className="skill-name">{skill.name}</h3>
                                 <p className="skill-description">{skill.description}</p>
                             </div>
                         ))}
