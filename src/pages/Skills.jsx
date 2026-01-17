@@ -2,27 +2,40 @@ import React, { useEffect, useState } from 'react';
 import './Skills.css';
 import { getSkills } from '../queries/getSkills';
 
-import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaJava } from 'react-icons/fa';
-import { SiRubyonrails, SiTypescript, SiPostgresql, SiMysql, SiKubernetes, SiGooglecloud, SiSpringboot, SiPhp, SiNetlify, SiHeroku, SiHtml5, SiCss3, SiRabbitmq, SiImessage } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaJava, FaPython } from 'react-icons/fa';
+import {
+    SiTypescript, SiJavascript, SiPostgresql, SiMysql, SiCplusplus,
+    SiSolidity, SiNextdotjs, SiTailwindcss, SiFastapi, SiRedis,
+    SiPytorch, SiOpenai, SiVisualstudiocode, SiIntellijidea,
+    SiJupyter, SiFigma, SiFramer, SiHtml5, SiCss3
+} from 'react-icons/si';
 
 const iconMap = {
-    SiRubyonrails: <SiRubyonrails />,
-    FaNodeJs: <FaNodeJs />,
-    SiSpringboot: <SiSpringboot />,
-    FaJava: <FaJava />,
-    SiPhp: <SiPhp />,
-    FaReact: <FaReact />,
+    FaPython: <FaPython />,
+    SiJavascript: <SiJavascript />,
     SiTypescript: <SiTypescript />,
-    FaAws: <FaAws />,
-    FaDocker: <FaDocker />,
+    FaJava: <FaJava />,
+    SiCplusplus: <SiCplusplus />,
+    SiSolidity: <SiSolidity />,
+    FaReact: <FaReact />,
+    SiNextdotjs: <SiNextdotjs />,
+    SiHtml5: <SiHtml5 />,
+    SiTailwindcss: <SiTailwindcss />,
+    SiFastapi: <SiFastapi />,
+    FaNodeJs: <FaNodeJs />,
     SiPostgresql: <SiPostgresql />,
     SiMysql: <SiMysql />,
-    SiKubernetes: <SiKubernetes />,
-    SiGooglecloud: <SiGooglecloud />,
-    SiHeroku: <SiHeroku />,
-    SiNetlify: <SiNetlify />,
-    SiRabbitmq: <SiRabbitmq />,
-    SiImessage: <SiImessage />,
+    SiRedis: <SiRedis />,
+    SiPytorch: <SiPytorch />,
+    SiOpenai: <SiOpenai />,
+    FaDocker: <FaDocker />,
+    FaGitAlt: <FaGitAlt />,
+    SiVisualstudiocode: <SiVisualstudiocode />,
+    SiIntellijidea: <SiIntellijidea />,
+    SiJupyter: <SiJupyter />,
+    SiFigma: <SiFigma />,
+    SiFramer: <SiFramer />,
+    FaAws: <FaAws />,
 };
 
 

@@ -143,24 +143,73 @@ export const hardcodedProjects = [
 ];
 
 export const hardcodedSkills = [
-    { name: "Ruby", category: "Programming", description: "Language", icon: "SiRubyonrails" },
-    { name: "Node.js", category: "Programming", description: "Runtime", icon: "FaNodeJs" },
-    { name: "Spring", category: "Programming", description: "Framework", icon: "SiSpringboot" },
-    { name: "Java", category: "Programming", description: "Language", icon: "FaJava" },
-    { name: "PHP", category: "Programming", description: "Language", icon: "SiPhp" },
-    { name: "React", category: "Programming", description: "Library", icon: "FaReact" },
-    { name: "TypeScript", category: "Programming", description: "Language", icon: "SiTypescript" },
-    { name: "AWS", category: "Cloud & DevOps", description: "Platform", icon: "FaAws" },
-    { name: "Docker", category: "Cloud & DevOps", description: "Containerization", icon: "FaDocker" },
-    { name: "PostgreSQL", category: "Database", description: "Database", icon: "SiPostgresql" },
-    { name: "MySQL", category: "Database", description: "Database", icon: "SiMysql" },
-    { name: "Kubernetes", category: "Cloud & DevOps", description: "Orchestration", icon: "SiKubernetes" },
-    { name: "GCP", category: "Cloud & DevOps", description: "Platform", icon: "SiGooglecloud" },
-    { name: "Heroku", category: "Cloud & DevOps", description: "Platform", icon: "SiHeroku" },
-    { name: "Netlify", category: "Cloud & DevOps", description: "Platform", icon: "SiNetlify" },
-    { name: "RabbitMQ", category: "Others", description: "Messaging", icon: "SiRabbitmq" },
-    { name: "Kafka", category: "Others", description: "Streaming", icon: "" },
-    { name: "Redis", category: "Database", description: "In-memory Store", icon: "" }
+    // Programming Languages
+    { name: "Python", category: "Programming Languages", description: "Language", icon: "FaPython" },
+    { name: "JavaScript", category: "Programming Languages", description: "Language", icon: "SiJavascript" },
+    { name: "TypeScript", category: "Programming Languages", description: "Language", icon: "SiTypescript" },
+    { name: "Java", category: "Programming Languages", description: "Language", icon: "FaJava" },
+    { name: "C++", category: "Programming Languages", description: "Language", icon: "SiCplusplus" },
+    { name: "SQL", category: "Programming Languages", description: "Query Language", icon: "" },
+    { name: "Solidity", category: "Programming Languages", description: "Smart Contracts", icon: "SiSolidity" },
+    // Frontend
+    { name: "React", category: "Frontend", description: "Library", icon: "FaReact" },
+    { name: "Next.js", category: "Frontend", description: "Framework", icon: "SiNextdotjs" },
+    { name: "HTML/CSS", category: "Frontend", description: "Markup & Styling", icon: "SiHtml5" },
+    { name: "Tailwind CSS", category: "Frontend", description: "CSS Framework", icon: "SiTailwindcss" },
+    // Backend
+    { name: "FastAPI", category: "Backend", description: "Framework", icon: "SiFastapi" },
+    { name: "Node.js", category: "Backend", description: "Runtime", icon: "FaNodeJs" },
+    { name: "Pydantic", category: "Backend", description: "Validation", icon: "FaPython" },
+    // Databases & Storage
+    { name: "PostgreSQL", category: "Databases & Storage", description: "Database", icon: "SiPostgresql" },
+    { name: "Redis", category: "Databases & Storage", description: "In-memory Store", icon: "SiRedis" },
+    { name: "Pinecone", category: "Databases & Storage", description: "Vector Database", icon: "" },
+    { name: "FAISS", category: "Databases & Storage", description: "Vector Search", icon: "" },
+    // AI/ML Frameworks
+    { name: "PyTorch", category: "AI/ML Frameworks", description: "Deep Learning", icon: "SiPytorch" },
+    { name: "LangChain", category: "AI/ML Frameworks", description: "LLM Framework", icon: "" },
+    { name: "LangGraph", category: "AI/ML Frameworks", description: "Agent Framework", icon: "" },
+    { name: "HuggingFace", category: "AI/ML Frameworks", description: "ML Hub", icon: "" },
+    { name: "spaCy", category: "AI/ML Frameworks", description: "NLP Library", icon: "" },
+    { name: "NLTK", category: "AI/ML Frameworks", description: "NLP Toolkit", icon: "" },
+    { name: "NetworkX", category: "AI/ML Frameworks", description: "Graph Library", icon: "" },
+    // AI Models & Techniques
+    { name: "Claude", category: "AI Models & Techniques", description: "LLM", icon: "" },
+    { name: "GPT-4", category: "AI Models & Techniques", description: "LLM", icon: "SiOpenai" },
+    { name: "Gemini", category: "AI Models & Techniques", description: "LLM", icon: "" },
+    { name: "RAG", category: "AI Models & Techniques", description: "Retrieval", icon: "" },
+    { name: "Prompt Engineering", category: "AI Models & Techniques", description: "Technique", icon: "" },
+    { name: "NLP", category: "AI Models & Techniques", description: "Field", icon: "" },
+    { name: "Semantic Search", category: "AI Models & Techniques", description: "Technique", icon: "" },
+    { name: "Text Processing", category: "AI Models & Techniques", description: "Technique", icon: "" },
+    { name: "Document Extraction", category: "AI Models & Techniques", description: "Technique", icon: "" },
+    { name: "Knowledge Graph Construction", category: "AI Models & Techniques", description: "Technique", icon: "" },
+    // Blockchain/Web3
+    { name: "Solidity", category: "Blockchain/Web3", description: "Language", icon: "SiSolidity" },
+    { name: "Web3.js", category: "Blockchain/Web3", description: "Library", icon: "" },
+    { name: "ethers.js", category: "Blockchain/Web3", description: "Library", icon: "" },
+    { name: "Hardhat", category: "Blockchain/Web3", description: "Dev Framework", icon: "" },
+    // DevOps
+    { name: "Docker", category: "DevOps", description: "Containerization", icon: "FaDocker" },
+    { name: "Git", category: "DevOps", description: "Version Control", icon: "FaGitAlt" },
+    { name: "Multi-container Orchestration", category: "DevOps", description: "Infrastructure", icon: "" },
+    // Practices & Patterns
+    { name: "Agile/Scrum", category: "Practices & Patterns", description: "Methodology", icon: "" },
+    { name: "Rapid MVP Development", category: "Practices & Patterns", description: "Approach", icon: "" },
+    { name: "AI Prototyping", category: "Practices & Patterns", description: "Approach", icon: "" },
+    { name: "Full-Stack Development", category: "Practices & Patterns", description: "Discipline", icon: "" },
+    { name: "Blockchain Development", category: "Practices & Patterns", description: "Discipline", icon: "" },
+    { name: "Workflow Orchestration", category: "Practices & Patterns", description: "Pattern", icon: "" },
+    { name: "Schema Validation", category: "Practices & Patterns", description: "Pattern", icon: "" },
+    { name: "Response Caching", category: "Practices & Patterns", description: "Pattern", icon: "" },
+    { name: "Rate Limiting", category: "Practices & Patterns", description: "Pattern", icon: "" },
+    // Tools & IDEs
+    { name: "VS Code", category: "Tools & IDEs", description: "Editor", icon: "SiVisualstudiocode" },
+    { name: "Cursor IDE", category: "Tools & IDEs", description: "AI Editor", icon: "" },
+    { name: "IntelliJ", category: "Tools & IDEs", description: "IDE", icon: "SiIntellijidea" },
+    { name: "Jupyter", category: "Tools & IDEs", description: "Notebook", icon: "SiJupyter" },
+    { name: "Figma", category: "Tools & IDEs", description: "Design", icon: "SiFigma" },
+    { name: "Framer", category: "Tools & IDEs", description: "Design", icon: "SiFramer" }
 ];
 
 export const hardcodedTimeline = [

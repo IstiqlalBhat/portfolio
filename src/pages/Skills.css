@@ -92,23 +92,43 @@
     animation: fadeSlideIn 0.8s ease forwards;
 }
 
-.category-title:nth-child(1) {
+.skill-category:nth-child(1) .category-title {
+    animation-delay: 0.1s;
+}
+
+.skill-category:nth-child(2) .category-title {
     animation-delay: 0.2s;
 }
 
-.category-title:nth-child(2) {
+.skill-category:nth-child(3) .category-title {
+    animation-delay: 0.3s;
+}
+
+.skill-category:nth-child(4) .category-title {
     animation-delay: 0.4s;
 }
 
-.category-title:nth-child(3) {
+.skill-category:nth-child(5) .category-title {
+    animation-delay: 0.5s;
+}
+
+.skill-category:nth-child(6) .category-title {
     animation-delay: 0.6s;
 }
 
-.category-title:nth-child(4) {
+.skill-category:nth-child(7) .category-title {
+    animation-delay: 0.7s;
+}
+
+.skill-category:nth-child(8) .category-title {
     animation-delay: 0.8s;
 }
 
-.category-title:nth-child(5) {
+.skill-category:nth-child(9) .category-title {
+    animation-delay: 0.9s;
+}
+
+.skill-category:nth-child(10) .category-title {
     animation-delay: 1s;
 }
 
