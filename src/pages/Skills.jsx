@@ -6,9 +6,10 @@ import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaJava, FaPython } from '
 import {
     SiTypescript, SiJavascript, SiPostgresql, SiMysql, SiCplusplus,
     SiSolidity, SiNextdotjs, SiTailwindcss, SiFastapi, SiRedis,
-    SiPytorch, SiOpenai, SiVisualstudiocode, SiIntellijidea,
+    SiPytorch, SiOpenai, SiIntellijidea,
     SiJupyter, SiFigma, SiFramer, SiHtml5, SiCss3
 } from 'react-icons/si';
+import { VscCode } from 'react-icons/vsc';
 
 const iconMap = {
     FaPython: <FaPython />,
@@ -30,7 +31,7 @@ const iconMap = {
     SiOpenai: <SiOpenai />,
     FaDocker: <FaDocker />,
     FaGitAlt: <FaGitAlt />,
-    SiVisualstudiocode: <SiVisualstudiocode />,
+    VscCode: <VscCode />,
     SiIntellijidea: <SiIntellijidea />,
     SiJupyter: <SiJupyter />,
     SiFigma: <SiFigma />,

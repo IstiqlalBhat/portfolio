@@ -204,7 +204,7 @@ export const hardcodedSkills = [
     { name: "Response Caching", category: "Practices & Patterns", description: "Pattern", icon: "" },
     { name: "Rate Limiting", category: "Practices & Patterns", description: "Pattern", icon: "" },
     // Tools & IDEs
-    { name: "VS Code", category: "Tools & IDEs", description: "Editor", icon: "SiVisualstudiocode" },
+    { name: "VS Code", category: "Tools & IDEs", description: "Editor", icon: "VscCode" },
     { name: "Cursor IDE", category: "Tools & IDEs", description: "AI Editor", icon: "" },
     { name: "IntelliJ", category: "Tools & IDEs", description: "IDE", icon: "SiIntellijidea" },
     { name: "Jupyter", category: "Tools & IDEs", description: "Notebook", icon: "SiJupyter" },
