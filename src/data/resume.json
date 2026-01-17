@@ -10,63 +10,82 @@
     }
   },
   "skills": {
-    "Programming": [
+    "Programming_Languages": [
       "Python",
-      "Solidity",
       "JavaScript",
-      "Node.js",
-      "React.js",
-      "HTML/CSS",
-      "XML",
-      "JSON",
-      "RESTful APIs",
+      "TypeScript",
+      "Java",
+      "C++",
       "SQL",
-      "C",
-      "Arduino"
+      "Solidity"
     ],
-    "AI_ML_Tools": [
+    "Frontend": [
+      "React",
+      "Next.js",
+      "HTML/CSS",
+      "Tailwind CSS"
+    ],
+    "Backend": [
+      "FastAPI",
+      "Node.js",
+      "Pydantic"
+    ],
+    "Databases_Storage": [
+      "PostgreSQL",
+      "Redis",
+      "Pinecone",
+      "FAISS"
+    ],
+    "AI_ML_Frameworks": [
+      "PyTorch",
+      "LangChain",
+      "LangGraph",
+      "HuggingFace",
+      "spaCy",
+      "NLTK",
+      "NetworkX"
+    ],
+    "AI_Models_Techniques": [
       "Claude",
-      "ChatGPT",
+      "GPT-4",
       "Gemini",
       "RAG",
-      "LLMs",
-      "PyTorch",
-      "Hugging Face",
-      "Vector Databases",
-      "Prompt Engineering"
+      "Prompt Engineering",
+      "NLP",
+      "Semantic Search",
+      "Text Processing",
+      "Document Extraction",
+      "Knowledge Graph Construction"
     ],
-    "Development_Tools": [
-      "Cursor IDE",
-      "Lovable",
-      "bolt.new",
-      "Hardhat",
-      "Ganache",
+    "Blockchain_Web3": [
+      "Solidity",
       "Web3.js",
       "ethers.js",
-      "AWS",
-      "Git/GitHub",
-      "IntelliJ",
-      "VS Code",
-      "Figma",
-      "Framer"
+      "Hardhat"
     ],
-    "Industry_Tools": [
-      "Revit",
-      "Navisworks",
-      "Jupyter",
-      "Wireshark",
-      "CARLA Simulator",
-      "Real-time Collaboration Tools"
+    "DevOps": [
+      "Docker",
+      "Git",
+      "Multi-container Orchestration"
     ],
-    "Specialized_Skills": [
+    "Practices_Patterns": [
+      "Agile/Scrum",
+      "Rapid MVP Development",
       "AI Prototyping",
       "Full-Stack Development",
       "Blockchain Development",
-      "Smart Contract Auditing",
-      "CI/CD",
-      "Agile/Scrum",
-      "Linux",
-      "Rapid MVP Development"
+      "Workflow Orchestration",
+      "Schema Validation",
+      "Response Caching",
+      "Rate Limiting"
+    ],
+    "Tools_IDEs": [
+      "VS Code",
+      "Cursor IDE",
+      "IntelliJ",
+      "Jupyter",
+      "Figma",
+      "Framer"
     ]
   },
   "experience": [
