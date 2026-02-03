@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TopPicksRow.css';
-import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProjectDiagram, FaEnvelope, FaMusic, FaBook, FaImages } from 'react-icons/fa';
+import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProjectDiagram, FaEnvelope, FaMusic, FaBook, FaImages, FaStar } from 'react-icons/fa';
+import { getPrimaryFeatured } from '../queries/getFeatured';
 
-const topPicksConfig = {
+const getTopPicksConfig = (featuredItem) => ({
     recruiter: [
-        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
         { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/250/200", icon: <FaPassport />, route: "/work-permit" },
         { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/250/200", icon: <FaBriefcase />, route: "/work-experience" },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/projects/250/200", icon: <FaProjectDiagram />, route: "/projects" },
@@ -16,7 +17,7 @@ const topPicksConfig = {
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     developer: [
-        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/development/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/research-papers", icon: <FaCertificate /> },
@@ -26,7 +27,7 @@ const topPicksConfig = {
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     stalker: [
-        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" },
         { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
@@ -35,7 +36,7 @@ const topPicksConfig = {
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
     ],
     adventurer: [
-        { title: "Featured", image: "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true },
+        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", route: "/gallery", icon: <FaImages /> },
         { title: "Music", imgSrc: "https://picsum.photos/seed/music/250/200", route: "/music" },
         { title: "Reading", imgSrc: "https://picsum.photos/seed/books/250/200", route: "/reading", icon: <FaBook /> },
@@ -43,11 +44,26 @@ const topPicksConfig = {
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/medal/250/200", route: "/research-papers", icon: <FaCertificate /> },
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/250/200", route: "/contact-me", icon: <FaEnvelope /> }
     ]
-};
+});
 
 
 const TopPicksRow = ({ profile }) => {
     const navigate = useNavigate();
+    const [featuredItem, setFeaturedItem] = useState(null);
+
+    useEffect(() => {
+        async function fetchFeatured() {
+            try {
+                const data = await getPrimaryFeatured();
+                setFeaturedItem(data);
+            } catch (error) {
+                console.error("Error fetching featured:", error);
+            }
+        }
+        fetchFeatured();
+    }, []);
+
+    const topPicksConfig = getTopPicksConfig(featuredItem);
     const topPicks = topPicksConfig[profile];
 
     const handleCardClick = (pick) => {

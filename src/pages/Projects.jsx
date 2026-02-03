@@ -71,6 +71,33 @@ const pptImages = [
     '/ppt/9.png', '/ppt/10.png', '/ppt/11.png', '/ppt/12.png'
 ];
 
+const normalizeTechUsed = (techUsed) => {
+    if (Array.isArray(techUsed)) {
+        return techUsed
+            .map((item) => String(item).trim())
+            .filter(Boolean);
+    }
+    if (typeof techUsed === 'string') {
+        return techUsed
+            .split(',')
+            .map((item) => item.trim())
+            .filter(Boolean);
+    }
+    return [];
+};
+
+const getProjectImageUrl = (image) => {
+    if (!image) return '';
+    if (typeof image === 'string') return image;
+    if (Array.isArray(image)) {
+        const firstImage = image.find(Boolean);
+        if (!firstImage) return '';
+        if (typeof firstImage === 'string') return firstImage;
+        return firstImage.url || firstImage.src || '';
+    }
+    return image.url || image.src || '';
+};
+
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [isShowcaseOpen, setIsShowcaseOpen] = useState(false);
@@ -99,62 +126,68 @@ const Projects = () => {
     return (
         <div className="projects-container">
             <div className="projects-grid">
-                {projects.map((project, index) => (
-                    <div
-                        key={index}
-                        className="project-card"
-                        style={{ '--delay': `${index * 0.1}s` }}
-                    >
-                        <img
-                            src={project.image.url}
-                            alt={project.title}
-                            className="project-image"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <div className="project-details">
-                            <h3>{project.title}</h3>
-                            <p>{project.description}</p>
-                            <div className="tech-used">
-                                {project.techUsed.split(', ').map((tech, i) => (
-                                    <span key={i} className="tech-badge">
-                                        {techIcons[tech] || "🔧"} {tech}
-                                    </span>
-                                ))}
-                            </div>
-                            <div className="project-links">
-                                {project.link && (
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-btn">
-                                        Live Demo
-                                    </a>
-                                )}
-                                {project.github && (
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link-btn github">
-                                        <FaGithub /> GitHub
-                                    </a>
-                                )}
+                {projects.map((project, index) => {
+                    const imageUrl = getProjectImageUrl(project.image) || '/assets/project_tech_bg.png';
+                    const techList = normalizeTechUsed(project.techUsed);
 
-                                {project.link && project.link.includes('maven-project') && (
-                                    <button
-                                        className="project-link-btn showcase-btn"
-                                        onClick={() => openShowcase(project)}
-                                        style={{
-                                            background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',
-                                            border: 'none',
-                                            fontSize: '0.8rem',
-                                            padding: '6px 12px',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '5px'
-                                        }}
-                                    >
-                                        <FaImages /> Showcase
-                                    </button>
-                                )}
+                    return (
+                        <div
+                            key={index}
+                            className="project-card"
+                            style={{ '--delay': `${index * 0.1}s` }}
+                        >
+                            <img
+                                src={imageUrl}
+                                alt={project.title}
+                                className="project-image"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <div className="project-details">
+                                <h3>{project.title}</h3>
+                                <p>{project.description}</p>
+                                <div className="tech-used">
+                                    {techList.map((tech, i) => (
+                                        <span key={i} className="tech-badge">
+                                            {techIcons[tech]}
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="project-links">
+                                    {project.link && (
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-btn">
+                                            Live Demo
+                                        </a>
+                                    )}
+                                    {project.github && (
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link-btn github">
+                                            <FaGithub /> GitHub
+                                        </a>
+                                    )}
+
+                                    {project.link && project.link.includes('maven-project') && (
+                                        <button
+                                            className="project-link-btn showcase-btn"
+                                            onClick={() => openShowcase(project)}
+                                            style={{
+                                                background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',
+                                                border: 'none',
+                                                fontSize: '0.8rem',
+                                                padding: '6px 12px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '5px'
+                                            }}
+                                        >
+                                            <FaImages /> Showcase
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             <ShowcaseModal

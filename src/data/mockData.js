@@ -290,3 +290,36 @@ export const hardcodedPermit = {
     summary: "Authorized to work in the US",
     additionalInfo: "Eligible for STEM OPT extension. Open to H1B sponsorship."
 };
+
+export const hardcodedFeatured = [
+    {
+        id: "1",
+        title: "Full Circle Cafe - Scrollytelling",
+        description: "A stunning, scroll-driven animated website for Full Circle Cafe featuring wood-fired pizza. Built with Next.js 16, Framer Motion, and Tailwind CSS. Features smooth scroll animations, parallax effects, and an immersive storytelling experience.",
+        techUsed: "Next.js, Tailwind CSS, Framer Motion, TypeScript",
+        image: { url: "https://picsum.photos/seed/scrollytelling/600/400" },
+        link: "https://scrollytelling.vercel.app",
+        github: "https://github.com/IstiqlalBhat/scrollytelling",
+        sortOrder: 1
+    },
+    {
+        id: "2",
+        title: "My Graduation Story - Van Gogh Style",
+        description: "An immersive 3D web experience recounting my graduation journey through the lens of Van Gogh's art style. Features interactive 3D scenes, artistic shaders, and a narrative-driven experience.",
+        techUsed: "Three.js, React, WebGL, Vite",
+        image: { url: "https://picsum.photos/seed/vangogh/600/400" },
+        link: "https://van-gogh-three.vercel.app/",
+        github: "https://github.com/IstiqlalBhat/van-gogh",
+        sortOrder: 2
+    },
+    {
+        id: "3",
+        title: "My Arsenal vs The Show ⚾",
+        description: "A full-stack baseball pitch tracking platform that compares your pitches against real MLB Statcast data, powered by AI coaching. Track your performance and get personalized feedback.",
+        techUsed: "Next.js, TypeScript, Supabase, Firebase, Gemini AI",
+        image: { url: "https://picsum.photos/seed/baseball/600/400" },
+        link: "https://maven-project-eta.vercel.app/",
+        github: "https://github.com/IstiqlalBhat/maven-project",
+        sortOrder: 3
+    }
+];
