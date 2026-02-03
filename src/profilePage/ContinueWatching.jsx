@@ -6,6 +6,42 @@ import LiquidGlassScrollButton, { useScrollState } from '../components/LiquidGla
 
 const MotionLink = motion(Link);
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: 'spring',
+            stiffness: 40,
+            damping: 20,
+            mass: 1
+        }
+    }
+};
+
+const viewportConfig = { once: true, margin: "0px" };
+
+const hoverAnimation = {
+    scale: 1.05,
+    zIndex: 10,
+    boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
+    borderColor: "rgba(229, 9, 20, 0.5)"
+};
+const noHover = {};
+const isHoverable = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches;
+
 // Added progress percentages for Netflix-style "Continue Watching" progress bars
 const continueWatchingConfig = {
     recruiter: [
@@ -39,31 +75,6 @@ const ContinueWatching = ({ profile }) => {
     const scrollRef = useRef(null);
     const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } = useScrollState(scrollRef);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.08,
-                delayChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: 'spring',
-                stiffness: 40,
-                damping: 20,
-                mass: 1
-            }
-        }
-    };
-
     return (
         <div className="continue-watching-row">
             <h2 className="row-title">Continue Watching for {profile}</h2>
@@ -82,25 +93,16 @@ const ContinueWatching = ({ profile }) => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "0px" }}
+                    viewport={viewportConfig}
                 >
-                    {continueWatching.map((pick, index) => {
-                        // Check if device supports hover - this prevents "sticky hover" on mobile
-                        const isHoverable = window.matchMedia('(hover: hover)').matches;
-
-                        return (
+                    {continueWatching.map((pick, index) => (
                             <MotionLink
                                 to={pick.link}
                                 key={index}
                                 className="pick-card"
                                 style={{ '--progress': `${pick.progress}%` }}
                                 variants={itemVariants}
-                                whileHover={isHoverable ? {
-                                    scale: 1.05,
-                                    zIndex: 10,
-                                    boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
-                                    borderColor: "rgba(229, 9, 20, 0.5)"
-                                } : {}}
+                                whileHover={isHoverable ? hoverAnimation : noHover}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <img
@@ -119,8 +121,7 @@ const ContinueWatching = ({ profile }) => {
                                     <div className="progress-bar" style={{ width: `${pick.progress}%` }}></div>
                                 </div>
                             </MotionLink>
-                        );
-                    })}
+                    ))}
                 </motion.div>
 
                 {/* Liquid Glass Scroll Button - Right */}
