@@ -1,37 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import './ContinueWatching.css';
 import LiquidGlassScrollButton, { useScrollState } from '../components/LiquidGlassScrollButton';
 
 const MotionLink = motion(Link);
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.08,
-            delayChildren: 0.1
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: 'spring',
-            stiffness: 40,
-            damping: 20,
-            mass: 1
-        }
-    }
-};
-
-const viewportConfig = { once: true, margin: "0px" };
+const itemHidden = { opacity: 0, y: 20 };
+const itemShow = { opacity: 1, y: 0 };
 
 const hoverAnimation = {
     scale: 1.05,
@@ -73,7 +49,14 @@ const continueWatchingConfig = {
 const ContinueWatching = ({ profile }) => {
     const continueWatching = continueWatchingConfig[profile];
     const scrollRef = useRef(null);
+    const viewRef = useRef(null);
+    const isInView = useInView(viewRef, { once: true });
     const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } = useScrollState(scrollRef);
+
+    const mergedRef = useCallback((node) => {
+        scrollRef.current = node;
+        viewRef.current = node;
+    }, []);
 
     return (
         <div className="continue-watching-row">
@@ -87,13 +70,9 @@ const ContinueWatching = ({ profile }) => {
                     pulse={!canScrollLeft && canScrollRight}
                 />
 
-                <motion.div
+                <div
                     className="card-row"
-                    ref={scrollRef}
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={viewportConfig}
+                    ref={mergedRef}
                 >
                     {continueWatching.map((pick, index) => (
                             <MotionLink
@@ -101,7 +80,15 @@ const ContinueWatching = ({ profile }) => {
                                 key={index}
                                 className="pick-card"
                                 style={{ '--progress': `${pick.progress}%` }}
-                                variants={itemVariants}
+                                initial={itemHidden}
+                                animate={isInView ? itemShow : itemHidden}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 40,
+                                    damping: 20,
+                                    mass: 1,
+                                    delay: index * 0.08 + 0.1
+                                }}
                                 whileHover={isHoverable ? hoverAnimation : noHover}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -122,7 +109,7 @@ const ContinueWatching = ({ profile }) => {
                                 </div>
                             </MotionLink>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Liquid Glass Scroll Button - Right */}
                 <LiquidGlassScrollButton
