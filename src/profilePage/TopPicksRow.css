@@ -18,6 +18,34 @@
     letter-spacing: 0.01em;
 }
 
+/* Wrapper for scroll buttons and card row */
+.top-picks-row .card-row-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: -30px;
+}
+
+/* Fix button positioning due to negative wrapper margin */
+/* Fix button positioning due to negative wrapper margin */
+.top-picks-row .liquid-glass-btn.left {
+    left: 0 !important;
+    /* At the left edge */
+}
+
+.top-picks-row .liquid-glass-btn.right {
+    right: 0 !important;
+    /* At the right edge */
+}
+
+.top-picks-row .liquid-glass-btn {
+    top: calc(50% - 20px);
+    /* Moved down a bit */
+    /* Move up using calc for better reliability */
+    transform: translateY(-50%);
+    margin-top: 0;
+}
+
 .top-picks-row .card-row {
     display: flex;
     gap: 12px;
@@ -38,7 +66,7 @@
     position: relative;
     flex: 0 0 auto;
     width: clamp(280px, 28vw, 380px);
-    aspect-ratio: 16 / 8.5;
+    aspect-ratio: 16 / 10;
     height: auto;
     border-radius: 10px;
     overflow: hidden;
