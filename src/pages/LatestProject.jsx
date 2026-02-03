@@ -245,7 +245,7 @@ const LatestProject = () => {
             {otherFeatured.length > 0 && (
                 <>
                     <h3 style={{ color: 'white', textAlign: 'center', marginBottom: '20px' }}>More Featured Work</h3>
-                    <div className="projects-grid">
+                    <div className="projects-grid" style={{ maxWidth: '1200px', margin: '0 auto', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 500px))', justifyContent: 'center' }}>
                         {otherFeatured.map((project, index) => {
                             const imageUrl = getProjectImageUrl(project.image) || '/assets/project_tech_bg.png';
                             const techList = normalizeTechUsed(project.techUsed);
