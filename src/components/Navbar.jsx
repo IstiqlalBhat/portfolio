@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaBriefcase, FaTools, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaBriefcase, FaTools, FaProjectDiagram, FaEnvelope, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 // import netflixLogo from '../images/logo-2.png'; // TODO: Add logo
 // import blueImage from '../images/blue.png'; // TODO: Add profile image
@@ -22,13 +22,31 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
+    const toggleSidebar = useCallback(() => {
+        setIsSidebarOpen((open) => !open);
+    }, []);
 
-    const closeSidebar = () => {
+    const closeSidebar = useCallback(() => {
         setIsSidebarOpen(false);
-    };
+    }, []);
+
+    useEffect(() => {
+        if (!isSidebarOpen) return;
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const onKeyDown = (event) => {
+            if (event.key === 'Escape') closeSidebar();
+        };
+
+        document.addEventListener('keydown', onKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            document.removeEventListener('keydown', onKeyDown);
+        };
+    }, [closeSidebar, isSidebarOpen]);
 
     return (
         <>
@@ -48,11 +66,18 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-right">
                     {/* Hamburger menu for mobile */}
-                    <div className="hamburger" onClick={toggleSidebar}>
+                    <button
+                        type="button"
+                        className="hamburger"
+                        onClick={toggleSidebar}
+                        aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={isSidebarOpen}
+                        aria-controls="mobile-sidebar"
+                    >
                         <div></div>
                         <div></div>
                         <div></div>
-                    </div>
+                    </button>
                     <img
                         src={profileImage}
                         alt="Profile"
@@ -67,10 +92,19 @@ const Navbar = () => {
             <div className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`} onClick={closeSidebar}></div>
 
             {/* Sidebar (only visible on mobile) */}
-            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-logo">
-                    {/* <img src={netflixLogo} alt="Netflix Logo" /> */}
-                    <h2 style={{ color: 'red' }}>PORTFOLIO</h2>
+            <div
+                id="mobile-sidebar"
+                className={`sidebar ${isSidebarOpen ? 'open' : ''}`}
+                aria-hidden={!isSidebarOpen}
+            >
+                <div className="sidebar-header">
+                    <div className="sidebar-logo">
+                        {/* <img src={netflixLogo} alt="Netflix Logo" /> */}
+                        <h2 style={{ color: 'red' }}>PORTFOLIO</h2>
+                    </div>
+                    <button type="button" className="sidebar-close" onClick={closeSidebar} aria-label="Close menu">
+                        <FaTimes />
+                    </button>
                 </div>
                 <ul>
                     <li><Link to="/browse" onClick={closeSidebar}><FaHome /> Home</Link></li>
