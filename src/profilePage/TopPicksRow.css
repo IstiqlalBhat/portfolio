@@ -1,55 +1,55 @@
 .top-picks-row {
-    margin: 0;
-    padding: 20px;
+    margin: 0 0 40px 0;
+    padding: 0 0 0 var(--page-gutter);
 }
 
 @media (max-width: 768px) {
     .top-picks-row {
-        padding: 16px;
+        padding: 0 0 0 var(--page-gutter);
+        margin-bottom: 20px;
     }
 }
 
 .top-picks-row .row-title {
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    color: #fff;
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
+    font-size: 1.6rem;
+    color: #e5e5e5;
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 .top-picks-row .card-row {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding: 16px 0 24px 0;
     scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
+    -ms-overflow-style: none;
 }
 
 .top-picks-row .card-row::-webkit-scrollbar {
     display: none;
 }
 
+/* Clean Netflix-style Card */
 .top-picks-row .pick-card {
     position: relative;
     flex: 0 0 auto;
-    width: clamp(170px, 60vw, 250px);
-    height: clamp(120px, 40vw, 200px);
-    border-radius: 8px;
+    width: clamp(200px, 22vw, 280px);
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: slideIn 0.5s ease forwards;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    scroll-snap-align: start;
+    background: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease-out;
 }
 
+/* Subtle hover - no scale to avoid clipping */
 .top-picks-row .pick-card:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
-    /* Netflix red glow on hover */
+    transform: translateY(-6px);
 }
 
 .top-picks-row .pick-image {
@@ -60,95 +60,73 @@
 }
 
 .top-picks-row .pick-card:hover .pick-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
+/* Gradient overlay */
 .top-picks-row .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 70%);
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.9) 0%, 
+        rgba(0, 0, 0, 0.3) 40%, 
+        rgba(0, 0, 0, 0) 70%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
     padding: 12px;
-    opacity: 1;
+    pointer-events: none;
 }
 
+/* Card title */
 .top-picks-row .pick-label {
     color: #fff;
-    font-size: clamp(0.95rem, 3vw, 1.2rem);
-    font-weight: bold;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.top-picks-row .pick-label:hover {
-    color: rgb(153, 80, 80);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
+/* New badge */
 .top-picks-row .new-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     background-color: #e50914;
     color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
 }
 
+/* Action buttons */
 .top-picks-row .pick-links {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .top-picks-row .pick-action-btn {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
     background: rgba(0, 0, 0, 0.5);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    pointer-events: auto;
     transition: all 0.2s ease;
 }
 
 .top-picks-row .pick-action-btn:hover {
     border-color: white;
     background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
 }
 
 .top-picks-row .pick-action-btn.filled {
@@ -157,7 +135,19 @@
     border: none;
 }
 
-.top-picks-row .pick-action-btn.filled:hover {
-    background-color: #f0f0f0;
+/* Responsive */
+@media (max-width: 1200px) {
+    .top-picks-row .pick-card {
+        width: clamp(190px, 26vw, 240px);
+    }
 }
 
+@media (max-width: 768px) {
+    .top-picks-row .pick-card {
+        width: clamp(150px, 60vw, 210px);
+    }
+    
+    .top-picks-row .pick-label {
+        font-size: 0.85rem;
+    }
+}

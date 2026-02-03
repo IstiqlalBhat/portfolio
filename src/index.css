@@ -1,3 +1,13 @@
+:root {
+    --page-gutter: 20px;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --page-gutter: 16px;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Netflix Sans', Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;

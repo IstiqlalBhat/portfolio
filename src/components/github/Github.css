@@ -19,7 +19,7 @@
 }
 
 .gh-section-wrapper {
-    padding: clamp(1.75rem, 2.5vw, 2.75rem) 20px 3.5rem;
+    padding: clamp(1.75rem, 2.5vw, 2.75rem) var(--page-gutter) 3.5rem;
     max-width: none;
     margin: 0;
     box-sizing: border-box;
@@ -579,7 +579,7 @@
 
 @media (max-width: 1024px) {
     .gh-section-wrapper {
-        padding: clamp(1.5rem, 3vw, 2.25rem) 20px 3rem;
+        padding: clamp(1.5rem, 3vw, 2.25rem) var(--page-gutter) 3rem;
     }
 
     .gh-section-shell {
@@ -671,7 +671,7 @@
 
 @media (max-width: 540px) {
     .gh-section-wrapper {
-        padding: 1.25rem 16px 2.5rem;
+        padding: 1.25rem var(--page-gutter) 2.5rem;
     }
 
     .gh-section-shell {

@@ -4,45 +4,46 @@ import './TopPicksRow.css';
 import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProjectDiagram, FaEnvelope, FaMusic, FaBook, FaImages, FaStar } from 'react-icons/fa';
 import { getPrimaryFeatured } from '../queries/getFeatured';
 
+// Updated image URLs with 16:9 aspect ratio for Netflix-style wider cards
 const getTopPicksConfig = (featuredItem) => ({
     recruiter: [
-        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
-        { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/250/200", icon: <FaPassport />, route: "/work-permit" },
-        { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/250/200", icon: <FaBriefcase />, route: "/work-experience" },
-        { title: "Projects", imgSrc: "https://picsum.photos/seed/projects/250/200", icon: <FaProjectDiagram />, route: "/projects" },
-        { title: "Skills", imgSrc: "https://picsum.photos/seed/skills/250/200", icon: <FaCode />, route: "/skills" },
-        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/certifications/250/200", icon: <FaCertificate />, route: "/research-papers" },
-        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/recommendations/250/200", icon: <FaHandsHelping />, route: "/recommendations" },
-        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/contact/250/200", icon: <FaEnvelope />, route: "/contact-me" },
-        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=640&h=360&fit=crop` : "https://picsum.photos/seed/scrollytelling/400/225", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/400/225", icon: <FaPassport />, route: "/work-permit" },
+        { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/400/225", icon: <FaBriefcase />, route: "/work-experience" },
+        { title: "Projects", imgSrc: "https://picsum.photos/seed/projects/400/225", icon: <FaProjectDiagram />, route: "/projects" },
+        { title: "Skills", imgSrc: "https://picsum.photos/seed/skills/400/225", icon: <FaCode />, route: "/skills" },
+        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/certifications/400/225", icon: <FaCertificate />, route: "/research-papers" },
+        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/recommendations/400/225", icon: <FaHandsHelping />, route: "/recommendations" },
+        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/contact/400/225", icon: <FaEnvelope />, route: "/contact-me" },
+        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/400/225", icon: <FaImages />, route: "/gallery" }
     ],
     developer: [
-        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
-        { title: "Projects", imgSrc: "https://picsum.photos/seed/development/250/200", route: "/projects", icon: <FaProjectDiagram /> },
-        { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
-        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/research-papers", icon: <FaCertificate /> },
-        { title: "Experience", imgSrc: "https://picsum.photos/seed/work/250/200", route: "/work-experience", icon: <FaBriefcase /> },
-        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
-        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/250/200", route: "/contact-me", icon: <FaEnvelope /> },
-        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=640&h=360&fit=crop` : "https://picsum.photos/seed/scrollytelling/400/225", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Projects", imgSrc: "https://picsum.photos/seed/development/400/225", route: "/projects", icon: <FaProjectDiagram /> },
+        { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/400/225", route: "/skills", icon: <FaCode /> },
+        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/400/225", route: "/research-papers", icon: <FaCertificate /> },
+        { title: "Experience", imgSrc: "https://picsum.photos/seed/work/400/225", route: "/work-experience", icon: <FaBriefcase /> },
+        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/400/225", route: "/recommendations", icon: <FaHandsHelping /> },
+        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/400/225", route: "/contact-me", icon: <FaEnvelope /> },
+        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/400/225", icon: <FaImages />, route: "/gallery" }
     ],
     stalker: [
-        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
-        { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/250/200", route: "/projects", icon: <FaProjectDiagram /> },
-        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" },
-        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
-        { title: "Experience", imgSrc: "https://picsum.photos/seed/resume/250/200", route: "/work-experience", icon: <FaBriefcase /> },
-        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/achievements/250/200", route: "/research-papers", icon: <FaCertificate /> },
-        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=640&h=360&fit=crop` : "https://picsum.photos/seed/scrollytelling/400/225", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/400/225", route: "/projects", icon: <FaProjectDiagram /> },
+        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/400/225", icon: <FaImages />, route: "/gallery" },
+        { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/400/225", route: "/recommendations", icon: <FaHandsHelping /> },
+        { title: "Experience", imgSrc: "https://picsum.photos/seed/resume/400/225", route: "/work-experience", icon: <FaBriefcase /> },
+        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/achievements/400/225", route: "/research-papers", icon: <FaCertificate /> },
+        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/400/225", route: "/contact-me", icon: <FaEnvelope /> },
     ],
     adventurer: [
-        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
-        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", route: "/gallery", icon: <FaImages /> },
-        { title: "Music", imgSrc: "https://picsum.photos/seed/music/250/200", route: "/music" },
-        { title: "Reading", imgSrc: "https://picsum.photos/seed/books/250/200", route: "/reading", icon: <FaBook /> },
-        { title: "Projects", imgSrc: "https://picsum.photos/seed/innovation/250/200", route: "/projects", icon: <FaProjectDiagram /> },
-        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/medal/250/200", route: "/research-papers", icon: <FaCertificate /> },
-        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/250/200", route: "/contact-me", icon: <FaEnvelope /> }
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=640&h=360&fit=crop` : "https://picsum.photos/seed/scrollytelling/400/225", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/400/225", route: "/gallery", icon: <FaImages /> },
+        { title: "Music", imgSrc: "https://picsum.photos/seed/music/400/225", route: "/music" },
+        { title: "Reading", imgSrc: "https://picsum.photos/seed/books/400/225", route: "/reading", icon: <FaBook /> },
+        { title: "Projects", imgSrc: "https://picsum.photos/seed/innovation/400/225", route: "/projects", icon: <FaProjectDiagram /> },
+        { title: "Research Papers", imgSrc: "https://picsum.photos/seed/medal/400/225", route: "/research-papers", icon: <FaCertificate /> },
+        { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/400/225", route: "/contact-me", icon: <FaEnvelope /> }
     ]
 });
 
@@ -83,7 +84,7 @@ const TopPicksRow = ({ profile }) => {
                         key={index}
                         className="pick-card"
                         onClick={() => handleCardClick(pick)}
-                        style={{ animationDelay: `${index * 0.2}s` }}
+                        style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {pick.isNew && <div className="new-badge">New</div>}
                         <img
