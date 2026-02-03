@@ -69,7 +69,7 @@ const ContinueWatching = ({ profile }) => {
                     className="card-row"
                     ref={scrollRef}
                     variants={containerVariants}
-                    initial="show"
+                    initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, margin: "-50px" }}
                 >

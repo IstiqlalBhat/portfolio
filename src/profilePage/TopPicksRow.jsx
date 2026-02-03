@@ -110,9 +110,8 @@ const TopPicksRow = ({ profile }) => {
                     className="card-row"
                     ref={scrollRef}
                     variants={containerVariants}
-                    initial="show"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-50px" }}
+                    initial="hidden"
+                    animate="show"
                 >
                     {topPicks.map((pick, index) => (
                         <motion.div
