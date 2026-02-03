@@ -5,7 +5,7 @@ import { hardcodedFeatured } from '../data/mockData';
 // Try collection query first, then singleton
 const GET_FEATURED_COLLECTION = `
   query {
-    allFeatured {
+    allFeatureds {
       id
       title
       description
@@ -41,8 +41,8 @@ export async function getFeatured() {
         console.log("[Featured] Trying collection query...");
         const data = await datoCMSClient.request(GET_FEATURED_COLLECTION);
         console.log("[Featured] Collection response:", JSON.stringify(data, null, 2));
-        if (data.allFeatured && data.allFeatured.length > 0) {
-            return data.allFeatured;
+        if (data.allFeatureds && data.allFeatureds.length > 0) {
+            return data.allFeatureds;
         }
         console.log("[Featured] Collection returned empty");
     } catch (collectionError) {
