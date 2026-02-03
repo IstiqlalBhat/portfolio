@@ -38,22 +38,29 @@ const GET_FEATURED_SINGLETON = `
 export async function getFeatured() {
     // Try collection query first
     try {
+        console.log("[Featured] Trying collection query...");
         const data = await datoCMSClient.request(GET_FEATURED_COLLECTION);
+        console.log("[Featured] Collection response:", JSON.stringify(data, null, 2));
         if (data.allFeatured && data.allFeatured.length > 0) {
             return data.allFeatured;
         }
+        console.log("[Featured] Collection returned empty");
     } catch (collectionError) {
+        console.error("[Featured] Collection error:", collectionError.message || collectionError);
         // Try singleton query
         try {
+            console.log("[Featured] Trying singleton query...");
             const data = await datoCMSClient.request(GET_FEATURED_SINGLETON);
+            console.log("[Featured] Singleton response:", JSON.stringify(data, null, 2));
             if (data.featured) {
                 return [data.featured];
             }
         } catch (singletonError) {
-            // Both queries failed, fall through to hardcoded
+            console.error("[Featured] Singleton error:", singletonError.message || singletonError);
         }
     }
 
+    console.log("[Featured] Using hardcoded fallback");
     return hardcodedFeatured;
 }
 
