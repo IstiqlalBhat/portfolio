@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Projects.css';
-import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, FaGitlab, FaGoogle, FaJava, FaJenkins, FaMicrosoft, FaPython, FaVuejs } from 'react-icons/fa';
-import { SiRubyonrails, SiPostgresql, SiMongodb, SiMaterialdesign, SiHtml5, SiCss3, SiJquery, SiAwsamplify, SiFirebase, SiTerraform, SiArgo, SiTypescript, SiSupabase, SiVite, SiFramer, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, FaGitlab, FaGoogle, FaJava, FaJenkins, FaMicrosoft, FaPython, FaVuejs, FaCode } from 'react-icons/fa';
+import { SiRubyonrails, SiPostgresql, SiMongodb, SiMaterialdesign, SiHtml5, SiCss3, SiJquery, SiAwsamplify, SiFirebase, SiTerraform, SiArgo, SiTypescript, SiSupabase, SiVite, SiFramer, SiTailwindcss, SiNextdotjs, SiFastapi, SiThreedotjs, SiGooglegemini, SiShadcnui } from 'react-icons/si';
 import { getFeatured } from '../queries/getFeatured';
 import { GrDeploy, GrKubernetes } from "react-icons/gr";
 
@@ -59,8 +59,11 @@ const techIcons = {
     'TypeScript': <SiTypescript />,
     'Supabase': <SiSupabase />,
     'Vite': <SiVite />,
-    'Gemini AI': <FaGoogle />,
-    'Three.js': <SiHtml5 />,
+    'FastAPI': <SiFastapi />,
+    'Gemini AI': <SiGooglegemini />,
+    'Google Gemini AI': <SiGooglegemini />,
+    'Three.js': <SiThreedotjs />,
+    'Shadcn/ui': <SiShadcnui />,
     'WebGL': <SiHtml5 />,
     'Framer Motion': <SiFramer />,
 };
@@ -72,8 +75,12 @@ const normalizeTechUsed = (techUsed) => {
             .filter(Boolean);
     }
     if (typeof techUsed === 'string') {
-        return techUsed
-            .split(',')
+        const cleaned = techUsed
+            .replace(/[\u{1F300}-\u{1FAFF}]/gu, ',')
+            .replace(/\s+/g, ' ')
+            .trim();
+        return cleaned
+            .split(/[,\n|;\u2022]+/)
             .map((item) => item.trim())
             .filter(Boolean);
     }
@@ -90,6 +97,13 @@ const getProjectImageUrl = (image) => {
         return firstImage.url || firstImage.src || '';
     }
     return image.url || image.src || '';
+};
+
+const getTechIcon = (tech) => {
+    const rawTech = String(tech || '').trim();
+    if (!rawTech) return null;
+    const withoutVersion = rawTech.replace(/\s*v?\d+(\.\d+)?$/i, '');
+    return techIcons[rawTech] || techIcons[withoutVersion] || <FaCode />;
 };
 
 const LatestProject = () => {
@@ -141,11 +155,15 @@ const LatestProject = () => {
                         <h3>{primaryFeatured.title}</h3>
                         <p>{primaryFeatured.description}</p>
                         <div className="tech-used">
-                            {primaryTechList.map((tech, i) => (
-                                <span key={i} className="tech-badge">
-                                    {techIcons[tech]} {tech}
-                                </span>
-                            ))}
+                            {primaryTechList.map((tech, i) => {
+                                const icon = getTechIcon(tech);
+                                return (
+                                    <span key={i} className="tech-badge">
+                                        {icon && <span className="tech-icon">{icon}</span>}
+                                        <span className="tech-label">{tech}</span>
+                                    </span>
+                                );
+                            })}
                         </div>
                         <div className="project-links">
                             {primaryFeatured.link && (
@@ -188,11 +206,15 @@ const LatestProject = () => {
                                         <h3>{project.title}</h3>
                                         <p>{project.description}</p>
                                         <div className="tech-used">
-                                            {techList.map((tech, i) => (
-                                                <span key={i} className="tech-badge">
-                                                    {techIcons[tech]} {tech}
-                                                </span>
-                                            ))}
+                                            {techList.map((tech, i) => {
+                                                const icon = getTechIcon(tech);
+                                                return (
+                                                    <span key={i} className="tech-badge">
+                                                        {icon && <span className="tech-icon">{icon}</span>}
+                                                        <span className="tech-label">{tech}</span>
+                                                    </span>
+                                                );
+                                            })}
                                         </div>
                                         <div className="project-links">
                                             {project.link && (
