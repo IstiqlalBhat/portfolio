@@ -17,6 +17,9 @@
     overflow: hidden;
     box-shadow: 0 6px 15px rgba(160, 16, 16, 0.6);
     /* Base shadow */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     opacity: 0;
     animation: fadeInUp 0.5s forwards ease-in-out;
     animation-delay: var(--delay);
@@ -44,6 +47,10 @@
 
 .project-details {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 .project-details h3 {
@@ -62,8 +69,11 @@
 .tech-used {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 8px;
+    margin-top: 12px;
+    max-height: 96px;
+    overflow-y: auto;
+    padding-right: 4px;
 }
 
 .tech-badge {
@@ -76,6 +86,8 @@
     font-size: 0.8rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    gap: 6px;
+    max-width: 100%;
 }
 
 .tech-badge:hover {
@@ -86,15 +98,23 @@
     /* Netflix shadow */
 }
 
-.tech-badge svg {
-    margin-right: 5px;
-    font-size: 1.2rem;
+.tech-icon svg {
+    font-size: 1.1rem;
+}
+
+.tech-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .project-links {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: auto;
+    padding-top: 12px;
+    flex-wrap: wrap;
 }
 
 .project-link-btn {
@@ -125,4 +145,17 @@
 
 .project-link-btn svg {
     margin-right: 5px;
+}
+
+/* Featured primary card - larger image */
+.featured-primary .project-image {
+    height: 350px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+@media (max-width: 768px) {
+    .featured-primary .project-image {
+        height: 250px;
+    }
 }

@@ -68,9 +68,61 @@ const techIcons = {
     'Framer Motion': <SiFramer />,
 };
 
+const techLabels = Object.keys(techIcons).sort((a, b) => b.length - a.length);
+
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const cleanTechToken = (token) => token.replace(/^[\\s+/-]+|[\\s+/-]+$/g, '').trim();
+
+const splitCompoundTech = (token) => {
+    const matches = [];
+
+    for (const label of techLabels) {
+        const pattern = new RegExp(`${escapeRegExp(label)}(?:\\s*v?\\d+(?:\\.\\d+)?)?`, 'gi');
+        let match = pattern.exec(token);
+        while (match) {
+            matches.push({
+                start: match.index,
+                end: match.index + match[0].length,
+                value: match[0].trim(),
+                length: match[0].length,
+            });
+            match = pattern.exec(token);
+        }
+    }
+
+    if (matches.length === 0) {
+        return [token];
+    }
+
+    matches.sort((a, b) => a.start - b.start || b.length - a.length);
+
+    const resolved = [];
+    let lastEnd = -1;
+    for (const match of matches) {
+        if (match.start >= lastEnd) {
+            resolved.push(match);
+            lastEnd = match.end;
+        }
+    }
+
+    const parts = [];
+    let cursor = 0;
+    for (const match of resolved) {
+        const between = cleanTechToken(token.slice(cursor, match.start));
+        if (between) parts.push(between);
+        parts.push(match.value.trim());
+        cursor = match.end;
+    }
+    const tail = cleanTechToken(token.slice(cursor));
+    if (tail) parts.push(tail);
+    return parts;
+};
+
 const normalizeTechUsed = (techUsed) => {
+    let rawParts = [];
     if (Array.isArray(techUsed)) {
-        return techUsed
+        rawParts = techUsed
             .map((item) => String(item).trim())
             .filter(Boolean);
     }
@@ -79,12 +131,20 @@ const normalizeTechUsed = (techUsed) => {
             .replace(/[\u{1F300}-\u{1FAFF}]/gu, ',')
             .replace(/\s+/g, ' ')
             .trim();
-        return cleaned
-            .split(/[,\n|;\u2022]+/)
+        rawParts = cleaned
+            .split(/[,\n|;\u2022\u00b7]+/)
             .map((item) => item.trim())
             .filter(Boolean);
     }
-    return [];
+
+    if (rawParts.length === 0) {
+        return [];
+    }
+
+    return rawParts
+        .flatMap((part) => splitCompoundTech(part))
+        .map((part) => cleanTechToken(part))
+        .filter(Boolean);
 };
 
 const getProjectImageUrl = (image) => {
@@ -141,7 +201,7 @@ const LatestProject = () => {
             {/* Primary Featured Item - Larger Display */}
             <div className="projects-grid" style={{ justifyContent: 'center', display: 'flex', marginBottom: '40px' }}>
                 <div
-                    className="project-card"
+                    className="project-card featured-primary"
                     style={{ '--delay': '0s', maxWidth: '700px', width: '100%' }}
                 >
                     <img
