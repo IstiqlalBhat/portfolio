@@ -144,6 +144,16 @@
 }
 
 @media (max-width: 768px) {
+    .continue-watching-row .card-row-wrapper {
+        margin-top: 0;
+    }
+
+    .continue-watching-row .card-row {
+        padding: 20px 16px;
+        margin-left: 0;
+        width: 100%;
+    }
+
     .continue-watching-row .pick-card {
         width: clamp(220px, 80vw, 320px);
     }
