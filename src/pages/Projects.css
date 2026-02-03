@@ -74,6 +74,32 @@
     max-height: 96px;
     overflow-y: auto;
     padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #e50914 #1a1a1a;
+    scrollbar-gutter: stable;
+}
+
+.tech-used::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tech-used::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 12px;
+}
+
+.tech-used::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #e50914, #ff4d4d);
+    border-radius: 12px;
+    border: 2px solid #1a1a1a;
+}
+
+.tech-used::-webkit-scrollbar-thumb:hover {
+    background: #f40612;
+}
+
+.tech-used::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 .tech-badge {

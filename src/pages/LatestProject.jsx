@@ -72,7 +72,7 @@ const techLabels = Object.keys(techIcons).sort((a, b) => b.length - a.length);
 
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const cleanTechToken = (token) => token.replace(/^[\\s+/-]+|[\\s+/-]+$/g, '').trim();
+const cleanTechToken = (token) => token.replace(/^[\s+/-]+|[\s+/-]+$/g, '').trim();
 
 const splitCompoundTech = (token) => {
     const matches = [];
