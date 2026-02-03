@@ -9,7 +9,7 @@ const GET_FEATURED_COLLECTION = `
       id
       title
       description
-      techUsed: tech_used
+      techUsed
       image {
         url
       }
@@ -25,7 +25,7 @@ const GET_FEATURED_SINGLETON = `
       id
       title
       description
-      techUsed: tech_used
+      techUsed
       image {
         url
       }
