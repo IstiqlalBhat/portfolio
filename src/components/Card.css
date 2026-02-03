@@ -1,6 +1,6 @@
 .card {
-    width: clamp(200px, 22vw, 280px);
-    aspect-ratio: 16 / 9;
+    width: clamp(250px, 25vw, 340px);
+    aspect-ratio: 16 / 8.5;
     height: auto;
     background-color: #2a2a2a;
     border-radius: 10px;
@@ -25,7 +25,7 @@
     left: 0;
     right: 0;
     padding: 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.7) 60%, transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 60%, transparent);
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -140,9 +140,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, 
-        rgba(0, 0, 0, 0.7) 0%, 
-        transparent 60%);
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.7) 0%,
+            transparent 60%);
     pointer-events: none;
 }
 
@@ -166,19 +166,19 @@
 /* Responsive */
 @media (max-width: 1200px) {
     .card {
-        width: clamp(190px, 26vw, 240px);
+        width: clamp(220px, 28vw, 300px);
     }
 }
 
 @media (max-width: 768px) {
     .card {
-        width: clamp(150px, 60vw, 210px);
+        width: clamp(180px, 65vw, 250px);
     }
-    
+
     .card-info {
         display: none;
     }
-    
+
     .card-title-overlay {
         font-size: 0.85rem;
     }

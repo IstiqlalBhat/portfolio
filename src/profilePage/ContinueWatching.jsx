@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './ContinueWatching.css';
 
 // Added progress percentages for Netflix-style "Continue Watching" progress bars
@@ -32,17 +33,47 @@ const continueWatchingConfig = {
 
 const ContinueWatching = ({ profile }) => {
     const continueWatching = continueWatchingConfig[profile];
+    const MotionLink = motion(Link);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.9 },
+        show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 50, damping: 15 } }
+    };
 
     return (
         <div className="continue-watching-row">
             <h2 className="row-title">Continue Watching for {profile}</h2>
-            <div className="card-row">
+            <motion.div
+                className="card-row"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-50px" }}
+            >
                 {continueWatching.map((pick, index) => (
-                    <Link 
-                        to={pick.link} 
-                        key={index} 
+                    <MotionLink
+                        to={pick.link}
+                        key={index}
                         className="pick-card"
                         style={{ '--progress': `${pick.progress}%` }}
+                        variants={itemVariants}
+                        whileHover={{
+                            scale: 1.05,
+                            zIndex: 10,
+                            boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
+                            borderColor: "rgba(229, 9, 20, 0.5)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <img
                             src={pick.imgSrc}
@@ -59,9 +90,9 @@ const ContinueWatching = ({ profile }) => {
                         <div className="progress-container">
                             <div className="progress-bar" style={{ width: `${pick.progress}%` }}></div>
                         </div>
-                    </Link>
+                    </MotionLink>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 };

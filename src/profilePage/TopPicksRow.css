@@ -22,7 +22,9 @@
     display: flex;
     gap: 12px;
     overflow-x: auto;
-    padding: 16px 0 24px 0;
+    padding: 40px 50px;
+    margin-left: -50px;
+    width: calc(100% + 50px);
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -35,8 +37,8 @@
 .top-picks-row .pick-card {
     position: relative;
     flex: 0 0 auto;
-    width: clamp(200px, 22vw, 280px);
-    aspect-ratio: 16 / 9;
+    width: clamp(280px, 28vw, 380px);
+    aspect-ratio: 16 / 8.5;
     height: auto;
     border-radius: 10px;
     overflow: hidden;
@@ -44,13 +46,14 @@
     background: #2a2a2a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease-out;
+    /* transition: transform 0.2s ease-out;  <-- Removed to let Framer Motion handle transform */
 }
 
 /* Subtle hover - no scale to avoid clipping */
-.top-picks-row .pick-card:hover {
+/* CSS Hover removed in favor of Framer Motion */
+/* .top-picks-row .pick-card:hover {
     transform: translateY(-6px);
-}
+} */
 
 .top-picks-row .pick-image {
     width: 100%;
@@ -67,10 +70,10 @@
 .top-picks-row .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, 
-        rgba(0, 0, 0, 0.9) 0%, 
-        rgba(0, 0, 0, 0.3) 40%, 
-        rgba(0, 0, 0, 0) 70%);
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0) 70%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -138,15 +141,15 @@
 /* Responsive */
 @media (max-width: 1200px) {
     .top-picks-row .pick-card {
-        width: clamp(190px, 26vw, 240px);
+        width: clamp(240px, 30vw, 320px);
     }
 }
 
 @media (max-width: 768px) {
     .top-picks-row .pick-card {
-        width: clamp(150px, 60vw, 210px);
+        width: clamp(220px, 80vw, 320px);
     }
-    
+
     .top-picks-row .pick-label {
         font-size: 0.85rem;
     }

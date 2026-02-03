@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './TopPicksRow.css';
 import { FaPassport, FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProjectDiagram, FaEnvelope, FaMusic, FaBook, FaImages, FaStar } from 'react-icons/fa';
 import { getPrimaryFeatured } from '../queries/getFeatured';
@@ -75,16 +76,45 @@ const TopPicksRow = ({ profile }) => {
         }
     };
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50, damping: 15 } }
+    };
+
     return (
         <div className="top-picks-row">
             <h2 className="row-title">Today's Top Picks for {profile}</h2>
-            <div className="card-row">
+            <motion.div
+                className="card-row"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-50px" }}
+            >
                 {topPicks.map((pick, index) => (
-                    <div
+                    <motion.div
                         key={index}
                         className="pick-card"
                         onClick={() => handleCardClick(pick)}
-                        style={{ animationDelay: `${index * 0.1}s` }}
+                        variants={itemVariants}
+                        whileHover={{
+                            scale: 1.05,
+                            y: -8,
+                            zIndex: 10,
+                            boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
+                            borderColor: "rgba(229, 9, 20, 0.5)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         {pick.isNew && <div className="new-badge">New</div>}
                         <img
@@ -120,9 +150,9 @@ const TopPicksRow = ({ profile }) => {
                                 </div>
                             )}
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 };
