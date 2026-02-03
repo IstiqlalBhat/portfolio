@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import './ContinueWatching.css';
 import LiquidGlassScrollButton, { useScrollState } from '../components/LiquidGlassScrollButton';
 
+const MotionLink = motion(Link);
+
 // Added progress percentages for Netflix-style "Continue Watching" progress bars
 const continueWatchingConfig = {
     recruiter: [
@@ -34,7 +36,6 @@ const continueWatchingConfig = {
 
 const ContinueWatching = ({ profile }) => {
     const continueWatching = continueWatchingConfig[profile];
-    const MotionLink = motion(Link);
     const scrollRef = useRef(null);
     const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } = useScrollState(scrollRef);
 
@@ -43,14 +44,24 @@ const ContinueWatching = ({ profile }) => {
         show: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.08,
+                delayChildren: 0.1
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, scale: 0.9 },
-        show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 50, damping: 15 } }
+        hidden: { opacity: 0, y: 20 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 40,
+                damping: 20,
+                mass: 1
+            }
+        }
     };
 
     return (
@@ -71,40 +82,45 @@ const ContinueWatching = ({ profile }) => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, margin: "0px" }}
                 >
-                    {continueWatching.map((pick, index) => (
-                        <MotionLink
-                            to={pick.link}
-                            key={index}
-                            className="pick-card"
-                            style={{ '--progress': `${pick.progress}%` }}
-                            variants={itemVariants}
-                            whileHover={{
-                                scale: 1.05,
-                                zIndex: 10,
-                                boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
-                                borderColor: "rgba(229, 9, 20, 0.5)"
-                            }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <img
-                                src={pick.imgSrc}
-                                alt={pick.title}
-                                className="pick-image"
-                                loading={index < 2 ? 'eager' : 'lazy'}
-                                decoding="async"
-                                fetchpriority={index < 2 ? 'high' : 'auto'}
-                            />
-                            <div className="overlay">
-                                <div className="pick-label">{pick.title}</div>
-                            </div>
-                            {/* Netflix-style progress bar */}
-                            <div className="progress-container">
-                                <div className="progress-bar" style={{ width: `${pick.progress}%` }}></div>
-                            </div>
-                        </MotionLink>
-                    ))}
+                    {continueWatching.map((pick, index) => {
+                        // Check if device supports hover - this prevents "sticky hover" on mobile
+                        const isHoverable = window.matchMedia('(hover: hover)').matches;
+
+                        return (
+                            <MotionLink
+                                to={pick.link}
+                                key={index}
+                                className="pick-card"
+                                style={{ '--progress': `${pick.progress}%` }}
+                                variants={itemVariants}
+                                whileHover={isHoverable ? {
+                                    scale: 1.05,
+                                    zIndex: 10,
+                                    boxShadow: "0 20px 50px -12px rgba(229, 9, 20, 0.7)",
+                                    borderColor: "rgba(229, 9, 20, 0.5)"
+                                } : {}}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <img
+                                    src={pick.imgSrc}
+                                    alt={pick.title}
+                                    className="pick-image"
+                                    loading={index < 2 ? 'eager' : 'lazy'}
+                                    decoding="async"
+                                    fetchpriority={index < 2 ? 'high' : 'auto'}
+                                />
+                                <div className="overlay">
+                                    <div className="pick-label">{pick.title}</div>
+                                </div>
+                                {/* Netflix-style progress bar */}
+                                <div className="progress-container">
+                                    <div className="progress-bar" style={{ width: `${pick.progress}%` }}></div>
+                                </div>
+                            </MotionLink>
+                        );
+                    })}
                 </motion.div>
 
                 {/* Liquid Glass Scroll Button - Right */}

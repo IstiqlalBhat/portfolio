@@ -56,6 +56,8 @@
     width: calc(100% + 50px);
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 .continue-watching-row .card-row::-webkit-scrollbar {
