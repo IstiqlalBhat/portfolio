@@ -5,7 +5,7 @@ import { hardcodedFeatured } from '../data/mockData';
 // Try collection query first, then singleton
 const GET_FEATURED_COLLECTION = `
   query {
-    allFeatureds {
+    allFeatureds(orderBy: sortOrder_ASC) {
       id
       title
       description
@@ -15,6 +15,7 @@ const GET_FEATURED_COLLECTION = `
       }
       link
       github
+      sortOrder
     }
   }
 `;
@@ -36,29 +37,29 @@ const GET_FEATURED_SINGLETON = `
 `;
 
 export async function getFeatured() {
-    // Try collection query first
-    try {
-        const data = await datoCMSClient.request(GET_FEATURED_COLLECTION);
-        if (data.allFeatureds && data.allFeatureds.length > 0) {
-            return data.allFeatureds;
-        }
-    } catch (collectionError) {
-        // Try singleton query
-        try {
-            const data = await datoCMSClient.request(GET_FEATURED_SINGLETON);
-            if (data.featured) {
-                return [data.featured];
-            }
-        } catch (singletonError) {
-            // Both queries failed
-        }
+  // Try collection query first
+  try {
+    const data = await datoCMSClient.request(GET_FEATURED_COLLECTION);
+    if (data.allFeatureds && data.allFeatureds.length > 0) {
+      return data.allFeatureds;
     }
+  } catch (collectionError) {
+    // Try singleton query
+    try {
+      const data = await datoCMSClient.request(GET_FEATURED_SINGLETON);
+      if (data.featured) {
+        return [data.featured];
+      }
+    } catch (singletonError) {
+      // Both queries failed
+    }
+  }
 
-    return hardcodedFeatured;
+  return hardcodedFeatured;
 }
 
 // Get just the primary featured item (first one by position)
 export async function getPrimaryFeatured() {
-    const featured = await getFeatured();
-    return featured.length > 0 ? featured[0] : null;
+  const featured = await getFeatured();
+  return featured.length > 0 ? featured[0] : null;
 }
