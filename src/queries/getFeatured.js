@@ -4,7 +4,7 @@ import { hardcodedFeatured } from '../data/mockData';
 
 const GET_FEATURED = `
   query {
-    allFeatured(orderBy: sort_order_ASC) {
+    allFeatured {
       id
       title
       description
@@ -14,7 +14,6 @@ const GET_FEATURED = `
       }
       link
       github
-      sortOrder: sort_order
     }
   }
 `;
