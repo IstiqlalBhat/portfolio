@@ -6,7 +6,7 @@ import { getPrimaryFeatured } from '../queries/getFeatured';
 
 const getTopPicksConfig = (featuredItem) => ({
     recruiter: [
-        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
         { title: "Work Permit", imgSrc: "https://picsum.photos/seed/workpermit/250/200", icon: <FaPassport />, route: "/work-permit" },
         { title: "Experience", imgSrc: "https://picsum.photos/seed/workexperience/250/200", icon: <FaBriefcase />, route: "/work-experience" },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/projects/250/200", icon: <FaProjectDiagram />, route: "/projects" },
@@ -17,7 +17,7 @@ const getTopPicksConfig = (featuredItem) => ({
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     developer: [
-        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/development/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
         { title: "Research Papers", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/research-papers", icon: <FaCertificate /> },
@@ -27,7 +27,7 @@ const getTopPicksConfig = (featuredItem) => ({
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" }
     ],
     stalker: [
-        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
         { title: "Projects", imgSrc: "https://picsum.photos/seed/planning/250/200", route: "/projects", icon: <FaProjectDiagram /> },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", icon: <FaImages />, route: "/gallery" },
         { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
@@ -36,7 +36,7 @@ const getTopPicksConfig = (featuredItem) => ({
         { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
     ],
     adventurer: [
-        { title: "Featured", image: featuredItem?.image?.url || "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar />, github: featuredItem?.github, link: featuredItem?.link },
+        { title: "Featured", image: featuredItem?.image?.url ? `${featuredItem.image.url}?w=500&h=400&fit=crop` : "https://picsum.photos/seed/scrollytelling/250/200", route: "/latest-project", isNew: true, icon: <FaStar /> },
         { title: "Gallery", imgSrc: "https://picsum.photos/seed/gallery/250/200", route: "/gallery", icon: <FaImages /> },
         { title: "Music", imgSrc: "https://picsum.photos/seed/music/250/200", route: "/music" },
         { title: "Reading", imgSrc: "https://picsum.photos/seed/books/250/200", route: "/reading", icon: <FaBook /> },
