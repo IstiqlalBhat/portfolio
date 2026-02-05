@@ -100,20 +100,20 @@
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 11px 14px;
+        padding: 13px 16px;
     }
 
     .navbar-left {
-        gap: 10px;
+        gap: 12px;
     }
 
     .navbar-right {
-        gap: 4px;
+        gap: 6px;
     }
 
     .navbar-logo {
-        font-size: clamp(1.02rem, 5vw, 1.2rem);
-        letter-spacing: 0.11em;
+        font-size: clamp(1.08rem, 4.8vw, 1.28rem);
+        letter-spacing: 0.12em;
     }
 
     .navbar-logo img {
@@ -122,8 +122,8 @@
     }
 
     .profile-icon {
-        width: 26px;
-        height: 26px;
+        width: 28px;
+        height: 28px;
         margin-right: 0;
     }
 
@@ -134,17 +134,17 @@
     .hamburger {
         display: grid;
         place-items: center;
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
         background: transparent;
         border: 0;
-        padding: 6px;
+        padding: 7px;
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.65));
     }
 
     .hamburger div {
-        width: 20px;
+        width: 22px;
         height: 2px;
         border-radius: 999px;
         background-color: #fff;
@@ -173,8 +173,8 @@
         position: fixed;
         top: calc(8px + env(safe-area-inset-top));
         left: 8px;
-        width: clamp(246px, 74vw, 318px);
-        max-width: 318px;
+        width: clamp(276px, 82vw, 346px);
+        max-width: 346px;
         height: auto;
         max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
         background:
@@ -188,8 +188,8 @@
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
-        gap: 10px;
-        padding: 12px 10px calc(12px + env(safe-area-inset-bottom));
+        gap: 12px;
+        padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
         transform: translate3d(calc(-100% - 20px), 0, 0);
         transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
         will-change: transform;
@@ -218,7 +218,7 @@
         margin: 0;
         color: #e50914;
         font-family: 'Anton', 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
-        font-size: clamp(1.2rem, 5.2vw, 1.45rem);
+        font-size: clamp(1.28rem, 5.8vw, 1.58rem);
         font-weight: 400;
         letter-spacing: 0.12em;
         line-height: 1;
@@ -226,8 +226,8 @@
     }
 
     .sidebar-close {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         border-radius: 9999px;
         border: 0;
         background: transparent;
@@ -252,7 +252,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 4px;
     }
 
     .sidebar ul li {
@@ -263,15 +263,15 @@
         color: #f4f4f4;
         text-decoration: none;
         font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
-        font-size: clamp(0.95rem, 1.75vw, 1rem);
+        font-size: clamp(1rem, 2.4vw, 1.08rem);
         font-weight: 600;
         line-height: 1.2;
         letter-spacing: 0.01em;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 11px;
         width: 100%;
-        padding: 10px 10px;
+        padding: 11px 11px;
         border-radius: 10px;
         transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
@@ -287,7 +287,7 @@
 
     .sidebar ul li a svg {
         flex: 0 0 auto;
-        font-size: 0.95rem;
+        font-size: 1rem;
         opacity: 0.95;
     }
 
@@ -299,45 +299,45 @@
 
 @media (max-width: 430px) {
     .navbar {
-        padding: 10px 12px;
+        padding: 11px 13px;
     }
 
     .navbar-left {
-        gap: 8px;
+        gap: 10px;
     }
 
     .navbar-logo {
-        font-size: clamp(0.94rem, 5.1vw, 1.1rem);
-        letter-spacing: 0.1em;
+        font-size: clamp(1.02rem, 5.5vw, 1.22rem);
+        letter-spacing: 0.11em;
     }
 
     .navbar-right {
-        gap: 2px;
+        gap: 4px;
     }
 
     .profile-icon {
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
     }
 
     .hamburger {
-        width: 34px;
-        height: 34px;
-        padding: 5px;
+        width: 38px;
+        height: 38px;
+        padding: 6px;
     }
 
     .hamburger div {
-        width: 18px;
+        width: 20px;
     }
 
     .sidebar {
         top: calc(6px + env(safe-area-inset-top));
         left: 6px;
-        width: clamp(236px, 72vw, 300px);
-        max-width: 300px;
+        width: clamp(262px, 84vw, 330px);
+        max-width: 330px;
         border-radius: 16px;
-        gap: 8px;
-        padding: 10px 9px calc(10px + env(safe-area-inset-bottom));
+        gap: 10px;
+        padding: 12px 10px calc(12px + env(safe-area-inset-bottom));
     }
 
     .sidebar-header {
@@ -345,67 +345,67 @@
     }
 
     .sidebar-logo h2 {
-        font-size: clamp(1.08rem, 5.4vw, 1.28rem);
+        font-size: clamp(1.18rem, 6vw, 1.4rem);
         letter-spacing: 0.11em;
     }
 
     .sidebar-close {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
     }
 
     .sidebar ul {
-        gap: 2px;
+        gap: 3px;
     }
 
     .sidebar ul li a {
-        gap: 9px;
-        font-size: 0.95rem;
-        padding: 9px 9px;
+        gap: 10px;
+        font-size: 1rem;
+        padding: 10px 10px;
     }
 
     .sidebar ul li a svg {
-        font-size: 0.9rem;
+        font-size: 0.96rem;
     }
 }
 
 @media (max-width: 390px) {
     .navbar {
-        padding: 9px 11px;
+        padding: 10px 12px;
     }
 
     .navbar-logo {
-        font-size: clamp(0.9rem, 4.9vw, 1.02rem);
-        letter-spacing: 0.09em;
+        font-size: clamp(0.98rem, 5.3vw, 1.14rem);
+        letter-spacing: 0.1em;
     }
 
     .sidebar {
-        width: clamp(230px, 73vw, 286px);
-        max-width: 286px;
+        width: clamp(248px, 85vw, 314px);
+        max-width: 314px;
     }
 
     .sidebar-logo h2 {
-        font-size: clamp(1rem, 5.1vw, 1.2rem);
+        font-size: clamp(1.12rem, 5.8vw, 1.3rem);
     }
 
     .sidebar ul li a {
-        font-size: 0.92rem;
-        padding: 8px 8px;
+        font-size: 0.98rem;
+        padding: 9px 9px;
     }
 
     .sidebar ul li a svg {
-        font-size: 0.86rem;
+        font-size: 0.92rem;
     }
 }
 
 @media (max-width: 360px) {
     .sidebar {
-        width: clamp(220px, 76vw, 270px);
-        max-width: 270px;
+        width: clamp(238px, 88vw, 300px);
+        max-width: 300px;
     }
 
     .sidebar ul li a {
-        font-size: 0.9rem;
-        padding: 8px 7px;
+        font-size: 0.96rem;
+        padding: 9px 8px;
     }
 }
