@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaHome, FaBriefcase, FaTools, FaProjectDiagram, FaEnvelope, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 // import netflixLogo from '../images/logo-2.png'; // TODO: Add logo
@@ -52,16 +52,16 @@ const Navbar = () => {
         <>
             <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-left">
-                    <Link to="/" className="navbar-logo" style={{ color: 'red', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                    <Link to="/" className="navbar-logo">
                         {/* <img src={netflixLogo} alt="Netflix" /> */}
                         PORTFOLIO
                     </Link>
                     <ul className="navbar-links">
-                        <li><Link to="/browse">Home</Link></li>
-                        <li><Link to="/work-experience">Professional</Link></li>
-                        <li><Link to="/skills">Skills</Link></li>
-                        <li><Link to="/projects">Projects</Link></li>
-                        <li><Link to="/contact-me">Hire Me</Link></li>
+                        <li><NavLink to="/browse">Home</NavLink></li>
+                        <li><NavLink to="/work-experience">Professional</NavLink></li>
+                        <li><NavLink to="/skills">Skills</NavLink></li>
+                        <li><NavLink to="/projects">Projects</NavLink></li>
+                        <li><NavLink to="/contact-me">Hire Me</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-right">
@@ -100,18 +100,18 @@ const Navbar = () => {
                 <div className="sidebar-header">
                     <div className="sidebar-logo">
                         {/* <img src={netflixLogo} alt="Netflix Logo" /> */}
-                        <h2 style={{ color: 'red' }}>PORTFOLIO</h2>
+                        <h2>PORTFOLIO</h2>
                     </div>
                     <button type="button" className="sidebar-close" onClick={closeSidebar} aria-label="Close menu">
                         <FaTimes />
                     </button>
                 </div>
                 <ul>
-                    <li><Link to="/browse" onClick={closeSidebar}><FaHome /> Home</Link></li>
-                    <li><Link to="/work-experience" onClick={closeSidebar}><FaBriefcase /> Professional</Link></li>
-                    <li><Link to="/skills" onClick={closeSidebar}><FaTools /> Skills</Link></li>
-                    <li><Link to="/projects" onClick={closeSidebar}><FaProjectDiagram /> Projects</Link></li>
-                    <li><Link to="/contact-me" onClick={closeSidebar}><FaEnvelope /> Hire Me</Link></li>
+                    <li><NavLink to="/browse" onClick={closeSidebar}><FaHome /> Home</NavLink></li>
+                    <li><NavLink to="/work-experience" onClick={closeSidebar}><FaBriefcase /> Professional</NavLink></li>
+                    <li><NavLink to="/skills" onClick={closeSidebar}><FaTools /> Skills</NavLink></li>
+                    <li><NavLink to="/projects" onClick={closeSidebar}><FaProjectDiagram /> Projects</NavLink></li>
+                    <li><NavLink to="/contact-me" onClick={closeSidebar}><FaEnvelope /> Hire Me</NavLink></li>
                 </ul>
             </div>
         </>
