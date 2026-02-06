@@ -33,17 +33,25 @@
 
 @media (max-width: 768px) {
     .more-info-button {
-        min-height: 52px;
-        padding: 12px 18px;
+        min-height: 48px;
+        padding: 12px 20px;
+        border-radius: 4px;
+        background-color: rgba(109, 109, 110, 0.5);
     }
 
     .more-info-button .icon-container svg {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
+    }
+
+    .more-info-button .spacer {
+        width: 0.6rem;
     }
 
     .more-info-button .label {
-        font-size: 1.08rem;
+        font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
         letter-spacing: 0.01em;
     }
 }
