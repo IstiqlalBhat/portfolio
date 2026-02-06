@@ -12,11 +12,12 @@
 }
 
 .continue-watching-row .row-title {
-    font-size: clamp(1.6rem, 2.8vw, 2rem);
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
     color: #e5e5e5;
-    margin-bottom: 18px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
+    margin-bottom: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 /* Wrapper for scroll buttons and card row */
@@ -147,8 +148,8 @@
 
 @media (max-width: 768px) {
     .continue-watching-row .row-title {
-        font-size: clamp(1.95rem, 7.2vw, 2.35rem);
-        margin-bottom: 16px;
+        font-size: clamp(1.2rem, 4.8vw, 1.4rem);
+        margin-bottom: 12px;
     }
 
     .continue-watching-row .card-row-wrapper {
@@ -181,7 +182,7 @@
 
 @media (max-width: 430px) {
     .continue-watching-row .row-title {
-        font-size: clamp(1.7rem, 8vw, 2.05rem);
+        font-size: clamp(1.1rem, 4.5vw, 1.3rem);
     }
 
     .continue-watching-row .pick-label {

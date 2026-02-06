@@ -95,7 +95,13 @@ const TopPicksRow = ({ profile }) => {
     };
 
     return (
-        <div className="top-picks-row">
+        <motion.div
+            className="top-picks-row"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        >
             <h2 className="row-title">Today's Top Picks for {profile}</h2>
             <div className="card-row-wrapper">
                 {/* Liquid Glass Scroll Button - Left */}
@@ -111,7 +117,8 @@ const TopPicksRow = ({ profile }) => {
                     ref={scrollRef}
                     variants={containerVariants}
                     initial="hidden"
-                    animate="show"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-60px" }}
                 >
                     {topPicks.map((pick, index) => (
                         <motion.div
@@ -175,7 +182,7 @@ const TopPicksRow = ({ profile }) => {
                     shimmer={canScrollRight}
                 />
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -57,7 +57,7 @@
     .profile-banner {
         align-items: flex-end;
         justify-content: flex-start;
-        padding: 58px var(--page-gutter) 40px;
+        padding: 58px var(--page-gutter) 56px;
     }
 
     .banner-content {
