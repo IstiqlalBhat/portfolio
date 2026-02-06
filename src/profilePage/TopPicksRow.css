@@ -12,12 +12,15 @@
 }
 
 .top-picks-row .row-title {
-    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
-    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Segoe UI, Ubuntu, sans-serif;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
     color: #e5e5e5;
     margin-bottom: 14px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Wrapper for scroll buttons and card row */
@@ -177,7 +180,7 @@
 
 @media (max-width: 768px) {
     .top-picks-row .row-title {
-        font-size: clamp(1.2rem, 4.8vw, 1.4rem);
+        font-size: clamp(1.25rem, 5vw, 1.45rem);
         margin-bottom: 12px;
     }
 
@@ -207,7 +210,7 @@
 
 @media (max-width: 430px) {
     .top-picks-row .row-title {
-        font-size: clamp(1.1rem, 4.5vw, 1.3rem);
+        font-size: clamp(1.15rem, 4.5vw, 1.35rem);
     }
 
     .top-picks-row .pick-label {
