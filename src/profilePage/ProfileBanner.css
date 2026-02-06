@@ -57,7 +57,7 @@
     .profile-banner {
         align-items: flex-end;
         justify-content: flex-start;
-        padding: 58px var(--page-gutter) 56px;
+        padding: 58px var(--page-gutter) 32px;
     }
 
     .banner-content {
@@ -116,7 +116,7 @@
 @media (max-width: 430px) {
     .profile-banner {
         padding-top: 54px;
-        padding-bottom: 20px;
+        padding-bottom: 28px;
     }
 
     .banner-headline {

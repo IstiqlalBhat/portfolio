@@ -6,6 +6,7 @@
 @media (max-width: 768px) {
     .top-picks-row {
         padding: 0 0 0 var(--page-gutter);
+        margin-top: 8px;
         margin-bottom: 20px;
     }
 }
