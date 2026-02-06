@@ -1,17 +1,24 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaHome, FaBriefcase, FaTools, FaProjectDiagram, FaEnvelope, FaTimes } from 'react-icons/fa';
+import { PROFILES } from '../data/profiles';
 import './Navbar.css';
-// import netflixLogo from '../images/logo-2.png'; // TODO: Add logo
-// import blueImage from '../images/blue.png'; // TODO: Add profile image
+
+const navItems = [
+    { to: '/browse', icon: FaHome, label: 'Home' },
+    { to: '/work-experience', icon: FaBriefcase, label: 'Professional' },
+    { to: '/skills', icon: FaTools, label: 'Skills' },
+    { to: '/projects', icon: FaProjectDiagram, label: 'Projects' },
+    { to: '/contact-me', icon: FaEnvelope, label: 'Hire Me' },
+];
 
 const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    // const profileImage = location.state?.profileImage || blueImage;
     const profileImage = location.state?.profileImage || "/assets/profiles/profile_developer.png";
+    const profileLabel = PROFILES.find((p) => p.image === profileImage)?.label || 'Developer';
 
     const handleScroll = () => {
         setIsScrolled(window.scrollY > 80);
@@ -53,7 +60,6 @@ const Navbar = () => {
             <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-left">
                     <Link to="/" className="navbar-logo">
-                        {/* <img src={netflixLogo} alt="Netflix" /> */}
                         PORTFOLIO
                     </Link>
                     <ul className="navbar-links">
@@ -65,7 +71,6 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-right">
-                    {/* Hamburger menu for mobile */}
                     <button
                         type="button"
                         className="hamburger"
@@ -74,9 +79,9 @@ const Navbar = () => {
                         aria-expanded={isSidebarOpen}
                         aria-controls="mobile-sidebar"
                     >
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
                     <img
                         src={profileImage}
@@ -88,31 +93,55 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Sidebar Overlay */}
-            <div className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`} onClick={closeSidebar}></div>
+            {/* Full-screen Netflix overlay menu */}
+            <div
+                className={`nfx-overlay ${isSidebarOpen ? 'open' : ''}`}
+                onClick={closeSidebar}
+            ></div>
 
-            {/* Sidebar (only visible on mobile) */}
             <div
                 id="mobile-sidebar"
-                className={`sidebar ${isSidebarOpen ? 'open' : ''}`}
+                className={`nfx-menu ${isSidebarOpen ? 'open' : ''}`}
                 aria-hidden={!isSidebarOpen}
             >
-                <div className="sidebar-header">
-                    <div className="sidebar-logo">
-                        {/* <img src={netflixLogo} alt="Netflix Logo" /> */}
-                        <h2>PORTFOLIO</h2>
-                    </div>
-                    <button type="button" className="sidebar-close" onClick={closeSidebar} aria-label="Close menu">
+                <div className="nfx-menu-header">
+                    <Link to="/" className="nfx-menu-logo" onClick={closeSidebar}>
+                        PORTFOLIO
+                    </Link>
+                    <button
+                        type="button"
+                        className="nfx-menu-close"
+                        onClick={closeSidebar}
+                        aria-label="Close menu"
+                    >
                         <FaTimes />
                     </button>
                 </div>
-                <ul>
-                    <li><NavLink to="/browse" onClick={closeSidebar}><FaHome /> Home</NavLink></li>
-                    <li><NavLink to="/work-experience" onClick={closeSidebar}><FaBriefcase /> Professional</NavLink></li>
-                    <li><NavLink to="/skills" onClick={closeSidebar}><FaTools /> Skills</NavLink></li>
-                    <li><NavLink to="/projects" onClick={closeSidebar}><FaProjectDiagram /> Projects</NavLink></li>
-                    <li><NavLink to="/contact-me" onClick={closeSidebar}><FaEnvelope /> Hire Me</NavLink></li>
-                </ul>
+
+                <div className="nfx-menu-profile" onClick={() => { navigate('/browse'); closeSidebar(); }}>
+                    <img src={profileImage} alt="Profile" className="nfx-menu-avatar" decoding="async" />
+                    <div className="nfx-menu-profile-info">
+                        <span className="nfx-menu-profile-name">{profileLabel}</span>
+                        <span className="nfx-menu-profile-sub">Switch Profile</span>
+                    </div>
+                </div>
+
+                <nav className="nfx-menu-nav">
+                    <ul>
+                        {navItems.map((item, i) => {
+                            const Icon = item.icon;
+                            return (
+                                <li key={item.to} style={{ '--item-index': i }}>
+                                    <NavLink to={item.to} onClick={closeSidebar}>
+                                        <span className="nfx-nav-icon"><Icon /></span>
+                                        <span className="nfx-nav-label">{item.label}</span>
+                                    </NavLink>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+
             </div>
         </>
     );

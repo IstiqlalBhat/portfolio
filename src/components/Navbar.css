@@ -79,8 +79,8 @@
 }
 
 .hamburger,
-.sidebar-overlay,
-.sidebar {
+.nfx-overlay,
+.nfx-menu {
     display: none;
 }
 
@@ -97,6 +97,10 @@
         font-size: 0.9rem;
     }
 }
+
+/* ============================================
+   NETFLIX MOBILE OVERLAY MENU — 768px and below
+   ============================================ */
 
 @media (max-width: 768px) {
     .navbar {
@@ -131,172 +135,280 @@
         display: none;
     }
 
+    /* --- Hamburger --- */
     .hamburger {
-        display: grid;
-        place-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
         width: 40px;
         height: 40px;
         cursor: pointer;
         background: transparent;
         border: 0;
-        padding: 7px;
+        padding: 8px;
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.65));
     }
 
-    .hamburger div {
+    .hamburger span {
+        display: block;
         width: 22px;
-        height: 2px;
-        border-radius: 999px;
+        height: 1.5px;
         background-color: #fff;
-        margin: 2px 0;
-        transition: 0.3s;
+        border-radius: 2px;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.25s ease,
+                    width 0.3s ease;
+        transform-origin: center;
     }
 
-    .sidebar-overlay {
+    .hamburger span:nth-child(2) {
+        width: 16px;
+    }
+
+    /* --- Full-screen overlay backdrop --- */
+    .nfx-overlay {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(2px);
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         z-index: 1500;
         display: block;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.35s ease;
     }
 
-    .sidebar-overlay.open {
+    .nfx-overlay.open {
         opacity: 1;
         pointer-events: auto;
     }
 
-    .sidebar {
+    /* --- Netflix full-screen menu panel --- */
+    .nfx-menu {
         position: fixed;
-        top: calc(8px + env(safe-area-inset-top));
-        left: 8px;
-        width: clamp(276px, 82vw, 346px);
-        max-width: 346px;
-        height: auto;
-        max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
-        background:
-            radial-gradient(120% 100% at 20% 0%, rgba(229, 9, 20, 0.12) 0%, transparent 60%),
-            linear-gradient(165deg, #161616 0%, #080808 100%);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        box-shadow: 16px 0 36px rgba(0, 0, 0, 0.58);
+        inset: 0;
+        z-index: 1501;
         display: flex;
         flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        gap: 12px;
-        padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
-        transform: translate3d(calc(-100% - 20px), 0, 0);
-        transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform;
-        z-index: 1501;
+        background: linear-gradient(
+            180deg,
+            #0a0a0a 0%,
+            #141414 40%,
+            #1a0a0c 100%
+        );
+        color: #fff;
+        padding: env(safe-area-inset-top, 0) 0 env(safe-area-inset-bottom, 0);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s 0.3s;
         overflow-y: auto;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .sidebar.open {
-        transform: translate3d(0, 0, 0);
+    .nfx-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.35s ease, visibility 0s 0s;
     }
 
-    .sidebar-header {
+    /* --- Menu header --- */
+    .nfx-menu-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        padding: 13px 16px;
+        flex-shrink: 0;
     }
 
-    .sidebar-logo img {
-        height: 28px;
-        margin: 0;
-    }
-
-    .sidebar-logo h2 {
-        margin: 0;
+    .nfx-menu-logo {
         color: #e50914;
+        text-decoration: none;
         font-family: 'Anton', 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
-        font-size: clamp(1.28rem, 5.8vw, 1.58rem);
+        font-size: clamp(1.08rem, 4.8vw, 1.28rem);
         font-weight: 400;
         letter-spacing: 0.12em;
-        line-height: 1;
         text-transform: uppercase;
+        line-height: 1;
     }
 
-    .sidebar-close {
-        width: 36px;
-        height: 36px;
-        border-radius: 9999px;
-        border: 0;
-        background: transparent;
-        color: rgba(255, 255, 255, 0.92);
+    .nfx-menu-close {
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
         display: grid;
         place-items: center;
         cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        font-size: 1.1rem;
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
 
-    .sidebar-close:hover,
-    .sidebar-close:focus-visible {
-        background: rgba(255, 255, 255, 0.1);
+    .nfx-menu-close:hover,
+    .nfx-menu-close:focus-visible {
+        background: rgba(229, 9, 20, 0.15);
+        border-color: rgba(229, 9, 20, 0.4);
         outline: none;
-        color: #fff;
+        transform: rotate(90deg);
     }
 
-    .sidebar ul {
+    /* --- Profile section --- */
+    .nfx-menu-profile {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 24px 20px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .nfx-menu-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+        border: 2px solid transparent;
+        transition: border-color 0.25s ease;
+        object-fit: cover;
+    }
+
+    .nfx-menu-profile:hover .nfx-menu-avatar {
+        border-color: #e50914;
+    }
+
+    .nfx-menu-profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .nfx-menu-profile-name {
+        font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.01em;
+    }
+
+    .nfx-menu-profile-sub {
+        font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.02em;
+    }
+
+    /* --- Navigation items --- */
+    .nfx-menu-nav {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        padding: 8px 0;
+    }
+
+    .nfx-menu-nav ul {
         list-style: none;
         padding: 0;
         margin: 0;
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 2px;
     }
 
-    .sidebar ul li {
-        padding: 0;
+    .nfx-menu-nav li {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .sidebar ul li a {
-        color: #f4f4f4;
-        text-decoration: none;
-        font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
-        font-size: clamp(1rem, 2.4vw, 1.08rem);
-        font-weight: 600;
-        line-height: 1.2;
-        letter-spacing: 0.01em;
+    .nfx-menu.open .nfx-menu-nav li {
+        animation: nfx-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: calc(0.08s + var(--item-index) * 0.06s);
+    }
+
+    @keyframes nfx-slide-up {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nfx-menu-nav li a {
         display: flex;
         align-items: center;
-        gap: 11px;
-        width: 100%;
-        padding: 11px 11px;
-        border-radius: 10px;
-        transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        gap: 16px;
+        padding: 16px 24px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.2s ease, background 0.2s ease;
+        position: relative;
     }
 
-    .sidebar ul li a:hover,
-    .sidebar ul li a:focus-visible,
-    .sidebar ul li a.active {
-        background: linear-gradient(90deg, rgba(229, 9, 20, 0.2) 0%, rgba(229, 9, 20, 0.05) 100%);
+    .nfx-menu-nav li a::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%) scaleY(0);
+        width: 3px;
+        height: 28px;
+        background: #e50914;
+        border-radius: 0 3px 3px 0;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nfx-menu-nav li a:hover,
+    .nfx-menu-nav li a:focus-visible {
         color: #fff;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
         outline: none;
-        transform: translateX(2px);
     }
 
-    .sidebar ul li a svg {
-        flex: 0 0 auto;
-        font-size: 1rem;
-        opacity: 0.95;
+    .nfx-menu-nav li a.active {
+        color: #fff;
     }
 
-    .sidebar ul li a.active svg {
+    .nfx-menu-nav li a.active::before {
+        transform: translateY(-50%) scaleY(1);
+    }
+
+    .nfx-nav-icon {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nfx-menu-nav li a.active .nfx-nav-icon {
+        background: rgba(229, 9, 20, 0.15);
         color: #e50914;
-        opacity: 1;
     }
+
+    .nfx-menu-nav li a:hover .nfx-nav-icon {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nfx-nav-label {
+        font-family: 'Anton', 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+
 }
 
+/* --- Smaller phones --- */
 @media (max-width: 430px) {
     .navbar {
         padding: 11px 13px;
@@ -326,47 +438,53 @@
         padding: 6px;
     }
 
-    .hamburger div {
+    .hamburger span {
         width: 20px;
     }
 
-    .sidebar {
-        top: calc(6px + env(safe-area-inset-top));
-        left: 6px;
-        width: clamp(262px, 84vw, 330px);
-        max-width: 330px;
-        border-radius: 16px;
-        gap: 10px;
-        padding: 12px 10px calc(12px + env(safe-area-inset-bottom));
+    .hamburger span:nth-child(2) {
+        width: 14px;
     }
 
-    .sidebar-header {
-        gap: 8px;
+    .nfx-menu-header {
+        padding: 11px 13px;
     }
 
-    .sidebar-logo h2 {
-        font-size: clamp(1.18rem, 6vw, 1.4rem);
+    .nfx-menu-logo {
+        font-size: clamp(1.02rem, 5.5vw, 1.22rem);
         letter-spacing: 0.11em;
     }
 
-    .sidebar-close {
+    .nfx-menu-close {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .nfx-menu-profile {
+        padding: 10px 20px 18px;
+    }
+
+    .nfx-menu-avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .nfx-menu-nav li a {
+        padding: 14px 20px;
+        gap: 14px;
+    }
+
+    .nfx-nav-label {
+        font-size: 1.22rem;
+    }
+
+    .nfx-nav-icon {
         width: 34px;
         height: 34px;
+        font-size: 0.9rem;
     }
 
-    .sidebar ul {
-        gap: 3px;
-    }
-
-    .sidebar ul li a {
-        gap: 10px;
-        font-size: 1rem;
-        padding: 10px 10px;
-    }
-
-    .sidebar ul li a svg {
-        font-size: 0.96rem;
-    }
 }
 
 @media (max-width: 390px) {
@@ -379,33 +497,58 @@
         letter-spacing: 0.1em;
     }
 
-    .sidebar {
-        width: clamp(248px, 85vw, 314px);
-        max-width: 314px;
+    .nfx-menu-header {
+        padding: 10px 12px;
     }
 
-    .sidebar-logo h2 {
-        font-size: clamp(1.12rem, 5.8vw, 1.3rem);
+    .nfx-menu-logo {
+        font-size: clamp(0.98rem, 5.3vw, 1.14rem);
+        letter-spacing: 0.1em;
     }
 
-    .sidebar ul li a {
-        font-size: 0.98rem;
-        padding: 9px 9px;
+    .nfx-menu-profile {
+        padding: 8px 18px 16px;
+        gap: 12px;
     }
 
-    .sidebar ul li a svg {
-        font-size: 0.92rem;
+    .nfx-menu-avatar {
+        width: 40px;
+        height: 40px;
     }
+
+    .nfx-menu-profile-name {
+        font-size: 1rem;
+    }
+
+    .nfx-menu-nav li a {
+        padding: 13px 18px;
+        gap: 12px;
+    }
+
+    .nfx-nav-label {
+        font-size: 1.15rem;
+    }
+
+    .nfx-nav-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.88rem;
+    }
+
 }
 
 @media (max-width: 360px) {
-    .sidebar {
-        width: clamp(238px, 88vw, 300px);
-        max-width: 300px;
+    .nfx-menu-nav li a {
+        padding: 12px 16px;
     }
 
-    .sidebar ul li a {
-        font-size: 0.96rem;
-        padding: 9px 8px;
+    .nfx-nav-label {
+        font-size: 1.08rem;
+    }
+
+    .nfx-nav-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
     }
 }
