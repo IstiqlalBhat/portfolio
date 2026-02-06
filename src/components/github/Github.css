@@ -81,10 +81,12 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     color: var(--gh-accent);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+    font-weight: 600;
     padding: 6px 10px;
     border-radius: 999px;
     background: rgba(229, 9, 20, 0.12);
@@ -99,9 +101,10 @@
 }
 
 .gh-section-title {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     font-size: clamp(1.35rem, 2vw, 1.85rem);
-    font-weight: 800;
-    letter-spacing: 0.01em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin: 0;
     padding-left: 0.75rem;
     border-left: 3px solid var(--gh-accent);
@@ -109,9 +112,11 @@
 }
 
 .gh-section-subtitle {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     margin: 0;
     color: var(--gh-text-dim);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    font-weight: 400;
     line-height: 1.6;
     max-width: 760px;
 }
@@ -120,8 +125,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     color: #dcdcdc;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+    font-weight: 400;
     padding: 8px 12px;
     border-radius: 999px;
     border: 1px solid #262626;
@@ -236,17 +243,20 @@
 }
 
 .gh-username {
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin: 0 0 6px;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
 }
 
 .gh-bio {
-    font-size: 0.9rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
     color: var(--gh-text-dim);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .gh-metrics {
@@ -287,14 +297,17 @@
 
 .gh-metric-value {
     display: block;
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #fff;
     text-shadow: 0 0 24px rgba(229, 9, 20, 0.2);
 }
 
 .gh-metric-label {
-    font-size: 0.65rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 0.62rem;
+    font-weight: 400;
     color: #868686;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -376,9 +389,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     color: #f2f2f2;
 }
 
@@ -392,7 +406,9 @@
     gap: 0.35rem;
     padding: 6px 12px;
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
     color: #f0f0f0;
     background: rgba(229, 9, 20, 0.14);
     border: 1px solid rgba(229, 9, 20, 0.25);
@@ -412,22 +428,23 @@
 }
 
 .gh-btn {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     background: transparent;
     border: none;
     color: var(--gh-text-dim);
     padding: 6px 12px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     cursor: pointer;
     border-radius: 999px;
     transition: all 0.2s;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.02em;
 }
 
 .gh-btn.active {
     background: var(--gh-accent);
     color: #fff;
-    font-weight: 800;
+    font-weight: 600;
     box-shadow: 0 10px 20px rgba(229, 9, 20, 0.35);
 }
 
@@ -518,8 +535,10 @@
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #1f1f1f;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
     color: #8c8c8c;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 400;
 }
 
 .gh-legend {
@@ -548,7 +567,9 @@
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #1f1f1f;
-    font-size: 0.75rem;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
     color: #8c8c8c;
     gap: 0.75rem;
     flex-wrap: wrap;

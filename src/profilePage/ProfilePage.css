@@ -32,11 +32,11 @@
 
 @media (max-width: 768px) {
     .profile-page {
-        height: auto;
-        min-height: 80vh;
+        height: 100dvh;
+        height: 100svh;
         align-items: flex-end;
         overflow: visible;
-        margin-bottom: 24px;
+        margin-bottom: 0;
     }
 
     .profile-page-bg {
