@@ -34,13 +34,13 @@
 }
 
 .banner-headline {
-    font-size: clamp(2.4rem, 5.2vw, 3.5rem);
+    font-size: clamp(2.2rem, 4.6vw, 3.1rem);
     margin-bottom: 12px;
-    line-height: 1.05;
+    line-height: 1.08;
 }
 
 .banner-description {
-    font-size: clamp(1.02rem, 2vw, 1.22rem);
+    font-size: clamp(0.98rem, 1.6vw, 1.12rem);
     margin-bottom: 22px;
     line-height: 1.5;
 
@@ -57,7 +57,7 @@
     .profile-banner {
         align-items: flex-end;
         justify-content: flex-start;
-        padding: 72px var(--page-gutter) 34px;
+        padding: 58px var(--page-gutter) 30px;
     }
 
     .banner-content {
@@ -68,17 +68,17 @@
 
     .banner-headline {
         margin-top: 0;
-        margin-bottom: 12px;
-        font-size: clamp(2.15rem, 10vw, 3rem);
+        margin-bottom: 10px;
+        font-size: clamp(1.9rem, 8vw, 2.45rem);
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
     }
 
     .banner-description {
-        font-size: clamp(1.04rem, 4.9vw, 1.28rem);
+        font-size: clamp(0.96rem, 4.1vw, 1.06rem);
         line-height: 1.5;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        max-width: 95%;
-        margin-bottom: 18px;
+        max-width: 92%;
+        margin-bottom: 16px;
     }
 
     .banner-buttons {
@@ -101,8 +101,8 @@
 
 @media (max-width: 430px) {
     .profile-banner {
-        padding-top: 64px;
-        padding-bottom: 26px;
+        padding-top: 54px;
+        padding-bottom: 24px;
     }
 
     .banner-content {
@@ -110,12 +110,12 @@
     }
 
     .banner-headline {
-        font-size: clamp(1.95rem, 9.4vw, 2.6rem);
+        font-size: clamp(1.75rem, 8.3vw, 2.2rem);
         line-height: 1.08;
     }
 
     .banner-description {
-        font-size: clamp(1rem, 4.7vw, 1.16rem);
+        font-size: clamp(0.92rem, 3.8vw, 1rem);
         margin-bottom: 14px;
     }
 }
