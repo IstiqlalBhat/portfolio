@@ -10,7 +10,7 @@
     width: 100%;
     height: 100%;
 
-    padding: 20px var(--page-gutter);
+    padding: 24px var(--page-gutter);
 }
 
 .profile-banner::before {
@@ -27,58 +27,64 @@
     max-width: 1000px;
     font-weight: bold;
     width: 100%;
-    padding: 10px 0px;
+    padding: 12px 0;
     box-sizing: border-box;
 
 
 }
 
 .banner-headline {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: clamp(2.4rem, 5.2vw, 3.5rem);
+    margin-bottom: 12px;
+    line-height: 1.05;
 }
 
 .banner-description {
-    font-size: 1rem;
-    margin-bottom: 20px;
+    font-size: clamp(1.02rem, 2vw, 1.22rem);
+    margin-bottom: 22px;
+    line-height: 1.5;
 
     white-space: pre-line;
 }
 
 .banner-buttons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .banner-content {
-        max-width: 100%;
+    .profile-banner {
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 72px var(--page-gutter) 34px;
     }
 
-    .profile-banner {
-        padding: 60px var(--page-gutter);
-        align-items: center;
-        justify-content: center;
+    .banner-content {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 8px;
     }
 
     .banner-headline {
-        font-size: 2rem;
-        margin-top: 4rem;
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: clamp(2.15rem, 10vw, 3rem);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
     }
 
     .banner-description {
+        font-size: clamp(1.04rem, 4.9vw, 1.28rem);
         line-height: 1.5;
-        font-size: 12px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        max-width: 95%;
+        margin-bottom: 18px;
     }
 
-    /* Button adjustments */
     .banner-buttons {
-        display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 10px;
         width: 100vw;
         margin-left: calc(var(--page-gutter) * -1);
         padding: 0;
@@ -93,33 +99,23 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 430px) {
     .profile-banner {
-        align-items: flex-end;
-        /* Align to bottom */
-        justify-content: flex-start;
-        /* Align left */
-        padding-bottom: 40px;
-        /* Add some space from bottom */
+        padding-top: 64px;
+        padding-bottom: 26px;
     }
 
     .banner-content {
-        width: 100%;
-        margin-bottom: 20px;
-        /* Ensure content isn't flush with edge */
+        margin-bottom: 4px;
     }
 
     .banner-headline {
-        margin-top: 0;
-        /* Remove top margin that was pushing it down */
-        font-size: 1.8rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        /* Improve readability */
+        font-size: clamp(1.95rem, 9.4vw, 2.6rem);
+        line-height: 1.08;
     }
 
     .banner-description {
-        font-size: 1rem;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        max-width: 90%;
+        font-size: clamp(1rem, 4.7vw, 1.16rem);
+        margin-bottom: 14px;
     }
 }
