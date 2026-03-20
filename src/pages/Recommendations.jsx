@@ -5,7 +5,10 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaUniversity } from 'react-icon
 const Recommendations = () => {
     return (
         <div className='recommendations-container'>
-            <h1 className="sr-only">Professional Recommendations for Istiqlal Aurangzeb</h1>
+            <div className="recommendations-copy">
+                <h1>Professional Recommendation</h1>
+                <p>Reference information for recruiters and hiring teams evaluating Istiqlal Aurangzeb.</p>
+            </div>
             <div className="recommendation-card">
                 <div className="recommendation-header">
                     <div className="profile-icon-container">

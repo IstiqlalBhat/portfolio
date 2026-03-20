@@ -1,6 +1,10 @@
 {
   "name": "Istiqlal Aurangzeb",
   "short_name": "Istiqlal",
+  "description": "Official portfolio of Istiqlal Aurangzeb, software engineer and AI researcher at Clemson University.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -15,5 +19,6 @@
   ],
   "theme_color": "#141414",
   "background_color": "#141414",
-  "display": "standalone"
+  "display": "standalone",
+  "categories": ["portfolio", "technology", "developer"]
 }

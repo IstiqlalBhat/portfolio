@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Skills.css';
 import { getSkills } from '../queries/getSkills';
+import { hardcodedSkills } from '../data/mockData';
 
 import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaJava, FaPython } from 'react-icons/fa';
 import {
@@ -42,7 +43,7 @@ const iconMap = {
 
 const Skills = () => {
 
-    const [skillsData, setSkillsData] = useState([]);
+    const [skillsData, setSkillsData] = useState(hardcodedSkills);
 
     useEffect(() => {
         async function fetchSkills() {
@@ -56,8 +57,6 @@ const Skills = () => {
         fetchSkills()
     }, []);
 
-    if (skillsData.length === 0) return <div>Loading...</div>;
-
     const skillsByCategory = skillsData.reduce((acc, skill) => {
         if (!acc[skill.category]) acc[skill.category] = [];
         acc[skill.category].push(skill);
@@ -67,7 +66,12 @@ const Skills = () => {
 
     return (
         <div className="skills-container">
-            <h1 className="sr-only">Technical Skills - Istiqlal Aurangzeb</h1>
+            <div className="skills-copy">
+                <h1 className="skills-title">Technical Skills</h1>
+                <p className="skills-intro">
+                    Languages, frameworks, AI tooling, and engineering systems used by Istiqlal Aurangzeb across research software and product development.
+                </p>
+            </div>
             {Object.keys(skillsByCategory).map((category, index) => (
                 <div key={index} className="skill-category">
                     <h3 className="category-title">{category}</h3>

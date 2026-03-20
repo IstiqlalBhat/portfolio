@@ -1,0 +1,211 @@
+.home-seo-content {
+    position: relative;
+    z-index: 2;
+    padding: 48px var(--page-gutter) 96px;
+    background:
+        radial-gradient(circle at top, rgba(229, 9, 20, 0.18), transparent 42%),
+        linear-gradient(180deg, rgba(20, 20, 20, 0.92) 0%, #141414 24%, #0d0d0d 100%);
+    color: #f3f3f3;
+}
+
+.home-seo-hero,
+.home-seo-panel,
+.home-seo-contact,
+.home-seo-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(12px);
+}
+
+.home-seo-hero {
+    max-width: 960px;
+    margin: 0 auto 40px;
+    padding: 32px;
+    border-radius: 28px;
+}
+
+.home-seo-kicker,
+.home-seo-meta {
+    margin: 0 0 12px;
+    color: #ffb3b8;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.home-seo-title {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    line-height: 0.96;
+}
+
+.home-seo-summary {
+    max-width: 680px;
+    margin: 18px 0 0;
+    font-size: 1.06rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.home-seo-actions,
+.home-seo-inline-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.home-seo-actions {
+    margin-top: 24px;
+}
+
+.home-seo-primary,
+.home-seo-secondary,
+.home-seo-inline-links a,
+.home-seo-card a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.home-seo-primary {
+    background: #e50914;
+    color: #fff;
+}
+
+.home-seo-primary:hover,
+.home-seo-secondary:hover,
+.home-seo-inline-links a:hover,
+.home-seo-card a:hover {
+    transform: translateY(-2px);
+}
+
+.home-seo-secondary,
+.home-seo-inline-links a,
+.home-seo-card a {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.home-seo-proof-list,
+.home-seo-list {
+    margin: 24px 0 0;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+}
+
+.home-seo-section {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+}
+
+.home-seo-section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.home-seo-section-head h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+}
+
+.home-seo-section-head a {
+    color: #ffb3b8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.home-seo-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.home-seo-card,
+.home-seo-panel {
+    border-radius: 22px;
+    padding: 24px;
+}
+
+.home-seo-card h3,
+.home-seo-panel h2,
+.home-seo-panel h3 {
+    margin: 0 0 12px;
+}
+
+.home-seo-card p,
+.home-seo-panel p,
+.home-seo-list li {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+}
+
+.home-seo-card a {
+    margin-top: 18px;
+}
+
+.home-seo-two-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.home-seo-skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.home-seo-skill-cloud span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(229, 9, 20, 0.14);
+    border: 1px solid rgba(229, 9, 20, 0.28);
+    color: #fff;
+}
+
+.home-seo-contact {
+    border-radius: 22px;
+    padding: 24px;
+}
+
+@media (max-width: 900px) {
+    .home-seo-two-column {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-seo-content {
+        padding-top: 32px;
+        padding-bottom: 72px;
+    }
+
+    .home-seo-hero,
+    .home-seo-card,
+    .home-seo-panel,
+    .home-seo-contact {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .home-seo-section-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

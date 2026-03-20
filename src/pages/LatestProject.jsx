@@ -4,6 +4,7 @@ import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, Fa
 import { SiRubyonrails, SiPostgresql, SiMongodb, SiMaterialdesign, SiHtml5, SiCss3, SiJquery, SiAwsamplify, SiFirebase, SiTerraform, SiArgo, SiTypescript, SiSupabase, SiVite, SiFramer, SiTailwindcss, SiNextdotjs, SiFastapi, SiThreedotjs, SiGooglegemini, SiShadcnui } from 'react-icons/si';
 import { getFeatured } from '../queries/getFeatured';
 import { GrDeploy, GrKubernetes } from "react-icons/gr";
+import { hardcodedFeatured } from '../data/mockData';
 
 const techIcons = {
     "ReactJS": <FaReact />,
@@ -167,8 +168,7 @@ const getTechIcon = (tech) => {
 };
 
 const LatestProject = () => {
-    const [featuredItems, setFeaturedItems] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [featuredItems, setFeaturedItems] = useState(hardcodedFeatured);
 
     useEffect(() => {
         async function fetchFeatured() {
@@ -177,15 +177,12 @@ const LatestProject = () => {
                 setFeaturedItems(data);
             } catch (error) {
                 console.error("Error fetching featured:", error);
-            } finally {
-                setLoading(false);
             }
         }
 
         fetchFeatured();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
     if (!featuredItems || featuredItems.length === 0) return <div>No featured items found.</div>;
 
     const primaryFeatured = featuredItems[0];

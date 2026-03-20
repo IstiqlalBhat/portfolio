@@ -104,7 +104,7 @@ const ContinueWatching = ({ profile }) => {
                                     className="pick-image"
                                     loading={index < 2 ? 'eager' : 'lazy'}
                                     decoding="async"
-                                    fetchpriority={index < 2 ? 'high' : 'auto'}
+                                    fetchPriority={index < 2 ? 'high' : 'auto'}
                                 />
                                 <div className="overlay">
                                     <div className="pick-label">{pick.title}</div>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './ContactMe.css';
-// import profilePic from '../images/sumanth.jpeg'; // TODO: Add profile pic
 import { FaEnvelope, FaPhoneAlt, FaCoffee, FaLinkedin } from 'react-icons/fa';
 import { getContactMe } from '../queries/getContactMe';
+import { hardcodedContact } from '../data/mockData';
 
 const ContactMe = () => {
-
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState(hardcodedContact);
 
     useEffect(() => {
         async function fetchUserData() {
@@ -14,21 +13,23 @@ const ContactMe = () => {
                 const data = await getContactMe();
                 setUserData(data);
             } catch (error) {
-                console.error("Error fetching contact data:", error);
+                console.error('Error fetching contact data:', error);
             }
         }
 
         fetchUserData();
     }, []);
 
-    if (!userData) return <div>Loading...</div>;
-
     return (
         <div className="contact-container">
-            <h1 className="sr-only">Contact Istiqlal Aurangzeb</h1>
+            <div className="contact-copy">
+                <h1>Contact Istiqlal Aurangzeb</h1>
+                <p>Open to software engineering, AI, product, and research collaboration conversations.</p>
+            </div>
+
             <div className="linkedin-badge-custom">
                 <img
-                    src={userData.profilePicture?.url || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}
+                    src={userData.profilePicture?.url || 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'}
                     alt={userData.name}
                     className="badge-avatar"
                     decoding="async"
@@ -50,9 +51,11 @@ const ContactMe = () => {
                     </a>
                 </div>
             </div>
+
             <div className="contact-header">
-                <p>I'm always up for a chat or a coffee! Feel free to reach out.</p>
+                <p>Reach out directly by email or phone.</p>
             </div>
+
             <div className="contact-details">
                 <div className="contact-item">
                     <FaEnvelope className="contact-icon" />
@@ -67,7 +70,7 @@ const ContactMe = () => {
                     </a>
                 </div>
                 <div className="contact-fun">
-                    <p>Or catch up over a coffee ☕</p>
+                    <p>Or catch up over a coffee</p>
                     <FaCoffee className="coffee-icon" />
                 </div>
             </div>
