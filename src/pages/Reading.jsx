@@ -21,7 +21,7 @@ const books = [
 const Reading = () => {
     return (
         <div className="reading-container">
-            <h2 className="reading-title">📚 Books That Shaped My Journey</h2>
+            <h1 className="reading-title">Books That Shaped My Journey</h1>
             <p className="reading-intro">These books have influenced my perspectives, motivation, and self-growth.</p>
             <div className="books-grid">
                 {books.map((book, index) => (

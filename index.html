@@ -29,7 +29,7 @@
   <link rel="canonical" href="https://www.istiqlalaurangzeb.com/" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:url" content="https://www.istiqlalaurangzeb.com" />
+  <meta property="og:url" content="https://www.istiqlalaurangzeb.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Istiqlal Aurangzeb" />
   <meta property="og:title" content="Istiqlal | Istiqlal Aurangzeb - Software Engineer & AI Researcher" />
@@ -43,7 +43,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://www.istiqlalaurangzeb.com" />
+  <meta name="twitter:url" content="https://www.istiqlalaurangzeb.com/" />
   <meta name="twitter:title" content="Istiqlal | Istiqlal Aurangzeb - Software Engineer & AI Researcher" />
   <meta name="twitter:description"
     content="Istiqlal Aurangzeb - Research Software Developer at Clemson University. Istiqlal specializes in AI, blockchain, and full-stack development." />
@@ -57,7 +57,7 @@
     "@type": "Person",
     "name": "Istiqlal Aurangzeb",
     "alternateName": ["Istiqlal", "Istiqlal Bhat"],
-    "url": "https://www.istiqlalaurangzeb.com",
+    "url": "https://www.istiqlalaurangzeb.com/",
     "image": "https://www.istiqlalaurangzeb.com/og-image.png",
     "jobTitle": "Research Software Developer",
     "worksFor": {
@@ -76,19 +76,35 @@
   }
   </script>
 
-  <!-- JSON-LD Structured Data for WebSite -->
+  <!-- JSON-LD Structured Data for WebSite (controls Google site name) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Istiqlal Aurangzeb",
-    "alternateName": "Istiqlal Aurangzeb Portfolio",
-    "url": "https://www.istiqlalaurangzeb.com",
+    "alternateName": ["Istiqlal", "Istiqlal Aurangzeb Portfolio"],
+    "url": "https://www.istiqlalaurangzeb.com/",
     "description": "Official portfolio website of Istiqlal Aurangzeb - Software Engineer and AI Researcher",
-    "author": {
+    "publisher": {
       "@type": "Person",
       "name": "Istiqlal Aurangzeb"
     }
+  }
+  </script>
+
+  <!-- JSON-LD BreadcrumbList for navigation -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.istiqlalaurangzeb.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.istiqlalaurangzeb.com/projects" },
+      { "@type": "ListItem", "position": 3, "name": "Skills", "item": "https://www.istiqlalaurangzeb.com/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Experience", "item": "https://www.istiqlalaurangzeb.com/work-experience" },
+      { "@type": "ListItem", "position": 5, "name": "Research", "item": "https://www.istiqlalaurangzeb.com/research-papers" },
+      { "@type": "ListItem", "position": 6, "name": "Contact", "item": "https://www.istiqlalaurangzeb.com/contact-me" }
+    ]
   }
   </script>
 </head>
@@ -96,6 +112,47 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- Fallback content for search engines that don't execute JavaScript -->
+  <noscript>
+    <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:sans-serif;color:#333;background:#fff;">
+      <h1>Istiqlal Aurangzeb - Software Engineer & AI Researcher</h1>
+      <p>Istiqlal Aurangzeb is a Research Software Developer at Clemson University specializing in artificial intelligence, blockchain technology, and full-stack web development.</p>
+
+      <h2>About Istiqlal</h2>
+      <p>Istiqlal Aurangzeb (also known as Istiqlal Bhat) is a software engineer with expertise in AI/ML, blockchain smart contracts, and modern web technologies. Istiqlal works at Clemson University's Nieri Department of Construction, Development and Planning, building research software for construction automation.</p>
+
+      <h2>Technical Skills</h2>
+      <p>Python, JavaScript, TypeScript, Java, C++, Solidity, React, Next.js, Node.js, FastAPI, PostgreSQL, MongoDB, Redis, AWS, Docker, Kubernetes, PyTorch, Three.js, Tailwind CSS</p>
+
+      <h2>Projects</h2>
+      <ul>
+        <li>AI-powered construction automation tools</li>
+        <li>Blockchain-based asset tracking systems (AB-CELS, BBAPS)</li>
+        <li>Full-stack web applications</li>
+        <li>Machine learning research implementations</li>
+      </ul>
+
+      <h2>Research</h2>
+      <p>Published research in Automation in Construction journal, focusing on blockchain applications in construction technology and AI-driven automation.</p>
+
+      <h2>Contact</h2>
+      <p>Connect with Istiqlal Aurangzeb on <a href="https://www.linkedin.com/in/istiqlalaurangzeb">LinkedIn</a> or view code on <a href="https://github.com/istiqlalaurangzeb">GitHub</a>.</p>
+
+      <nav>
+        <h2>Site Navigation</h2>
+        <ul>
+          <li><a href="https://www.istiqlalaurangzeb.com/">Home</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/projects">Projects</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/skills">Skills</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/work-experience">Work Experience</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/research-papers">Research Papers</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/contact-me">Contact</a></li>
+          <li><a href="https://www.istiqlalaurangzeb.com/gallery">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+  </noscript>
 </body>
 
 </html>

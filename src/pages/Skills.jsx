@@ -67,6 +67,7 @@ const Skills = () => {
 
     return (
         <div className="skills-container">
+            <h1 className="sr-only">Technical Skills - Istiqlal Aurangzeb</h1>
             {Object.keys(skillsByCategory).map((category, index) => (
                 <div key={index} className="skill-category">
                     <h3 className="category-title">{category}</h3>

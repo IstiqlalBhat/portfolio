@@ -196,7 +196,7 @@ const LatestProject = () => {
 
     return (
         <div className="projects-container">
-            <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '20px' }}>Featured</h2>
+            <h1 style={{ color: 'white', textAlign: 'center', marginBottom: '20px' }}>Featured Projects</h1>
 
             {/* Primary Featured Item - Larger Display */}
             <div className="projects-grid" style={{ justifyContent: 'center', display: 'flex', marginBottom: '40px' }}>

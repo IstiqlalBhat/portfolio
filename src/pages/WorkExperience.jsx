@@ -31,7 +31,7 @@ const WorkExperience = () => {
     return (
         <>
             <div className="timeline-container">
-                <h2 className="timeline-title">📅 Work Experience & Education Timeline</h2>
+                <h1 className="timeline-title">Work Experience & Education Timeline</h1>
             </div>
             <VerticalTimeline>
                 {timeLineData.map((item, index) => (

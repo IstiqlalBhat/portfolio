@@ -200,6 +200,7 @@ const Projects = () => {
 
     return (
         <div className="projects-container">
+            <h1 className="sr-only">Projects by Istiqlal Aurangzeb</h1>
             <div className="projects-grid">
                 {projects.map((project, index) => {
                     const imageUrl = getProjectImageUrl(project.image) || '/assets/project_tech_bg.png';

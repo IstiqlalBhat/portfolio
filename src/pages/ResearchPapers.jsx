@@ -21,7 +21,7 @@ const ResearchPapers = () => {
 
     return (
         <div className="papers-container">
-            <h2 className="papers-title">📄 Research Papers</h2>
+            <h1 className="papers-title">Research Papers by Istiqlal Aurangzeb</h1>
             <p className="papers-intro">Selected publications in Automation in Construction.</p>
             <div className="papers-grid">
                 {papers.map((paper, index) => (

@@ -79,9 +79,10 @@ const NetflixTitle = () => {
         >
             <SEO {...seo} />
             <NetflixWebGLBackground />
+            <h1 className="sr-only">Istiqlal Aurangzeb - Software Engineer & AI Researcher</h1>
             <img
                 src={logoImage}
-                alt="Custom Logo"
+                alt="Istiqlal Aurangzeb Portfolio"
                 decoding="async"
                 fetchpriority="high"
                 className={`netflix-logo ${animate ? 'animate' : ''}`}

@@ -9,11 +9,11 @@ const Layout = ({ children }) => {
     const seo = getSeoForPath(pathname);
 
     return (
-        <div>
+        <>
             <Navbar />
             <SEO {...seo} />
-            <div className="content">{children}</div>
-        </div>
+            <main className="content">{children}</main>
+        </>
     );
 };
 

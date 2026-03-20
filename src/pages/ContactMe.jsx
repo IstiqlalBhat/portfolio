@@ -25,6 +25,7 @@ const ContactMe = () => {
 
     return (
         <div className="contact-container">
+            <h1 className="sr-only">Contact Istiqlal Aurangzeb</h1>
             <div className="linkedin-badge-custom">
                 <img
                     src={userData.profilePicture?.url || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}

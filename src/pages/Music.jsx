@@ -14,6 +14,7 @@ const favoriteAlbums = [
 const Music = () => {
     return (
         <div className="music-page">
+            <h1 className="sr-only">Music - Istiqlal Aurangzeb</h1>
             <div className="quote">
                 <p>“Rock and Roll isn’t a genre, it’s a way of life.” 🎸</p>
             </div>

@@ -238,24 +238,28 @@ const Hero = () => {
                     <span className="hero-label" style={{ color: 'var(--signal-acid)' }}>SCROLL TO EXPLORE ↓</span>
                 </div>
 
-                <div className="hero-title-container" style={{ position: 'relative', zIndex: 10 }}>
+                <h1 className="sr-only">Photo & Video Gallery by Istiqlal Aurangzeb</h1>
+                <div className="hero-title-container" style={{ position: 'relative', zIndex: 10 }} aria-hidden="true">
                     <div className="hero-title-wrapper">
-                        <motion.h1
+                        <motion.span
                             className="hero-title"
-                            style={{ x: x1, y: y1 }}
+                            role="presentation"
+                            style={{ x: x1, y: y1, display: 'block' }}
                             initial={{ y: "100%" }}
                             animate={{ y: 0 }}
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         >
                             the
-                        </motion.h1>
+                        </motion.span>
                     </div>
                     <div className="hero-title-wrapper">
-                        <motion.h1
+                        <motion.span
                             className="hero-title outlined-title"
+                            role="presentation"
                             style={{
                                 x: x2,
                                 y: y2,
+                                display: 'block',
                                 color: 'transparent',
                                 WebkitTextStroke: '2px var(--plaster)',
                                 cursor: 'default'
@@ -270,7 +274,7 @@ const Hero = () => {
                             transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                         >
                             gallery
-                        </motion.h1>
+                        </motion.span>
                     </div>
                 </div>
 
