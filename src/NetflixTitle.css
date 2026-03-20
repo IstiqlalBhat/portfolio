@@ -1,8 +1,12 @@
+.netflix-page {
+    background-color: #141414;
+}
+
 .netflix-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #141414;
     overflow: hidden;
     position: relative;
@@ -75,7 +79,11 @@
 }
 
 .tap-icon-intro {
-    font-size: 2rem;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
     animation: hintBounce 1.5s ease-in-out infinite;
 }
 
@@ -100,5 +108,17 @@
 
     50% {
         opacity: 0.8;
+    }
+}
+
+@media (max-width: 640px) {
+    .click-hint-intro {
+        bottom: 12%;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+    }
+
+    .tap-icon-intro {
+        letter-spacing: 0.22em;
     }
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './NetflixTitle.css';
 import netflixSound from './netflix-sound.mp3';
-import { useLocation, useNavigate } from 'react-router-dom';
-import logoImage from './images/logo-2.png'; // Update with the path to your logo
+import logoImage from './images/logo-2.png';
+import HomeSeoContent from './components/HomeSeoContent';
 import NetflixWebGLBackground from './components/NetflixWebGLBackground';
 import SEO from './components/SEO';
 import { getSeoForPath } from './utils/seo';
@@ -21,18 +22,18 @@ const NetflixTitle = () => {
     const goBrowse = () => {
         if (navigatedRef.current) return;
         navigatedRef.current = true;
+
         if (navTimerRef.current) {
             clearTimeout(navTimerRef.current);
             navTimerRef.current = null;
         }
+
         navigate('/browse');
     };
 
-    // Preload audio on mount for better desktop playback
     useEffect(() => {
         audioRef.current = new Audio(netflixSound);
         audioRef.current.preload = 'auto';
-        // Load the audio buffer
         audioRef.current.load();
 
         return () => {
@@ -48,7 +49,6 @@ const NetflixTitle = () => {
         if (startedRef.current) return;
         startedRef.current = true;
 
-        // Play preloaded audio - reset to start in case it was already played
         if (audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play().catch(() => { });
@@ -56,53 +56,55 @@ const NetflixTitle = () => {
 
         setAnimate(true);
         animStartTimeRef.current = Date.now();
-
-        // Fallback timeout only if onAnimationEnd doesn't fire (e.g., animations blocked)
-        // Always use full duration to let the animation complete
         navTimerRef.current = setTimeout(goBrowse, 4000);
     };
 
     return (
-        <div
-            className="netflix-container"
-            role="button"
-            tabIndex={0}
-            onPointerDown={handleStart}
-            onClick={handleStart}
-            onTouchStart={handleStart}
-            onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    handleStart();
-                }
-            }}
-        >
+        <div className="netflix-page">
             <SEO {...seo} />
-            <NetflixWebGLBackground />
-            <h1 className="sr-only">Istiqlal Aurangzeb - Software Engineer & AI Researcher</h1>
-            <img
-                src={logoImage}
-                alt="Istiqlal Aurangzeb Portfolio"
-                decoding="async"
-                fetchpriority="high"
-                className={`netflix-logo ${animate ? 'animate' : ''}`}
-                onAnimationEnd={(e) => {
-                    if (!animate) return;
-                    // Only navigate when the zoomOut animation ends, not fadeIn
-                    if (e.animationName !== 'zoomOut') return;
-                    // Ensure animation has actually run (at least 3s of the 3.5s animation)
-                    const elapsed = Date.now() - animStartTimeRef.current;
-                    if (elapsed < 3000) return;
-                    goBrowse();
+            <section
+                className="netflix-container"
+                role="button"
+                tabIndex={0}
+                onPointerDown={handleStart}
+                onClick={handleStart}
+                onTouchStart={handleStart}
+                onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleStart();
+                    }
                 }}
-            />
+                aria-label="Open the portfolio experience"
+            >
+                <NetflixWebGLBackground />
+                <p className="sr-only">Launch the interactive portfolio experience for Istiqlal Aurangzeb.</p>
+                <img
+                    src={logoImage}
+                    alt="Istiqlal Aurangzeb Portfolio"
+                    decoding="async"
+                    fetchPriority="high"
+                    className={`netflix-logo ${animate ? 'animate' : ''}`}
+                    onAnimationEnd={(event) => {
+                        if (!animate) return;
+                        if (event.animationName !== 'zoomOut') return;
 
-            {!animate && (
-                <div className="click-hint-intro">
-                    <span className="tap-icon-intro">👆</span>
-                    <span>Click to enter</span>
-                </div>
-            )}
+                        const elapsed = Date.now() - animStartTimeRef.current;
+                        if (elapsed < 3000) return;
+
+                        goBrowse();
+                    }}
+                />
+
+                {!animate && (
+                    <div className="click-hint-intro">
+                        <span className="tap-icon-intro">Start</span>
+                        <span>Click to enter</span>
+                    </div>
+                )}
+            </section>
+
+            <HomeSeoContent />
         </div>
     );
 };

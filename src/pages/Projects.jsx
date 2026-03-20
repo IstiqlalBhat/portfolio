@@ -5,6 +5,7 @@ import { SiRubyonrails, SiPostgresql, SiMongodb, SiMaterialdesign, SiHtml5, SiCs
 import { getProjects } from '../queries/getProjects';
 import { GrDeploy, GrKubernetes } from "react-icons/gr";
 import ShowcaseModal from '../components/ShowcaseModal';
+import { hardcodedProjects } from '../data/mockData';
 
 const techIcons = {
     "ReactJS": <FaReact />,
@@ -174,7 +175,7 @@ const getTechIcon = (tech) => {
 };
 
 const Projects = () => {
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState(hardcodedProjects);
     const [isShowcaseOpen, setIsShowcaseOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -196,11 +197,14 @@ const Projects = () => {
         setIsShowcaseOpen(true);
     };
 
-    if (projects.length === 0) return <div>Loading...</div>;
-
     return (
         <div className="projects-container">
-            <h1 className="sr-only">Projects by Istiqlal Aurangzeb</h1>
+            <div className="projects-intro">
+                <h1>Projects by Istiqlal Aurangzeb</h1>
+                <p>
+                    A mix of research software, AI products, blockchain systems, and interactive web experiences built across Clemson University work and independent experiments.
+                </p>
+            </div>
             <div className="projects-grid">
                 {projects.map((project, index) => {
                     const imageUrl = getProjectImageUrl(project.image) || '/assets/project_tech_bg.png';
